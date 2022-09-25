@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">EquityMobile</string>
+
+    <string name="password_visible_content_description">Hide password</string>
+    <string name="password_hidden_content_description">Show password</string>
+    <string name="dont_have_an_account_yet">Don\'t have an account? Please</string>
+    <string name="sign_up">Sign up!</string>
+    <string name="email">E-Mail</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account? Go to the</string>
+    <string name="sign_in">Login Page</string>
+    <string name="username">Username</string>
+    <string name="login_hint">Username / E-Mail</string>
+    <string name="login">Login</string>
+    <string name="password_hint">Enter password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="signin">Sign in to Continue. Remember, your password is yours, do not share it with anyone.</string>
+    <string name="account_hint">Enter an account or mobile number</string>
+    <string name="idnumber_hint">Enter your ID number</string>
+    <string name="email_hint">Email address or mobile number</string>
+    <string name="createPassword_hint">The harder the password, the better and safer</string>
+    <string name="createPasswd_header">Create a strong password</string>
+    <string name="createPin_header">Create your 4-digit PIN</string>
+    <string name="createPin_hint">Make sure that your PIN is unique and secure</string>
+    <string name="validate_header">What is required?</string>
+    <string name="validateLetter">Must contain both numbers, uppercase and lowercase letters</string>
+    <string name="validateCharLong">Must be at least 8 characters long</string>
+    <string name="validate_specialChar"><![CDATA[Must contain a special character (e.g. !@#$&)]]></string>
+    <string name="passwordMatch">Password must match</string>
+    <string name="pinValidate_header">How to create a secure PIN:</string>
+    <string name="validateSequence">Avoid number sequences(e.g. 1234 or 9876)</string>
+    <string name="validateRepetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
+    <string name="verify_header">How would you like to get verified?</string>
+    <string name="select_hint">Select one of the options below</string>
+    <string name="greetings">Good evening, Stephen</string>
+    <string name="home_hint">What would you like to do today?</string>
+    <string name="loans">Loans</string>
+    <string name="purpose1">This loan is available to Equity members who  have had their Equity bank account for at least six months</string>
+    <string name="purpose2">You can borrow up to 1,000,000 KES, while can be paid over a period of 12 months.</string>
+    <string name="purpose3">How much can I borrow?</string>
+    <string name="purpose4">You can check your loan limit and find out</string>
+    <string name="loanDesc">Equity offers a variety of loans to help you meet your goals.
+        Look through our loan products to find one that is suited to your
+        needs
+    </string>
+    <string name="purpose">Borrow  up to 1,000,000 KES and pay back over up to twelve months</string>
+    <string name="managedevices">You can remove any of the devices connected to your profile</string>
+    <string name="getInTouch">Reach out to us anytime you need help and our talent team will be gladly assist you</string>
+    <string name="country">Country</string>
+    <string name="favourite">Your favourite contact will apear here. Add a new one to quickly transact</string>
+</resources>
