@@ -86,7 +86,7 @@ fun RegisterUser(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(start = 30.dp, end = 30.dp)
             ) {
                 Text(text = "Create your profile", style = MaterialTheme.typography.body1)
                 Spacer(modifier = Modifier.height(15.dp))

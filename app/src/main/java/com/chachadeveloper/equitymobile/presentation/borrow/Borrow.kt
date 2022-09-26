@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
+import com.chachadeveloper.equitymobile.presentation.destinations.LoanApplicationDestination
 import com.chachadeveloper.equitymobile.presentation.destinations.PayLoanDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.RequestLoanDestination
 import com.chachadeveloper.equitymobile.ui.theme.primaryGray
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.ramcosta.composedestinations.annotation.Destination
@@ -84,7 +84,7 @@ fun Borrow(navigator: DestinationsNavigator) {
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth().clickable {
-                        navigator.navigate(RequestLoanDestination)
+                        navigator.navigate(LoanApplicationDestination)
                     }
                 ) {
 
@@ -143,7 +143,6 @@ fun Borrow(navigator: DestinationsNavigator) {
                 /* Pay my Loan*/
 
 
-
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically,
@@ -192,11 +191,7 @@ fun Borrow(navigator: DestinationsNavigator) {
 
                 }
 
-
-
                 Spacer(modifier = Modifier.height(12.dp))
-
-
 
 
             }

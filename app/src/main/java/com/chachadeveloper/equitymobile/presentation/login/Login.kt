@@ -1,5 +1,6 @@
 package com.chachadeveloper.equitymobile.presentation.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -26,9 +27,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.StandardTextField
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
-import com.chachadeveloper.equitymobile.presentation.destinations.HomeDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.RegisterDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.SecurityQnDestination
+import com.chachadeveloper.equitymobile.presentation.destinations.*
 import com.chachadeveloper.equitymobile.presentation.securityQsn.SecurityQn
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.ramcosta.composedestinations.annotation.Destination
@@ -36,7 +35,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.get
 
 @Composable
-@Destination(start = true)
+@Destination
 fun Login(
     navigator: DestinationsNavigator,
     viewModel: LoginViewModel = get()
@@ -79,7 +78,7 @@ fun Login(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 25.dp, end = 25.dp)
+                        .padding(start = 30.dp, end = 30.dp)
 
                 ){
 
@@ -126,7 +125,7 @@ fun Login(
 
                     Text(
                         modifier = Modifier
-                            .padding(start = 10.dp),
+                            .padding(start = 8.dp),
                         text=stringResource(id = R.string.forgot_password),
                         color = primaryPink,
                         style = MaterialTheme.typography.body1,
@@ -137,10 +136,33 @@ fun Login(
                             .fillMaxSize(),
                         verticalArrangement = Arrangement.Bottom
                     ){
+                        OutlinedButton(
+                            onClick = {
+                                navigator.navigate(RegisterDestination)
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = Color.White,
+                                backgroundColor = Color.Transparent,
+                            ),
+                            border = BorderStroke(1.dp, primaryPink),
+                            shape = RoundedCornerShape(8)
+                        ) {
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp),
+                                textAlign = TextAlign.Center,
+                                text = "Register",
+                                fontSize = 14.sp
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(15.dp))
 
                         Button(
                             onClick = {
-                                navigator.navigate(HomeDestination)
+                                navigator.navigate(CodeVerificationDestination)
                             },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(
@@ -152,7 +174,8 @@ fun Login(
                             Text(
                                 text = "Enter password to sign in",
                                 color = Color.Black,
-                                modifier = Modifier.padding(10.dp)
+                                fontSize = 16.sp,
+                                modifier = Modifier.padding(8.dp)
                             )
                         }
                         Spacer(modifier = Modifier.height(20.dp))

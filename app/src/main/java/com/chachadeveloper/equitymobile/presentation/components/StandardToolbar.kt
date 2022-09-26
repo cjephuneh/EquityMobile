@@ -34,7 +34,7 @@ fun StandardToolbar(
     TopAppBar(
             title =  title,
             navigationIcon = {
-                Box(modifier= Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
+                Box(modifier= Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center){
                     if (showBackArrow) {
                             IconButton(onClick = {
@@ -43,7 +43,7 @@ fun StandardToolbar(
                                 Icon(
                                     painter = painterResource(id = R.drawable.back),
                                     contentDescription = null,
-                                    modifier = Modifier.size(22.dp),
+                                    modifier = Modifier.size(18.dp),
                                     tint = Color.White,
                                 )
                             }

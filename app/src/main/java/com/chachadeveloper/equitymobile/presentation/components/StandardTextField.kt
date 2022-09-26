@@ -3,10 +3,7 @@ package com.chachadeveloper.equitymobile.presentation.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -84,7 +81,7 @@ fun StandardTextField(
                     textAlign = TextAlign.Start,
                     style = MaterialTheme.typography.body1,
                     color = Color.DarkGray,
-                    modifier = Modifier.fillMaxWidth().padding(start = 0.dp, end=0.dp)
+                    modifier = Modifier.fillMaxWidth()
 
                 )
             },

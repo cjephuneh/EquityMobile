@@ -40,7 +40,6 @@ import org.xml.sax.SAXParseException
 fun Transact(navigator: DestinationsNavigator) {
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(horizontal = 20.dp, vertical = 20.dp)
 
     ) {
         StandardToolbar(
@@ -74,6 +73,8 @@ fun Transact(navigator: DestinationsNavigator) {
                         {
                             Column(modifier = Modifier
                                 .fillMaxSize()
+                                .padding(horizontal = 20.dp, vertical = 20.dp)
+
                             ) {
                                 Text(
                                     text = "What would you like to do?",

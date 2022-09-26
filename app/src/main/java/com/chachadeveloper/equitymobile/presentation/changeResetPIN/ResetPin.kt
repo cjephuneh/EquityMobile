@@ -19,13 +19,14 @@ import androidx.compose.ui.unit.dp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.changeResetPassword.ResetPasswordViewModel
 import com.chachadeveloper.equitymobile.presentation.components.StandardTextField
-import com.chachadeveloper.equitymobile.presentation.destinations.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.get
 
 @Composable
 @com.ramcosta.composedestinations.annotation.Destination
 fun ResetPin(
-    viewModel: ResetPasswordViewModel = get()
+    viewModel: ResetPinViewModel = get(),
+    navigator: DestinationsNavigator
 
 ) {
 
