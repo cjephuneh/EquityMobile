@@ -1,20 +1,19 @@
 package com.chachadeveloper.equitymobile.presentation.components
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -35,74 +34,69 @@ fun StandardTextField(
     modifier: Modifier = Modifier,
     text: String = "",
     hint: String = "",
-    label: String = "",
-    maxLength: Int = 40,
+    maxLength: Int = 50,
+    error: String = "",
+    style: TextStyle = TextStyle(
+        color = MaterialTheme.colors.onBackground
+    ),
     singleLine: Boolean = true,
-    maxLines:Int = 1,
+    maxLines: Int = 1,
     leadingIcon: ImageVector? = null,
     keyboardType: KeyboardType = KeyboardType.Text,
     isPasswordToggleDisplayed: Boolean = keyboardType == KeyboardType.Password,
     isPasswordVisible: Boolean = false,
     onPasswordToggleClick: (Boolean) -> Unit = {},
     onValueChange: (String) -> Unit,
-    error: String = "",
-    style: TextStyle = TextStyle(
-        color = MaterialTheme.colors.onBackground
-    )
+    focusRequester: FocusRequester = FocusRequester()
 
 ) {
-
-    val color = Color.White.copy(alpha = 0.78F)
-    val textFieldColors = TextFieldDefaults.outlinedTextFieldColors(
-        textColor = color,
-        cursorColor = color,
-        leadingIconColor = color,
-        trailingIconColor = color,
-        focusedBorderColor = primaryPink,
-        unfocusedBorderColor = color.copy(alpha = 0.5F),
-        focusedLabelColor = Color.White,
-        unfocusedLabelColor = color
-    )
-
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
     ) {
+        val color = Color.White.copy(alpha = 0.78F)
+        val textFieldColors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = color,
+            cursorColor = color,
+            leadingIconColor = color,
+            trailingIconColor = color,
+            focusedBorderColor = primaryPink,
+            unfocusedBorderColor = color.copy(alpha = 0.5F),
+            focusedLabelColor = Color.White,
+            unfocusedLabelColor = color
+        )
+
         TextField(
             value = text,
-            onValueChange ={
-                if (it.length <= maxLength){
+            onValueChange = {
+                if (it.length <= maxLength) {
                     onValueChange(it)
                 }
             },
-
-
             maxLines = maxLines,
             textStyle = style,
             placeholder = {
                 Text(
                     text = hint,
-                    textAlign = TextAlign.Start,
-                    style = MaterialTheme.typography.body1,
-                    color = Color.DarkGray,
-                    modifier = Modifier.fillMaxWidth().padding(start = 0.dp, end=0.dp)
-
+                    style = MaterialTheme.typography.body1
                 )
             },
-            isError = error !="",
+            isError = error != "",
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType
             ),
-            visualTransformation = if (!isPasswordVisible && isPasswordToggleDisplayed){
+            visualTransformation = if (!isPasswordVisible && isPasswordToggleDisplayed) {
                 PasswordVisualTransformation()
-            } else{
+            } else {
                 VisualTransformation.None
             },
             singleLine = singleLine,
-            leadingIcon = if ( leadingIcon != null){
+            leadingIcon = if (leadingIcon != null) {
                 val icon: @Composable () -> Unit = {
-                    Icon(imageVector = leadingIcon ,
+                    Icon(
+                        imageVector = leadingIcon,
                         contentDescription = null,
-                        tint = primaryPink,
+                        tint = MaterialTheme.colors.onBackground,
                         modifier = Modifier.size(25.dp)
                     )
                 }
@@ -125,7 +119,7 @@ fun StandardTextField(
                             } else {
                                 Icons.Filled.Visibility
                             },
-                            tint = Color.DarkGray,
+                            tint = primaryPink,
                             contentDescription = if (isPasswordVisible) {
                                 stringResource(id = R.string.password_visible_content_description)
                             } else {
@@ -136,15 +130,13 @@ fun StandardTextField(
                 }
                 icon
             } else null,
-
             modifier = Modifier
                 .fillMaxWidth()
                 .semantics {
                     testTag = TestTags.STANDARD_TEXT_FIELD
-                },
-            colors = textFieldColors /*TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White
-            )*/
+                }
+                .focusRequester(focusRequester = focusRequester),
+            colors = textFieldColors
         )
         if (error.isNotEmpty()) {
             Text(
@@ -155,12 +147,9 @@ fun StandardTextField(
                 modifier = Modifier
                     .fillMaxWidth()
 
+
             )
         }
-
-
     }
-
-
 
 }

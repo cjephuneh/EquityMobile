@@ -27,7 +27,7 @@ fun CountryCodePickerDialog(
             LazyColumn(
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 30.dp, vertical = 40.dp)
+                    .padding(start = 30.dp, end = 30.dp)
                     .background(shape = RoundedCornerShape(20.dp), color = Color.White)
             ) {
                 for (country in countries) {

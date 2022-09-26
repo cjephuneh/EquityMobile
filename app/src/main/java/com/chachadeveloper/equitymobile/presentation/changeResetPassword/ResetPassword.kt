@@ -56,8 +56,8 @@ fun ResetPassword(
             ) {
 
                 Column(
-                    modifier = Modifier
-                        .padding(horizontal = 25.dp, vertical = 25.dp)
+                    modifier = Modifier.fillMaxSize()
+                        .padding(start = 30.dp, end = 30.dp)
                 ) {
 
                     Text(

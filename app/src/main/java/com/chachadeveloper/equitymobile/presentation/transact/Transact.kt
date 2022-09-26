@@ -40,8 +40,6 @@ import org.xml.sax.SAXParseException
 fun Transact(navigator: DestinationsNavigator) {
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(horizontal = 20.dp, vertical = 20.dp)
-
     ) {
         StandardToolbar(
             navigator = navigator,
@@ -74,6 +72,8 @@ fun Transact(navigator: DestinationsNavigator) {
                         {
                             Column(modifier = Modifier
                                 .fillMaxSize()
+                                .padding(horizontal = 30.dp, vertical = 30.dp)
+
                             ) {
                                 Text(
                                     text = "What would you like to do?",
@@ -115,7 +115,8 @@ fun Transact(navigator: DestinationsNavigator) {
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
 
-                                Text(text = "Send Money",color =  Color.White, fontSize = 25.sp)
+                                Text(text = "Send Money",color =  Color.White,
+                                    fontSize = 18.sp)
                                         Spacer(modifier = Modifier.height(12.dp))
                                 Row(
                                     horizontalArrangement = Arrangement.SpaceEvenly,
@@ -155,7 +156,6 @@ fun Transact(navigator: DestinationsNavigator) {
                                                         contentDescription = null,
 
                                                         )
-
                                                 }
                                             }
                                         }
@@ -171,11 +171,6 @@ fun Transact(navigator: DestinationsNavigator) {
                                                 )
                                         )
                                         Spacer(modifier = Modifier.height(12.dp))
-
-
-
-                                        /*
-                         * Row 2*/
 
                                         Row(
                                             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -226,10 +221,6 @@ fun Transact(navigator: DestinationsNavigator) {
                                                     end = 8.dp
                                                 )
                                         )
-
-
-
-
 
                                         /* Row 3*/
                                         Spacer(modifier = Modifier.height(12.dp))
@@ -568,7 +559,6 @@ fun Transact(navigator: DestinationsNavigator) {
                                                 )
                                         }
                                     }
-
                                 }
 
                                 Spacer(modifier = Modifier.height(12.dp))

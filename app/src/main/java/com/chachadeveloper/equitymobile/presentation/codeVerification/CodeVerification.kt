@@ -1,4 +1,4 @@
-package com.chachadeveloper.equitymobile.presentation.verify
+package com.chachadeveloper.equitymobile.presentation.codeVerification
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
-import com.chachadeveloper.equitymobile.presentation.destinations.CreatePinDestination
+import com.chachadeveloper.equitymobile.presentation.destinations.HomeDestination
 import com.chachadeveloper.equitymobile.presentation.destinations.LoginDestination
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.ramcosta.composedestinations.annotation.Destination
@@ -23,7 +23,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
 @Destination
-fun Verify(
+fun CodeVerification(
     navigator: DestinationsNavigator
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
@@ -46,7 +46,7 @@ fun Verify(
             ){
                 Column (modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 25.dp, vertical = 25.dp),
+                    .padding(start = 30.dp, end =30.dp),
                     ){
                     Image(painter = painterResource(id = R.drawable.ic_launcher_foreground)
                         , contentDescription = null,
@@ -70,7 +70,7 @@ fun Verify(
                     ) {
                         OutlinedButton(
                             onClick = {
-                                navigator.navigate(LoginDestination)
+                                navigator.navigate(HomeDestination)
                             },
                             modifier = Modifier.fillMaxWidth()
                                 .padding(start = 8.dp, end = 8.dp

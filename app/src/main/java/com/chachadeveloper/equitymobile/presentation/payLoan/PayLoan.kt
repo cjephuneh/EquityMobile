@@ -46,7 +46,7 @@ fun PayLoan(navigator: DestinationsNavigator) {
         )
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp, vertical = 20.dp)
+            .padding(start = 30.dp, end = 30.dp)
         ) {
             // Declaring a boolean value to store
             // the expanded state of the Text Field

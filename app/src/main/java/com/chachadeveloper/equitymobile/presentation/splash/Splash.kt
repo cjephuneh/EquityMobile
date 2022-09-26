@@ -28,7 +28,7 @@ import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalPagerApi::class)
 @Composable
-@Destination
+@Destination(start = true)
 fun Splash(navigator: DestinationsNavigator) {
     Column(
         modifier = Modifier.fillMaxSize(),

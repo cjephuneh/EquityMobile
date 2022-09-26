@@ -1,17 +1,6 @@
-package com.chachadeveloper.equitymobile.presentation.setupFingurePrint
+package com.chachadeveloper.equitymobile.presentation.fingerprint
 
-import android.Manifest
-import android.app.KeyguardManager
-import android.content.Context
-import android.content.Context.KEYGUARD_SERVICE
-import android.content.pm.PackageManager
-import android.hardware.biometrics.BiometricPrompt
-import android.os.Build
-import android.provider.Settings.Secure.getString
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -24,13 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
-import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.CustomToolbar
-import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
 import com.chachadeveloper.equitymobile.presentation.destinations.LoginDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.RegisterDestination
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -62,7 +46,7 @@ fun FingerPrint(navigator: DestinationsNavigator) {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp, vertical = 16.dp),
+                .padding(start = 30.dp, end = 30.dp),
                 verticalArrangement = Arrangement.Bottom
             ) {
 

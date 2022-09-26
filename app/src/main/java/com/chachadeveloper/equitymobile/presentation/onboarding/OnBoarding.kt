@@ -57,7 +57,7 @@ fun OnBoardingScreen(
             modifier = Modifier.weight(1f),
             pagerState = pagerState
         ) {
-            viewModel.saveOnBoardingState(completed = true)
+            viewModel.saveOnBoardingState(completed = false)
             navigator.navigate(AuthScreenDestination)
         }
     }

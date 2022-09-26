@@ -51,7 +51,7 @@ fun Security(navigator: DestinationsNavigator) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 20.dp, vertical = 20.dp)
+                .padding(start = 30.dp, end = 30.dp)
         ) {
             /* Other cards */
 

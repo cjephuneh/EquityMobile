@@ -1,6 +1,5 @@
-package com.chachadeveloper.equitymobile.presentation.chooseVerify
+package com.chachadeveloper.equitymobile.presentation.verificationOptions
 
-import android.widget.Space
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,14 +39,13 @@ fun ChooseVerification(
             showBackArrow = true,
             title = {
                 Text(
-                    text = "Verify",
+                    text = "CodeVerification",
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.body2
                 )
             }
         )
-
         Column {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -57,7 +55,7 @@ fun ChooseVerification(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 25.dp, end = 25.dp)
+                        .padding(start = 30.dp, end = 30.dp)
                 ) {
 
                     Text(text = stringResource(id = R.string.verify_header), style = MaterialTheme.typography.body1)

@@ -50,7 +50,7 @@ fun MangePin(navigator: DestinationsNavigator) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(start = 30.dp, end = 30.dp)
             ){
 
 

@@ -19,18 +19,20 @@ import androidx.compose.ui.unit.dp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.changeResetPassword.ResetPasswordViewModel
 import com.chachadeveloper.equitymobile.presentation.components.StandardTextField
-import com.chachadeveloper.equitymobile.presentation.destinations.Destination
+import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.get
 
 @Composable
 @com.ramcosta.composedestinations.annotation.Destination
 fun ResetPin(
-    viewModel: ResetPasswordViewModel = get()
+    viewModel: ResetPinViewModel = get(),
+    navigator: DestinationsNavigator
 
 ) {
 
     Column(modifier = Modifier.fillMaxSize()) {
-        /*     StandardToolbar(
+             StandardToolbar(
             navigator = navigator,
             title = {
                 Text(
@@ -40,7 +42,7 @@ fun ResetPin(
                     style = MaterialTheme.typography.body2
                 )
             }
-        )*/
+        )
 
         Column {
             Box(
@@ -49,8 +51,8 @@ fun ResetPin(
             ) {
 
                 Column(
-                    modifier = Modifier
-                        .padding(horizontal = 25.dp, vertical = 25.dp)
+                    modifier = Modifier.fillMaxSize()
+                        .padding(start = 30.dp, end = 30.dp)
                 ) {
 
                     Text(

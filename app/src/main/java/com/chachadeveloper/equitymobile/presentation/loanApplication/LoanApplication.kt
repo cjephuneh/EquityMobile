@@ -1,10 +1,7 @@
-package com.chachadeveloper.equitymobile.presentation.requestLoan
+package com.chachadeveloper.equitymobile.presentation.loanApplication
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterBAndW
@@ -12,24 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.CustomToolbar
-import com.chachadeveloper.equitymobile.presentation.destinations.Destination
 import com.chachadeveloper.equitymobile.presentation.destinations.GetLoanDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.LoginDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.RegisterDestination
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 
 @Composable
 @com.ramcosta.composedestinations.annotation.Destination
-fun RequestLoan(navigator: DestinationsNavigator) {
+fun LoanApplication(navigator: DestinationsNavigator) {
     Column(modifier = Modifier.fillMaxSize()) {
         CustomToolbar(
             navigator = navigator,
@@ -49,7 +41,8 @@ fun RequestLoan(navigator: DestinationsNavigator) {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
             ) {
-                Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp)) {
+                Column(modifier = Modifier.fillMaxSize()
+                    .padding(start = 30.dp, end = 30.dp)) {
 
                     Text(
                         text = "Apply for a Loan",

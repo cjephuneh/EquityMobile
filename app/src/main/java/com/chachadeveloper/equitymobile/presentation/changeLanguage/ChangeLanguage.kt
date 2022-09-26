@@ -35,8 +35,9 @@ fun ChangeLanguage(navigator: DestinationsNavigator) {
         )
 
 
-        Column (modifier = Modifier.fillMaxSize()
-            .padding(horizontal = 20.dp, vertical = 20.dp)
+        Column (modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 30.dp, end = 30.dp)
         ) {
 
 
@@ -75,12 +76,16 @@ fun ChangeLanguage(navigator: DestinationsNavigator) {
             }
 
             Row(modifier = Modifier.fillMaxWidth()) {
+                var selected: Boolean = false
 
-                Icon(imageVector = Icons.Filled.Language,
-                    contentDescription = null
-                )
+                RadioButton(selected,
+                    onClick = {
+                        selected =!selected
+                    })
 
                 Text(text = "Kinyarwanda")
+
+
 
             }
 

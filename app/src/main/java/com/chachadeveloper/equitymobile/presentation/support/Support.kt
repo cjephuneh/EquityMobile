@@ -28,7 +28,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 @Destination
 fun Support(navigator: DestinationsNavigator) {
-
     Column(modifier = Modifier.fillMaxSize()) {
         StandardToolbar(
             navigator = navigator,
@@ -61,7 +60,7 @@ fun Support(navigator: DestinationsNavigator) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 20.dp, vertical = 20.dp)
+                        .padding(start = 30.dp, end = 30.dp)
                 ) {
 
                     Text(
@@ -89,7 +88,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)
@@ -120,7 +119,8 @@ fun Support(navigator: DestinationsNavigator) {
                                     painter = painterResource(id = R.drawable.ic_chevron_right),
                                     tint = primaryPink,
                                     contentDescription = null,
-                                    )
+                                )
+
                             }
                         }
                     }
@@ -147,7 +147,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)
@@ -206,7 +206,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)
@@ -238,6 +238,7 @@ fun Support(navigator: DestinationsNavigator) {
                                     painterResource(id = R.drawable.ic_chevron_right),
                                     tint = primaryPink,
                                     contentDescription = null,
+
                                     )
                             }
                         }
@@ -264,7 +265,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)
@@ -326,7 +327,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)
@@ -358,6 +359,7 @@ fun Support(navigator: DestinationsNavigator) {
                                     painterResource(id = R.drawable.ic_chevron_right),
                                     tint = primaryPink,
                                     contentDescription = null,
+
                                 )
 
                             }
@@ -385,7 +387,7 @@ fun Support(navigator: DestinationsNavigator) {
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .size(50.dp)
+                                .size(30.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
                             colorFilter = ColorFilter.tint(color = primaryPink)

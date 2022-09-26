@@ -30,7 +30,6 @@ import com.chachadeveloper.equitymobile.presentation.components.StandardTextFiel
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
 import com.chachadeveloper.equitymobile.presentation.destinations.SecurityQnDestination
 import com.chachadeveloper.equitymobile.presentation.onboarding.OnBoardingScreen
-import com.chachadeveloper.equitymobile.presentation.register.RegisterUser
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.ramcosta.composedestinations.annotation.Destination
@@ -74,7 +73,7 @@ fun Home(navigator: DestinationsNavigator) {
             ) {
                 Column(modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 20.dp, vertical = 20.dp),
+                    .padding(start = 30.dp, end = 30.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
 
                 ) {
@@ -175,7 +174,7 @@ fun Home(navigator: DestinationsNavigator) {
                             }
 
                             /* Card for add Account */
-                            Spacer(modifier = Modifier.height(20.dp))
+//                            Spacer(modifier = Modifier.height(16.dp))
 
                             Column (modifier = Modifier
                                 .fillMaxSize(),
@@ -183,7 +182,7 @@ fun Home(navigator: DestinationsNavigator) {
                             ){
                                 Card(modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(90.dp),
+                                    .height(80.dp),
                                     shape= RoundedCornerShape(8.dp)
                                 ){
                                     Row(
@@ -232,7 +231,7 @@ fun Home(navigator: DestinationsNavigator) {
                                 }
 
                             }
-                            Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(40.dp))
 
                         }
 

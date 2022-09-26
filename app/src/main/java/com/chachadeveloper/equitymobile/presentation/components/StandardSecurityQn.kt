@@ -28,6 +28,9 @@ import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.util.TestTags
 import com.chachadeveloper.equitymobile.ui.theme.primaryPink
 
+
+
+
 @Composable
 fun StandardSecurityQn(
     modifier: Modifier = Modifier,
@@ -36,8 +39,8 @@ fun StandardSecurityQn(
     label: String = "",
     singleLine: Boolean = true,
     maxLines:Int = 1,
-    trailingIcon: ImageVector? = null,
-    leadingIcon: ImageVector? = null,
+/*    trailingIcon: ImageVector? = null,
+    leadingIcon: ImageVector? = null,*/
     keyboardType: KeyboardType = KeyboardType.Text,
     onValueChange: (String) -> Unit,
     style: TextStyle = TextStyle(
@@ -116,7 +119,7 @@ fun StandardSecurityQn(
                     Modifier.clickable { mExpanded = !mExpanded })
 
             } ,
-            leadingIcon = if ( leadingIcon != null){
+        /*    leadingIcon = if ( leadingIcon != null){
                 val icon: @Composable () -> Unit = {
                     Icon(imageVector = leadingIcon ,
                         contentDescription = null,
@@ -125,7 +128,7 @@ fun StandardSecurityQn(
                     )
                 }
                 icon
-            } else null,
+            } else null,*/
             modifier = Modifier
                 .fillMaxWidth()
                 .semantics {

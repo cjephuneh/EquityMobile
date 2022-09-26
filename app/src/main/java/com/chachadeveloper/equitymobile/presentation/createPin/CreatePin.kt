@@ -59,7 +59,8 @@ fun CreatePin(
 
         )
 
-        Column(modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 20.dp)) {
+        Column(modifier = Modifier.fillMaxSize()
+            .padding(start = 30.dp, end = 30.dp)) {
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
             ) {

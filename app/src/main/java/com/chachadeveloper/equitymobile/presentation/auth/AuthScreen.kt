@@ -53,6 +53,7 @@ fun AuthScreen(
                 Column(verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxSize()
+                        .padding(start = 30.dp, end = 30.dp)
                 ) {
                     
                     Text(
@@ -82,8 +83,7 @@ fun AuthScreen(
                 )
 
                 Column(modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp, vertical = 16.dp),
+                    .fillMaxSize().padding(start = 30.dp, end = 30.dp),
                     verticalArrangement = Arrangement.Bottom
                 ) {
                     
@@ -96,7 +96,7 @@ fun AuthScreen(
                             .padding(start = 8.dp, end = 8.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     OutlinedButton(
                         onClick = {
                             navigator.navigate(LoginDestination)
