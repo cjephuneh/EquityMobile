@@ -1,6 +1,9 @@
 package com.chachadeveloper.equitymobile.presentation.components
 
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -78,7 +81,11 @@ fun StandardTextField(
             placeholder = {
                 Text(
                     text = hint,
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.body1,
+                    textAlign = TextAlign.Start,
+                    color = Color.DarkGray,
+                    modifier = Modifier.fillMaxWidth()
+
                 )
             },
             isError = error != "",

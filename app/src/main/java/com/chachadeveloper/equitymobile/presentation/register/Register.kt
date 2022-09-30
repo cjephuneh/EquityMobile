@@ -208,7 +208,8 @@ fun Register(
         sheetPeekHeight = 0.dp,
         sheetBackgroundColor = Color.DarkGray
     ) {
-        Column(modifier = Modifier.fillMaxSize()
+        Column(
+            modifier = Modifier.fillMaxSize()
         ) {
             StandardToolbar(
                 navigator = navigator,
@@ -254,20 +255,36 @@ fun Register(
                             maxLines = 2
                         )
                         Spacer(modifier = Modifier.height(16.dp))
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(start = 30.dp, end = 30.dp)
+                        ) {
+                            Text(
+                                text = "Create your profile",
+                                style = MaterialTheme.typography.body1
+                            )
+                            Spacer(modifier = Modifier.height(15.dp))
+                            Text(
+                                text = stringResource(id = R.string.signin),
+                                style = MaterialTheme.typography.body2,
+                                maxLines = 2
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
 
-                        Text(text = "Country",
-                            modifier = Modifier.clickable {
-                                scope.launch {
-                                    if (sheetState.isCollapsed){
-                                        sheetState.expand()
-                                    }else{
-                                        sheetState.collapse()
+                            Text(text = "Country",
+                                modifier = Modifier.clickable {
+                                    scope.launch {
+                                        if (sheetState.isCollapsed) {
+                                            sheetState.expand()
+                                        } else {
+                                            sheetState.collapse()
+                                        }
                                     }
+
                                 }
 
-                            }
-
-                        )
+                            )
 /*
                 val focusManager = LocalFocusManager.current
 
@@ -298,110 +315,111 @@ fun Register(
 
                 )*/
 
-                        StandardTextField(
-                            text = viewModel.usernameText.value,
-                            onValueChange = {
-                                viewModel.setUsernameText(it)
-                            },
-                            keyboardType = KeyboardType.Text,
-                            error = viewModel.usernameError.value,
-                            hint = stringResource(id = R.string.country),
-                            modifier = Modifier.clickable {
-                                scope.launch {
-                                    if (sheetState.isCollapsed){
-                                        sheetState.expand()
-                                    }else{
-                                        sheetState.collapse()
+                            StandardTextField(
+                                text = viewModel.usernameText.value,
+                                onValueChange = {
+                                    viewModel.setUsernameText(it)
+                                },
+                                keyboardType = KeyboardType.Text,
+                                error = viewModel.usernameError.value,
+                                hint = stringResource(id = R.string.country),
+                                modifier = Modifier.clickable {
+                                    scope.launch {
+                                        if (sheetState.isCollapsed) {
+                                            sheetState.expand()
+                                        } else {
+                                            sheetState.collapse()
+                                        }
                                     }
+
                                 }
+                            )
 
-                            }
-                        )
+                            Spacer(modifier = Modifier.height(16.dp))
 
-                        Spacer(modifier = Modifier.height(16.dp))
+                            Text(text = "Account Number")
+                            StandardTextField(
+                                text = viewModel.usernameText.value,
+                                onValueChange = {
+                                    viewModel.setUsernameText(it)
+                                },
+                                keyboardType = KeyboardType.Number,
+                                error = viewModel.usernameError.value,
+                                hint = stringResource(id = R.string.account_hint),
+                            )
 
-                        Text(text = "Account Number")
-                        StandardTextField(
-                            text = viewModel.usernameText.value,
-                            onValueChange = {
-                                viewModel.setUsernameText(it)
-                            },
-                            keyboardType = KeyboardType.Number,
-                            error = viewModel.usernameError.value,
-                            hint = stringResource(id = R.string.account_hint),
-                        )
+                            Spacer(modifier = Modifier.height(16.dp))
 
-                        Spacer(modifier = Modifier.height(16.dp))
+                            Text(text = "ID number")
+                            StandardTextField(
+                                text = viewModel.usernameText.value,
+                                onValueChange = {
+                                    viewModel.setUsernameText(it)
+                                },
+                                keyboardType = KeyboardType.Number,
+                                error = viewModel.usernameError.value,
+                                hint = stringResource(id = R.string.idnumber_hint),
+                            )
 
-                        Text(text = "ID number")
-                        StandardTextField(
-                            text = viewModel.usernameText.value,
-                            onValueChange = {
-                                viewModel.setUsernameText(it)
-                            },
-                            keyboardType = KeyboardType.Number,
-                            error = viewModel.usernameError.value,
-                            hint = stringResource(id = R.string.idnumber_hint),
-                        )
+                            Spacer(modifier = Modifier.height(16.dp))
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        Row(
-                            Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
                             Row(
-                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Checkbox(
-                                    checked = rememberMeState,
-                                    onCheckedChange = {
-                                        viewModel.setRememberMe(it)
-                                    },
-                                )
-                                Text(
-                                    text = "I agree to the terms and privacy policy",
-                                    fontSize = 12.sp,
-                                    color = Color.White
-                                )
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceEvenly,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Checkbox(
+                                        checked = rememberMeState,
+                                        onCheckedChange = {
+                                            viewModel.setRememberMe(it)
+                                        },
+                                    )
+                                    Text(
+                                        text = "I agree to the terms and privacy policy",
+                                        fontSize = 12.sp,
+                                        color = Color.White
+                                    )
+                                }
                             }
-                        }
 
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize(),
-                            verticalArrangement = Arrangement.Bottom
-                        ) {
-                            Button(
-                                onClick = {
-                                    navigator.navigate(CreatePasswordDestination)
-                                },
-                                modifier = Modifier.fillMaxWidth(),
-                                colors = ButtonDefaults.buttonColors(
-                                    contentColor = Color.Red,
-                                    backgroundColor = Color.DarkGray
-                                )
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxSize(),
+                                verticalArrangement = Arrangement.Bottom
                             ) {
-                                Text(
-                                    text = "Create profile + add accounts",
-                                    color = Color.Black,
-                                    modifier = Modifier.padding(10.dp)
-                                )
-                            }
+                                Button(
+                                    onClick = {
+                                        navigator.navigate(CreatePasswordDestination)
+                                    },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    colors = ButtonDefaults.buttonColors(
+                                        contentColor = Color.Red,
+                                        backgroundColor = Color.DarkGray
+                                    )
+                                ) {
+                                    Text(
+                                        text = "Create profile + add accounts",
+                                        color = Color.Black,
+                                        modifier = Modifier.padding(10.dp)
+                                    )
+                                }
 
-                            Spacer(modifier = Modifier.height(20.dp))
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                            }
 
                         }
 
                     }
-
                 }
             }
+
+
         }
-
-
     }
 
 

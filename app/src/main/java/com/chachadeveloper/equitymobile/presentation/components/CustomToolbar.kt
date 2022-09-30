@@ -44,13 +44,6 @@ fun CustomToolbar(
 
                         )
 
-                      /*  Image(
-                            painter = painterResource(id = R.drawable.back),
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            contentScale = ContentScale.Crop,
-                            colorFilter = ColorFilter.tint(color = Color.White)
-                        )*/
                     }
                 }
             }
