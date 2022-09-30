@@ -19,7 +19,10 @@ import androidx.compose.ui.unit.dp
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.changeResetPassword.ResetPasswordViewModel
 import com.chachadeveloper.equitymobile.presentation.components.StandardTextField
+<<<<<<< HEAD
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
+=======
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.get
 
