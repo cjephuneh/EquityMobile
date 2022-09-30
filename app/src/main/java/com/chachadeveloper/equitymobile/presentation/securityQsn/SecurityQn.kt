@@ -248,7 +248,15 @@ fun SecurityQnScreen(navigator: DestinationsNavigator, viewModel: SecurityQnView
                                 viewModel.setShowPassword(it)
                             }
                         )
+<<<<<<< HEAD
                         Spacer(modifier = Modifier.height(20.dp))
+=======
+<<<<<<< HEAD
+                        Spacer(modifier = Modifier.height(25.dp))
+=======
+                        Spacer(modifier = Modifier.height(8.dp))
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
 
                         Button(
                             onClick = {
@@ -267,8 +275,16 @@ fun SecurityQnScreen(navigator: DestinationsNavigator, viewModel: SecurityQnView
                                 modifier = Modifier.padding(10.dp)
                             )
                         }
+<<<<<<< HEAD
 
                         Spacer(modifier = Modifier.height(20.dp))
+=======
+<<<<<<< HEAD
+                        
+                        Spacer(modifier = Modifier.height(20.dp))
+=======
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
                     }
                 }
 

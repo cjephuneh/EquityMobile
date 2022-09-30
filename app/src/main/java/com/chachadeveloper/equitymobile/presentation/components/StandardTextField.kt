@@ -1,9 +1,19 @@
 package com.chachadeveloper.equitymobile.presentation.components
 
+<<<<<<< HEAD
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+=======
+<<<<<<< HEAD
+
+=======
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -81,11 +91,22 @@ fun StandardTextField(
             placeholder = {
                 Text(
                     text = hint,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                    style = MaterialTheme.typography.body1
+=======
+                    textAlign = TextAlign.Start,
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Start,
                     color = Color.DarkGray,
                     modifier = Modifier.fillMaxWidth()
 
+<<<<<<< HEAD
+=======
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
                 )
             },
             isError = error != "",

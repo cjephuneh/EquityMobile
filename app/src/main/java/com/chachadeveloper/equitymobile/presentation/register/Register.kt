@@ -211,6 +211,10 @@ fun Register(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
             StandardToolbar(
                 navigator = navigator,
                 modifier = Modifier.fillMaxSize(),
@@ -255,6 +259,7 @@ fun Register(
                             maxLines = 2
                         )
                         Spacer(modifier = Modifier.height(16.dp))
+<<<<<<< HEAD
                         Column(
                             modifier = Modifier
                                 .fillMaxSize()
@@ -271,6 +276,23 @@ fun Register(
                                 maxLines = 2
                             )
                             Spacer(modifier = Modifier.height(16.dp))
+=======
+=======
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 30.dp, end = 30.dp)
+            ) {
+                Text(text = "Create your profile", style = MaterialTheme.typography.body1)
+                Spacer(modifier = Modifier.height(15.dp))
+                Text(
+                    text = stringResource(id = R.string.signin),
+                    style = MaterialTheme.typography.body2,
+                    maxLines = 2
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
 
                             Text(text = "Country",
                                 modifier = Modifier.clickable {
