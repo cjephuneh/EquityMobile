@@ -40,6 +40,13 @@ import org.xml.sax.SAXParseException
 fun Transact(navigator: DestinationsNavigator) {
     Column(modifier = Modifier
         .fillMaxSize()
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
     ) {
         StandardToolbar(
             navigator = navigator,
@@ -72,7 +79,15 @@ fun Transact(navigator: DestinationsNavigator) {
                         {
                             Column(modifier = Modifier
                                 .fillMaxSize()
+<<<<<<< HEAD
                                 .padding(horizontal = 30.dp, vertical = 30.dp)
+=======
+<<<<<<< HEAD
+                                .padding(horizontal = 30.dp, vertical = 30.dp)
+=======
+                                .padding(horizontal = 20.dp, vertical = 20.dp)
+>>>>>>> b086056dbfb6be1f69f74076a1c2e9dfa10a1e33
+>>>>>>> ece7e00aee62950feeb8bc5fdae7bce89bf2f90b
 
                             ) {
                                 Text(
