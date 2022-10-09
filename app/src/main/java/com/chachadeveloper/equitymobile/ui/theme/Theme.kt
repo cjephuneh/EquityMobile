@@ -26,7 +26,10 @@ private val LightColorPalette = lightColors(
 
 
 @Composable
-fun EquityMobileTheme(darkTheme: Boolean = true, content: @Composable () -> Unit) {
+fun EquityMobileTheme(
+    darkTheme: Boolean = true,
+    content: @Composable () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

@@ -26,34 +26,57 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun StandardToolbar(
     modifier: Modifier = Modifier,
-    navigator: DestinationsNavigator,
+    title: String = "",
     showBackArrow: Boolean = false,
-    navActions: @Composable RowScope.() -> Unit = {},
-    title: @Composable () -> Unit = {}
+    showForwardArrow: Boolean = false,
+    navigator: DestinationsNavigator
 ) {
+    val modifier = Modifier.size(width = 50.dp, height = 30.dp)
     TopAppBar(
-            title =  title,
-            navigationIcon = {
-                Box(modifier= Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center){
-                    if (showBackArrow) {
-                            IconButton(onClick = {
-                                navigator.navigateUp()
-                            }) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.back),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(18.dp),
-                                    tint = Color.White,
-                                )
-                            }
-                        }
+        title = {
+            Text(
+                text = title,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+                color = Color.White
+            ) },
+        navigationIcon = {
+            Box(modifier = modifier, contentAlignment = Alignment.Center) {
+                if (showBackArrow){
+                    IconButton(onClick = {
+                        navigator.navigateUp()
+                    }) {
+                        Icon(painter = painterResource(id = R.drawable.back)
+                            , contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = Color.White
+                        )
+                    }
                 }
-            },
-            backgroundColor = MaterialTheme.colors.primary,
-            actions = navActions ,
-            elevation = 0.dp,
-        )
 
+            }
+        },
+        actions = {
+            Box(modifier = modifier, contentAlignment = Alignment.Center) {
+                if (showForwardArrow){
+                    IconButton(onClick = {
+                        navigator.navigateUp()
+                    }) {
+                        Icon(painter =
+                        painterResource(id = R.drawable.chat_icon),
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(25.dp)
+                        )
 
+                    }
+
+                }
+
+            }
+        },
+        backgroundColor = MaterialTheme.colors.background,
+        elevation = 0.dp
+    )
 }
