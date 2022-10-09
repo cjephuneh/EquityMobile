@@ -17,10 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.chachadeveloper.equitymobile.presentation.NavGraphs
 import com.chachadeveloper.equitymobile.presentation.components.StandardScaffold
-import com.chachadeveloper.equitymobile.presentation.destinations.BorrowDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.HomeDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.MoreDestination
-import com.chachadeveloper.equitymobile.presentation.destinations.TransactDestination
+import com.chachadeveloper.equitymobile.presentation.destinations.*
 import com.chachadeveloper.equitymobile.ui.theme.EquityMobileTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -43,14 +40,13 @@ class MainActivity : ComponentActivity() {
                     val newBackStackEntry by navController.currentBackStackEntryAsState()
                     val route = newBackStackEntry?.destination?.route
 
-
                     StandardScaffold(
                         navController = navController,
                         showBottomBar = route in listOf(
-                            HomeDestination.route,
-                            TransactDestination.route,
-                            BorrowDestination.route,
-                            MoreDestination.route
+                            HomeScreenDestination.route,
+                            TransactionScreenDestination.route,
+                            BorrowScreenDestination.route,
+                            MoreScreenDestination.route
                         )
 
                     ){ innerPadding ->

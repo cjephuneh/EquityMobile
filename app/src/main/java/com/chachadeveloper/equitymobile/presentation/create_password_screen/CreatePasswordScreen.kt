@@ -1,4 +1,4 @@
-package com.chachadeveloper.equitymobile.presentation.createPin
+package com.chachadeveloper.equitymobile.presentation.create_password_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -14,75 +14,55 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.chachadeveloper.equitymobile.R
 import com.chachadeveloper.equitymobile.presentation.components.StandardTextField
 import com.chachadeveloper.equitymobile.presentation.components.StandardToolbar
-import com.chachadeveloper.equitymobile.presentation.destinations.SecurityQnDestination
+import com.chachadeveloper.equitymobile.presentation.destinations.CreatePinScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.get
 
 @Composable
 @Destination
-fun CreatePin(
+fun CreatePasswordScreen(
     navigator: DestinationsNavigator,
-    viewModel: CreatePinViewModel = get()) {
-
-    Column(
-        modifier = Modifier.fillMaxSize()
-
-    ) {
+    viewModel: CreatePasswordViewModel = get()
+) {
+    Column(modifier = Modifier.fillMaxSize()) {
         StandardToolbar(
             navigator = navigator,
-            showBackArrow = true,
-            title = {
-                Text(
-                    text = "Good News!",
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.body2
-                )
-            },
-            navActions = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Image(
-                        painter = painterResource(id = R.drawable.chat_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(22.dp),
-                        contentScale = ContentScale.Crop,
-                        colorFilter = ColorFilter.tint(color = Color.White)
-                    )
-                }
-            }
+            title = "Create Password",
 
         )
-
-        Column(modifier = Modifier.fillMaxSize()
-            .padding(start = 30.dp, end = 30.dp)) {
+        Spacer(modifier = Modifier.height(25.dp))
+        Column {
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
             ) {
 
-                Column{
+                Column(modifier = Modifier.fillMaxSize()
+                ) {
 
                     Text(
-                        text = stringResource(id = R.string.createPin_header),
-                        style = MaterialTheme.typography.body1
+                        text = stringResource(id = R.string.createPasswd_header),
+                        style = MaterialTheme.typography.body1,
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = stringResource(id = R.string.createPin_hint),
+                        text = stringResource(id = R.string.createPassword_hint),
                         style =  MaterialTheme.typography.body2,
-                        maxLines = 1
+                        maxLines = 1,
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
                     )
-
                     Spacer(modifier = Modifier.height(20.dp))
 
+                    Text(
+                        text = "Password",
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
 
-                    Text(text = "PIN")
+                    )
 
                     StandardTextField(
                         text = viewModel.passwordText.value,
@@ -101,7 +81,11 @@ fun CreatePin(
                     Spacer(modifier = Modifier.height(20.dp))
 
 
-                    Text(text = "Confirm PIN")
+                    Text(
+                        text = "Confirm password",
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
+
+                    )
 
                     StandardTextField(
                         text = viewModel.passwordText.value,
@@ -116,18 +100,42 @@ fun CreatePin(
                             viewModel.setShowPassword(it)
                         }
                     )
+
                     Spacer(modifier = Modifier.height(30.dp))
 
                     /*
-                    Pin Validation Ui
+                    Password Validation Ui
                      */
-
+                    
                     Column {
                         Row(
-                            modifier = Modifier.fillMaxWidth().padding(start = 0.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 0.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Start,
 
+                        ) {
+                            Image(
+                                painter =
+                                painterResource(id = R.drawable.ic_launcher_foreground),
+                                contentDescription = null,
+                                modifier = Modifier.size(50.dp),
+                                contentScale = ContentScale.Crop,
+                                colorFilter = ColorFilter.tint(color = Color.White)
+                            )
+                            Text(
+                                text = stringResource(id = R.string.validate_header),
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(15.dp))
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 0.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Start,
                         ) {
 
                             Image(
@@ -138,16 +146,22 @@ fun CreatePin(
                                 colorFilter = ColorFilter.tint(color = Color.White)
                             )
                             Text(
-                                text = stringResource(id = R.string.pinValidate_header),
-                                modifier = Modifier.fillMaxWidth().padding(5.dp),
-                                fontSize = 12.sp
+                                text = stringResource(id = R.string.validateLetter),
+                                maxLines = 2,
+                                style = MaterialTheme.typography.body2
 
                             )
-
                         }
-                        Spacer(modifier = Modifier.height(10.dp))
 
-                        Row(modifier = Modifier.fillMaxWidth()) {
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 0.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Start,
+                        ) {
 
                             Image(
                                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
@@ -157,18 +171,22 @@ fun CreatePin(
                                 colorFilter = ColorFilter.tint(color = Color.White)
                             )
 
+
                             Text(
-                                text = stringResource(id = R.string.validateSequence),
-                                fontSize = 12.sp
-
+                                text = stringResource(id = R.string.validateCharLong),
+                                maxLines = 1,
+                                style = MaterialTheme.typography.body2
                             )
-
-
                         }
+                        Spacer(modifier = Modifier.height(8.dp))
 
-
-
-                        Row(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 0.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Start,
+                        ) {
 
                             Image(
                                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
@@ -177,39 +195,50 @@ fun CreatePin(
                                 contentScale = ContentScale.Crop,
                                 colorFilter = ColorFilter.tint(color = Color.White)
                             )
-
                             Text(
-
-                                text = stringResource(id = R.string.validateRepetetive),
-                                fontSize = 12.sp
+                                text = stringResource(id = R.string.validate_specialChar),
+                                maxLines = 1,
+                                style = MaterialTheme.typography.body2
                             )
-
-
                         }
 
+                        Spacer(modifier = Modifier.height(8.dp))
 
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 0.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Start,
+                        ) {
 
+                            Image(
+                                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                                contentDescription = null,
+                                modifier = Modifier.size(50.dp),
+                                contentScale = ContentScale.Crop,
+                                colorFilter = ColorFilter.tint(color = Color.White)
+                            )
+                            Text(
+                                text = stringResource(id = R.string.passwordMatch),
+                                maxLines = 1,
+                                style = MaterialTheme.typography.body2
 
-
-
-
-
+                            )
+                        }
                     }
-
-
-
-
                     /* Button */
 
                     Column (
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .padding(start = 20.dp, end = 20.dp),
                         verticalArrangement = Arrangement.Bottom
                     ){
 
                         Button(
                             onClick = {
-                                navigator.navigate(SecurityQnDestination)
+                                navigator.navigate(CreatePinScreenDestination)
                             },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(
@@ -219,23 +248,23 @@ fun CreatePin(
 
                             ) {
                             Text(
-                                text = "Set PIN",
+                                text = "Confirm",
                                 color = Color.Black,
                                 modifier = Modifier.padding(10.dp)
                             )
                         }
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(25.dp))
 
                     }
 
                 }
 
+
             }
+
 
         }
 
     }
-
-
 
 }

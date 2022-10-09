@@ -9,24 +9,24 @@ sealed class BottomNavItem(var title: String, var icon: Int, var destination: De
     object Home : BottomNavItem(
         title = "Home",
         icon = R.drawable.home,
-        destination = HomeDestination
+        destination = HomeScreenDestination
     )
 
     object Transact : BottomNavItem(
         title = "Transact",
-        icon = R.drawable.ic_creditcard,
-        destination = TransactDestination
+        icon = R.drawable.mobilepayment,
+        destination = TransactionScreenDestination
     )
 
     object Borrow : BottomNavItem(
         title = "Borrow",
         icon = R.drawable.ic_loan,
-        destination = BorrowDestination
+        destination = BorrowScreenDestination
     )
     object More : BottomNavItem(
         title = "More",
         icon = R.drawable.more,
-        destination = MoreDestination
+        destination = MoreScreenDestination
     )
 
 }
