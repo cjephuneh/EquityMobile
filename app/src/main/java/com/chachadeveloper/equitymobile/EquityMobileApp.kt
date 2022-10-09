@@ -28,7 +28,8 @@ class EquityMobileApp : Application() {
                 appModule,
                 onboardingModule,
                 resetPasswordModule,
-                resetPinModule
+                resetPinModule,
+                securityQnModule
 
             )
         }

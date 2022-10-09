@@ -1,6 +1,6 @@
 package com.chachadeveloper.equitymobile.di
 
-import com.chachadeveloper.equitymobile.presentation.onboarding_screen.OnBoardingViewModel
+import com.chachadeveloper.equitymobile.core.presentation.onboarding_screen.OnBoardingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

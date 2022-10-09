@@ -1,8 +1,8 @@
 package com.chachadeveloper.equitymobile.di
 
 
-import com.chachadeveloper.equitymobile.data.remote.api.EquityMobileApi
-import com.chachadeveloper.equitymobile.util.Environment
+import com.chachadeveloper.equitymobile.core.data.remote.api.EquityMobileApi
+import com.chachadeveloper.equitymobile.core.util.Environment
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
