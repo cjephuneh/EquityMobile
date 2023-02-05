@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="EquityMobile.app" target="11" />
+      <module name="EquityMobile.buildSrc" target="11" />
+      <module name="EquityMobile.buildSrc.main" target="11" />
+      <module name="EquityMobile.buildSrc.test" target="11" />
+      <module name="EquityMobile.common" target="11" />
+      <module name="EquityMobile.core-database" target="11" />
+      <module name="EquityMobile.core-network" target="11" />
+      <module name="EquityMobile.core.ui" target="11" />
+      <module name="EquityMobile.core.util" target="11" />
+      <module name="EquityMobile.data" target="11" />
+      <module name="EquityMobile.feature.auth" target="11" />
+      <module name="EquityMobile.feature.home" target="11" />
+      <module name="EquityMobile.feature.loans" target="11" />
+      <module name="EquityMobile.feature.more" target="11" />
+      <module name="EquityMobile.feature.onboarding" target="11" />
+      <module name="EquityMobile.feature.savings" target="11" />
+      <module name="EquityMobile.feature.transaction" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
