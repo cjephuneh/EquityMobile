@@ -1,14 +1,13 @@
 package com.dev.chacha.more.presentation.manage_security_qns_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
+import androidx.compose.material3.Card
+import androidx.compose.material3.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.*
 import androidx.compose.material3.ButtonDefaults
@@ -21,8 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.primaryGray
@@ -31,15 +32,21 @@ import com.dev.chacha.ui.common.theme.primaryPink
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ManageSecurityQnScreen() {
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        StandardToolbar(
-            title = "Security Questions",
-            showForwardArrow = true,
-            showBackArrow = true
-        )
-
-        Column(verticalArrangement = Arrangement.Top) {
+    Scaffold(
+        topBar = {
+            StandardToolbar(
+                title = "Security Questions",
+                showForwardArrow = true,
+                showBackArrow = true
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Top
+        ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
@@ -47,7 +54,7 @@ fun ManageSecurityQnScreen() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 30.dp, end = 30.dp)
+                        .padding(start = 16.dp, end = 16.dp)
                 ) {
 
                     Card(
@@ -122,33 +129,19 @@ fun ManageSecurityQnScreen() {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White
                             )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White,
-                                fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -168,7 +161,6 @@ fun ManageSecurityQnScreen() {
 
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -189,8 +181,6 @@ fun ManageSecurityQnScreen() {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White
                             )
                             Text(
                                 text = "Change your sign-in details and password",
@@ -199,22 +189,13 @@ fun ManageSecurityQnScreen() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -233,7 +214,6 @@ fun ManageSecurityQnScreen() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -254,33 +234,19 @@ fun ManageSecurityQnScreen() {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White
                             )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White,
-                                fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -300,7 +266,6 @@ fun ManageSecurityQnScreen() {
 
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -317,37 +282,27 @@ fun ManageSecurityQnScreen() {
                             colorFilter = ColorFilter.tint(color = primaryPink)
 
                         )
-                        Column(modifier = Modifier.padding(start = 10.dp)) {
+                        Column(
+                            modifier = Modifier
+                                .padding(start = 10.dp)
+                        ) {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White
                             )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
                                 style = MaterialTheme.typography.body1,
-                                color = Color.White,
-                                fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -366,7 +321,6 @@ fun ManageSecurityQnScreen() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -388,31 +342,19 @@ fun ManageSecurityQnScreen() {
                                 text = "Security",
                                 maxLines = 1,
 
-                            )
+                                )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White,
-                                fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -431,7 +373,6 @@ fun ManageSecurityQnScreen() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -445,40 +386,27 @@ fun ManageSecurityQnScreen() {
                                 .size(50.dp)
                                 .clip(CircleShape)
                                 .background(Color.DarkGray),
-                            colorFilter = ColorFilter.tint(color =primaryPink)
+                            colorFilter = ColorFilter.tint(color = primaryPink)
 
                         )
                         Column(modifier = Modifier.padding(start = 10.dp)) {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White
                             )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
-                                style = MaterialTheme.typography.body1,
-                                color = Color.White,
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
@@ -495,8 +423,6 @@ fun ManageSecurityQnScreen() {
 
 
                     Spacer(modifier = Modifier.height(12.dp))
-
-
 
                     Column(
                         modifier = Modifier
@@ -510,13 +436,12 @@ fun ManageSecurityQnScreen() {
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(
                                 contentColor = Color.Red,
-                                containerColor = Color.DarkGray
                             ),
+                            shape = RoundedCornerShape(8.dp)
 
-                            ) {
+                        ) {
                             Text(
                                 text = "Edit Question",
-                                color = Color.Black,
                                 modifier = Modifier.padding(10.dp)
                             )
                         }
@@ -527,9 +452,20 @@ fun ManageSecurityQnScreen() {
 
                 }
 
-
             }
+
         }
 
+    }
+
+
+}
+
+@Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Preview(showBackground = true)
+fun ManageSecurityQnPreview() {
+    EquityMobileTheme {
+        ManageSecurityQnScreen()
     }
 }

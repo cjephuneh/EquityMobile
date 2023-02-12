@@ -1,5 +1,6 @@
 package com.dev.chacha.auth.presentation.fingerprint_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -13,14 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.auth.presentation.create_password_screen.CreatePasswordScreen
 import com.dev.chacha.ui.common.theme.primaryPink
 
 @Composable
 fun FingerPrintScreen() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize(),
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -33,7 +38,7 @@ fun FingerPrintScreen() {
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 30.dp, end = 30.dp),
+                .padding(start = 20.dp, end = 20.dp),
                 verticalArrangement = Arrangement.Bottom
             ) {
 
@@ -97,6 +102,16 @@ fun FingerPrintScreen() {
 
         }
 
+
+}
+
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun FingerPrintScreenPreview() {
+    EquityMobileTheme {
+        FingerPrintScreen()
     }
 
 }

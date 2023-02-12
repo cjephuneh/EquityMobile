@@ -1,5 +1,6 @@
 package com.dev.chacha.auth.presentation.verification_options_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,8 +20,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.auth.presentation.fingerprint_screen.FingerPrintScreen
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.primaryPink
@@ -283,4 +287,15 @@ fun ChooseVerificationScreen(
 
 
     }
+}
+
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun FingerPrintScreenPreview() {
+    EquityMobileTheme {
+        ChooseVerificationScreen()
+    }
+
 }

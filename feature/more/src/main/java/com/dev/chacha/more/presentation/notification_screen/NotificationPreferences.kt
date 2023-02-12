@@ -1,5 +1,6 @@
 package com.dev.chacha.more.presentation.notification_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -7,8 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.primaryGray
@@ -16,14 +19,23 @@ import com.dev.chacha.ui.common.theme.primaryPink
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotificationPreferences() {
-    Column(modifier = Modifier.fillMaxSize()) {
-    StandardToolbar(
-            showBackArrow = true,
-            title = "Notification Preference"
-        )
-
-        Column(verticalArrangement = Arrangement.Top) {
+fun NotificationPreferences(
+    naviageteTo: () -> Unit
+) {
+    Scaffold(
+        topBar = {
+            StandardToolbar(
+                showBackArrow = true,
+                title = "Notification Preference"
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Top
+        ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
@@ -46,11 +58,8 @@ fun NotificationPreferences() {
                     )
 
 
-                    /* Other cards */
-
                     Spacer(modifier = Modifier.height(15.dp))
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -67,28 +76,19 @@ fun NotificationPreferences() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Divider(
-                        color =primaryGray,
+                        color = primaryGray,
                         thickness = 1.dp,
                         modifier = Modifier
                             .padding(
@@ -102,7 +102,6 @@ fun NotificationPreferences() {
 
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -118,28 +117,19 @@ fun NotificationPreferences() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Divider(
-                        color =primaryGray,
+                        color = primaryGray,
                         thickness = 1.dp,
                         modifier = Modifier
                             .padding(
@@ -152,7 +142,6 @@ fun NotificationPreferences() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -168,28 +157,19 @@ fun NotificationPreferences() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Divider(
-                        color =primaryGray,
+                        color = primaryGray,
                         thickness = 1.dp,
                         modifier = Modifier
                             .padding(
@@ -203,7 +183,6 @@ fun NotificationPreferences() {
 
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -218,28 +197,19 @@ fun NotificationPreferences() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Divider(
-                        color =primaryGray,
+                        color = primaryGray,
                         thickness = 1.dp,
                         modifier = Modifier
                             .padding(
@@ -252,7 +222,6 @@ fun NotificationPreferences() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -269,28 +238,19 @@ fun NotificationPreferences() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint =primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
 
 
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Divider(
-                        color =primaryGray,
+                        color = primaryGray,
                         thickness = 1.dp,
                         modifier = Modifier
                             .padding(
@@ -299,14 +259,23 @@ fun NotificationPreferences() {
                             )
                     )
 
-
                 }
-
-
             }
+
         }
 
     }
 
+}
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun NotificationPreferencesPreview() {
+    EquityMobileTheme {
+        NotificationPreferences {
+
+        }
+    }
 
 }

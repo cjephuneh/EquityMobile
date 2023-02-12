@@ -1,6 +1,6 @@
 package com.dev.chacha.auth.presentation.create_password_screen
 
-import androidx.compose.foundation.BorderStroke
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,10 +14,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardTextField
 import com.dev.chacha.ui.common.components.StandardToolbar
@@ -29,13 +29,19 @@ fun CreatePasswordScreen(
     onClickAction: () -> Unit,
     viewModel: CreatePasswordViewModel = hiltViewModel()
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        StandardToolbar(
-            title = "Create Password",
+    Scaffold(
+        topBar = {
+            StandardToolbar(
+                title = "Create Password",
 
-            )
-        Spacer(modifier = Modifier.height(25.dp))
-        Column {
+                )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopStart
@@ -64,7 +70,7 @@ fun CreatePasswordScreen(
 
                     )
 
-                   StandardTextField(
+                    StandardTextField(
                         text = viewModel.passwordText.value,
                         onValueChange = {
                             viewModel.setPasswordText(it)
@@ -87,7 +93,7 @@ fun CreatePasswordScreen(
 
                     )
 
-                   StandardTextField(
+                    StandardTextField(
                         text = viewModel.passwordText.value,
                         onValueChange = {
                             viewModel.setPasswordText(it)
@@ -111,7 +117,7 @@ fun CreatePasswordScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 0.dp),
+                                .padding(start = 0.dp, end = 20.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Start,
 
@@ -133,7 +139,7 @@ fun CreatePasswordScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 0.dp),
+                                .padding(start = 0.dp, end = 20.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Start,
                         ) {
@@ -243,8 +249,9 @@ fun CreatePasswordScreen(
                                 contentColor = Color.Red,
                                 containerColor = Color.DarkGray
                             ),
+                            shape = RoundedCornerShape(8.dp)
 
-                            ) {
+                        ) {
                             Text(
                                 text = "Confirm",
                                 color = Color.Black,
@@ -262,6 +269,19 @@ fun CreatePasswordScreen(
 
 
         }
+
+    }
+
+
+}
+
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun CreatePasswordPreview() {
+    EquityMobileTheme {
+        CreatePasswordScreen(onClickAction = { /*TODO*/ })
 
     }
 

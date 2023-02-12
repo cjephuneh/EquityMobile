@@ -1,5 +1,6 @@
 package com.dev.chacha.transaction.presentation.create_pin_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -25,21 +26,21 @@ import com.dev.chacha.ui.common.components.StandardToolbar
 fun CreatePinScreen(
     viewModel: CreatePinViewModel
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-
-    ) {
+    Scaffold(topBar = {
         StandardToolbar(
             showBackArrow = true,
             title = "Create Pin",
             showForwardArrow = true,
         )
+    }) { paddingValues ->
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+
         ) {
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.TopStart
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopStart
             ) {
                 Column {
                     Text(
@@ -55,11 +56,9 @@ fun CreatePinScreen(
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "PIN",
-                        modifier = Modifier.padding(start = 20.dp, end = 20.dp)
+                        text = "PIN", modifier = Modifier.padding(start = 20.dp, end = 20.dp)
                     )
-                    StandardTextField(
-                        text = viewModel.passwordText.value,
+                    StandardTextField(text = viewModel.passwordText.value,
                         onValueChange = {
                             viewModel.setPasswordText(it)
                         },
@@ -69,16 +68,14 @@ fun CreatePinScreen(
                         isPasswordVisible = viewModel.showPassword.value,
                         onPasswordToggleClick = {
                             viewModel.setShowPassword(it)
-                        }
-                    )
+                        })
                     Spacer(modifier = Modifier.height(22.dp))
                     Text(
                         text = "Confirm PIN",
                         modifier = Modifier.padding(start = 20.dp, end = 20.dp)
 
                     )
-                    StandardTextField(
-                        text = viewModel.passwordText.value,
+                    StandardTextField(text = viewModel.passwordText.value,
                         onValueChange = {
                             viewModel.setPasswordText(it)
                         },
@@ -88,8 +85,7 @@ fun CreatePinScreen(
                         isPasswordVisible = viewModel.showPassword.value,
                         onPasswordToggleClick = {
                             viewModel.setShowPassword(it)
-                        }
-                    )
+                        })
                     Spacer(modifier = Modifier.height(50.dp))
 
                     /*
@@ -173,12 +169,10 @@ fun CreatePinScreen(
                         verticalArrangement = Arrangement.Bottom
                     ) {
                         Button(
-                            onClick = {
-                            },
+                            onClick = {},
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(
-                                contentColor = Color.Red,
-                                containerColor = Color.DarkGray
+                                contentColor = Color.Red, containerColor = Color.DarkGray
                             ),
 
                             ) {
@@ -201,11 +195,13 @@ fun CreatePinScreen(
     }
 }
 
+
 @Composable
-@Preview
-fun CreatePinPreView() {
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun FingerPrintScreenPreview() {
     EquityMobileTheme {
-//        CreatePinScreen(navigator = )
+        CreatePinScreen(viewModel = CreatePinViewModel())
     }
 
 }

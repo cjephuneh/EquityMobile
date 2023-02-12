@@ -1,5 +1,6 @@
 package com.dev.chacha.auth.presentation.security_qsn_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -16,7 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardSecurityQn
 import com.dev.chacha.ui.common.components.StandardTextField
@@ -28,33 +31,33 @@ fun SecurityQnScreen(
     viewModel: SecurityQnViewModel
 
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        // Declaring a boolean value to store
-        // the expanded state of the Text Field
-        var mExpanded by remember { mutableStateOf(false) }
+    Scaffold(
+        topBar = {
+            StandardToolbar(
+                title = "Security questions",
+                showBackArrow = true,
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
 
-        // Create a list of cities
-        val mCities =
-            listOf("Delhi", "Mumbai", "Chennai", "Kolkata", "Hyderabad", "Bengaluru", "Pune")
+            var mExpanded by remember { mutableStateOf(false) }
 
-        // Create a string value to store the selected city
-        var mSelectedText by remember { mutableStateOf("") }
+            // Create a list of cities
+            val mCities =
+                listOf("Delhi", "Mumbai", "Chennai", "Kolkata", "Hyderabad", "Bengaluru", "Pune")
 
-//        var mTextFieldSize by remember { mutableStateOf(Size.Zero)}
+            // Create a string value to store the selected city
+            var mSelectedText by remember { mutableStateOf("") }
 
-        // Up Icon when expanded and down icon when collapsed
-        val icon = if (mExpanded) Icons.Filled.KeyboardArrowUp
-        else Icons.Filled.KeyboardArrowDown
-        StandardToolbar(
-            title = "Security questions",
-            showBackArrow = true,
-        )
+//        // Up Icon when expanded and down icon when collapsed
+            val icon = if (mExpanded) Icons.Filled.KeyboardArrowUp
+            else Icons.Filled.KeyboardArrowDown
 
-        Spacer(modifier = Modifier.height(2.dp))
-
-        Column {
             Box(
                 modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopStart
             ) {
@@ -239,7 +242,17 @@ fun SecurityQnScreen(
         }
 
     }
+}
 
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun FingerPrintScreenPreview() {
+    EquityMobileTheme {
+        SecurityQnScreen(viewModel = SecurityQnViewModel())
+    }
 
 }
+
 

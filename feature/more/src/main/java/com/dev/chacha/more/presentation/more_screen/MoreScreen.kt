@@ -1,6 +1,7 @@
 package com.dev.chacha.more.presentation.more_screen
 
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,8 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.primaryGray
@@ -40,6 +43,7 @@ fun MoreScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .padding(start = 16.dp, end = 16.dp)
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -48,7 +52,6 @@ fun MoreScreen() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 20.dp, end = 20.dp)
                 ) {
 
                     Card(
@@ -59,11 +62,12 @@ fun MoreScreen() {
                     ) {
                         Row(
                             horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp, end = 10.dp)
-                        ) {
+                                .padding(8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+
+                            ) {
                             Image(
                                 painter = painterResource(id = R.drawable.ic_launcher_background),
                                 contentDescription = null,
@@ -75,7 +79,7 @@ fun MoreScreen() {
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(start = 12.dp)
+                                    .padding(start = 10.dp, end = 10.dp)
                             ) {
                                 Text(
                                     text = "Stephen Chacha",
@@ -123,6 +127,8 @@ fun MoreScreen() {
                             Text(
                                 text = "Notifications",
                                 maxLines = 1,
+                                fontSize = 14.sp
+
                             )
                             Text(
                                 text = "View and manage notification_screen",
@@ -131,22 +137,13 @@ fun MoreScreen() {
 
                                 )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -185,30 +182,23 @@ fun MoreScreen() {
                             Text(
                                 text = "Security",
                                 maxLines = 1,
+                                fontSize = 14.sp
 
-                                )
+
+                            )
                             Text(
                                 text = "Change your sign-in details and password",
                                 maxLines = 1,
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -223,7 +213,6 @@ fun MoreScreen() {
                     Spacer(modifier = Modifier.height(15.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -247,6 +236,8 @@ fun MoreScreen() {
                             Text(
                                 text = "Support",
                                 maxLines = 1,
+                                fontSize = 14.sp
+
                             )
                             Text(
                                 text = "Email, call or find us on social media",
@@ -254,22 +245,13 @@ fun MoreScreen() {
                                 fontSize = 10.sp
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -283,7 +265,6 @@ fun MoreScreen() {
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -306,24 +287,17 @@ fun MoreScreen() {
                             Text(
                                 text = "Change language",
                                 maxLines = 1,
+                                fontSize = 14.sp
+
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -338,7 +312,6 @@ fun MoreScreen() {
                     Spacer(modifier = Modifier.height(15.dp))
 
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -359,24 +332,17 @@ fun MoreScreen() {
                             Text(
                                 text = "Recommend Equity mobile to a friend",
                                 maxLines = 1,
+                                fontSize = 14.sp
                             )
 
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -390,7 +356,6 @@ fun MoreScreen() {
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -413,21 +378,13 @@ fun MoreScreen() {
                                 maxLines = 1,
                             )
                         }
-                        Column {
-                            Box(
-                                modifier =
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Icon(
-                                    painter =
-                                    painterResource(id = R.drawable.ic_chevron_right),
-                                    tint = primaryPink,
-                                    contentDescription = null,
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
+                            tint = primaryPink,
+                            contentDescription = null,
 
-                                    )
-                            }
-                        }
+                            )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Divider(
@@ -452,5 +409,15 @@ fun MoreScreen() {
 
     }
 
+
+}
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun MoreScreenPreview() {
+    EquityMobileTheme {
+        MoreScreen()
+    }
 
 }

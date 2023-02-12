@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -13,8 +12,8 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.common.navigation.BottomBarScreen
-import com.chachadeveloper.equitymobile.common.navigation.bottomNavigationItems
+import com.chachadeveloper.equitymobile.presentation.common.navigation.BottomBarScreen
+import com.chachadeveloper.equitymobile.presentation.common.navigation.bottomNavigationItems
 import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.chachadeveloper.equitymobile.presentation.common.theme.primaryPink
 

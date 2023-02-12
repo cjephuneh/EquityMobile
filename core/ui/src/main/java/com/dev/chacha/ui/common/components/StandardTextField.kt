@@ -80,6 +80,7 @@ fun StandardTextField(
                 Text(
                     text = hint,
                     textAlign = TextAlign.Start,
+                    color = Color.DarkGray
                 )
             },
             isError = error != "",

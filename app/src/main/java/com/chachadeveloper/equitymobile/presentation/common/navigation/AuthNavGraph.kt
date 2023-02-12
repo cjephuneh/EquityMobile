@@ -1,4 +1,4 @@
-package com.chachadeveloper.equitymobile.common.navigation
+package com.chachadeveloper.equitymobile.presentation.common.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController

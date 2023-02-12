@@ -1,5 +1,6 @@
 package com.dev.chacha.auth.presentation.login_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -165,7 +166,8 @@ fun LoginScreen(
 }
 
 @Composable
-@Preview(showBackground = true)
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun LoginPreview() {
     EquityMobileTheme {
         LoginScreen(

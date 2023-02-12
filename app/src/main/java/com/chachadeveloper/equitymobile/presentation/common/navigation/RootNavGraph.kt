@@ -1,4 +1,4 @@
-package com.chachadeveloper.equitymobile.common.navigation
+package com.chachadeveloper.equitymobile.presentation.common.navigation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -63,4 +63,7 @@ object Graph {
     const val AUTHENTICATION = "auth_graph"
     const val ROOT = "root_graph"
     const val DETAILS = "detail_route"
+    const val MORE_DETAILS = "more_details"
+    const val TRANSACTION_DETAILS = "transaction_details"
+    const val BORROW_DETAILS = "borrow_details"
 }

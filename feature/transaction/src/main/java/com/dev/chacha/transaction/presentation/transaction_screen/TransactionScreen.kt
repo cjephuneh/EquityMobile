@@ -1,5 +1,6 @@
 package com.dev.chacha.transaction.presentation.transaction_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,8 +17,10 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.primaryGray
@@ -26,24 +29,24 @@ import com.dev.chacha.ui.common.theme.primaryPink
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TransactionScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    Scaffold(topBar = {
         StandardToolbar(
             title = "Transact",
             showForwardArrow = true
-
         )
-        Column {
+    }) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
             LazyColumn {
                 item {
                     Column {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.TopStart
-                        )
-                        {
+                        ) {
                             Column(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -94,18 +97,16 @@ fun TransactionScreen() {
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Text(
-                                    text = "Send Money", color = Color.White,
+                                    text = "Send Money",
                                     fontSize = 18.sp
                                 )
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Image(
-                                        painter =
-                                        painterResource(id = R.drawable.ic_support_foreground),
+                                        painter = painterResource(id = R.drawable.ic_support_foreground),
                                         contentDescription = null,
                                         contentScale = ContentScale.Crop,
                                         modifier = Modifier
@@ -123,21 +124,13 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-                                        }
-                                    }
+                                        )
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -145,15 +138,11 @@ fun TransactionScreen() {
                                     color = primaryGray,
                                     thickness = 1.dp,
                                     modifier = Modifier
-                                        .padding(
-                                            start = 60.dp,
-                                            end = 8.dp
-                                        )
+                                        .padding(start = 60.dp, end = 8.dp)
                                 )
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -173,39 +162,27 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-
-                                        }
-                                    }
+                                        )
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 60.dp,
-                                            end = 8.dp
+                                    modifier = Modifier.padding(
+                                            start = 60.dp, end = 8.dp
                                         )
                                 )
 
                                 /* Row 3*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -231,22 +208,13 @@ fun TransactionScreen() {
 
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-
-                                        }
-                                    }
+                                        )
 
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
@@ -254,10 +222,8 @@ fun TransactionScreen() {
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 60.dp,
-                                            end = 8.dp
+                                    modifier = Modifier.padding(
+                                            start = 60.dp, end = 8.dp
                                         )
                                 )
 
@@ -265,7 +231,6 @@ fun TransactionScreen() {
                                 /* Row 3*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -290,22 +255,13 @@ fun TransactionScreen() {
                                             fontSize = 12.sp
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-
-                                        }
-                                    }
+                                        )
 
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
@@ -313,10 +269,8 @@ fun TransactionScreen() {
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 60.dp,
-                                            end = 8.dp
+                                    modifier = Modifier.padding(
+                                            start = 60.dp, end = 8.dp
                                         )
                                 )
 
@@ -325,7 +279,6 @@ fun TransactionScreen() {
 
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -345,20 +298,13 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
-                                            )
-                                        }
-                                    }
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
+
+                                        )
 
 
                                 }
@@ -367,10 +313,8 @@ fun TransactionScreen() {
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 0.dp,
-                                            end = 0.dp
+                                    modifier = Modifier.padding(
+                                            start = 0.dp, end = 0.dp
                                         )
                                 )
 
@@ -379,13 +323,11 @@ fun TransactionScreen() {
 
                                 Text(
                                     text = "Pay With Equity",
-                                    color = Color.White
                                 )
 
                                 /* Row 3*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -405,36 +347,27 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
-                                            )
-                                        }
-                                    }
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
+
+                                        )
 
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 60.dp,
-                                            end = 8.dp
+                                    modifier = Modifier.padding(
+                                            start = 60.dp, end = 8.dp
                                         )
                                 )
 
                                 /*Row 5*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -454,30 +387,21 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
-                                            )
-                                        }
-                                    }
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
+
+                                        )
                                 }
                                 Spacer(modifier = Modifier.height(12.dp))
 
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 0.dp,
-                                            end = 0.dp
+                                    modifier = Modifier.padding(
+                                            start = 0.dp, end = 0.dp
                                         )
                                 )
 
@@ -485,13 +409,11 @@ fun TransactionScreen() {
 
                                 Text(
                                     text = "Buy",
-                                    color = Color.White
                                 )
 
                                 /* Row 3*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -511,21 +433,13 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-                                        }
-                                    }
+                                        )
                                 }
 
                                 Spacer(modifier = Modifier.height(12.dp))
@@ -533,10 +447,8 @@ fun TransactionScreen() {
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 0.dp,
-                                            end = 0.dp
+                                    modifier = Modifier.padding(
+                                            start = 0.dp, end = 0.dp
                                         )
                                 )
 
@@ -544,13 +456,11 @@ fun TransactionScreen() {
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Text(
                                     text = "Withdraw cash",
-                                    color = Color.White
                                 )
 
                                 /* Row 3*/
                                 Spacer(modifier = Modifier.height(12.dp))
                                 Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
@@ -570,21 +480,13 @@ fun TransactionScreen() {
                                             maxLines = 1,
                                         )
                                     }
-                                    Column {
-                                        Box(
-                                            modifier =
-                                            Modifier.fillMaxWidth(),
-                                            contentAlignment = Alignment.CenterEnd
-                                        ) {
-                                            Icon(
-                                                painter =
-                                                painterResource(id = R.drawable.ic_chevron_right),
-                                                tint = primaryPink,
-                                                contentDescription = null,
+                                    Spacer(modifier = Modifier.weight(1f))
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_chevron_right),
+                                        tint = primaryPink,
+                                        contentDescription = null,
 
-                                                )
-                                        }
-                                    }
+                                        )
 
                                 }
 
@@ -593,10 +495,8 @@ fun TransactionScreen() {
                                 Divider(
                                     color = primaryGray,
                                     thickness = 1.dp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 0.dp,
-                                            end = 0.dp
+                                    modifier = Modifier.padding(
+                                            start = 0.dp, end = 0.dp
                                         )
                                 )
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -607,6 +507,15 @@ fun TransactionScreen() {
                 }
             }
         }
+    }
+}
+
+@Composable
+@Preview("Light Mode", showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun FingerPrintScreenPreview() {
+    EquityMobileTheme {
+        TransactionScreen()
     }
 
 }

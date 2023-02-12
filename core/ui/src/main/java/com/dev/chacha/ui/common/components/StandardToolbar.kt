@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.dev.chacha.ui.R
 
 
@@ -20,6 +21,7 @@ fun StandardToolbar(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     showBackArrow: Boolean = false,
     showForwardArrow: Boolean = false,
+//    navController: NavController
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -31,7 +33,10 @@ fun StandardToolbar(
         },
         navigationIcon = {
             if (showBackArrow){
-                 IconButton(onClick = { /* doSomething() */ }) {
+                 IconButton(onClick = {
+//                     navController.navigateUp()
+                 }
+                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_chevron_left),
                         contentDescription = "Localized description",

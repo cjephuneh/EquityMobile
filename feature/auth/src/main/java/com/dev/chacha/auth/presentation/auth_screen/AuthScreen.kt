@@ -1,6 +1,7 @@
 package com.dev.chacha.auth.presentation.auth_screen
 
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -14,18 +15,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import kotlin.system.exitProcess
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AuthScreen(
-    onSignUp: () -> Unit,
-    onLogin: () -> Unit
+    onSignUp: () -> Unit, onLogin: () -> Unit
 
 ) {
     Dialog(
@@ -39,7 +41,8 @@ fun AuthScreen(
     ) {
         Column {
             Box(
-                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopStart
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.TopStart
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
@@ -64,19 +67,10 @@ fun AuthScreen(
                     contentScale = ContentScale.Crop,
 
                     )
-                Image(
-                    painter = painterResource(id = R.drawable.ic_loan),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .width(150.dp)
-                        .height(120.dp)
-                        .padding(horizontal = 24.dp, vertical = 24.dp),
-                    contentScale = ContentScale.Fit,
-                )
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 30.dp, end = 30.dp),
+                        .padding(start = 20.dp, end = 20.dp),
                     verticalArrangement = Arrangement.Bottom
                 ) {
 
@@ -90,7 +84,7 @@ fun AuthScreen(
 
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedButton(
-                        onClick = {onLogin()},
+                        onClick = { onLogin() },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 8.dp, end = 8.dp),
@@ -112,7 +106,7 @@ fun AuthScreen(
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Button(
-                        onClick = { onSignUp()},
+                        onClick = { onSignUp() },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(start = 8.dp, end = 8.dp),
@@ -145,5 +139,19 @@ fun AuthScreen(
 
     }
 
+
+}
+
+@Composable
+@Preview("Light Mode",showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+fun AuthScreenPreview() {
+    EquityMobileTheme() {
+        AuthScreen(
+            onSignUp = { /*TODO*/ }) {
+
+        }
+        
+    }
 
 }
