@@ -6,8 +6,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.dev.chacha.auth.presentation.util.Country
-import com.dev.chacha.auth.presentation.util.getFlagEmojiFor
+import com.dev.chacha.auth.presentation.register.Country
+import com.dev.chacha.auth.presentation.register.getFlagEmojiFor
 
 @Composable
 fun CountryPickerView(

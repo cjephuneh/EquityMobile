@@ -5,10 +5,10 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
     id("io.gitlab.arturbosch.detekt")
     kotlin("kapt")
+    id("kotlin-parcelize")
+
 }
-apply {
-    from("$rootDir/base-module.gradle")
-}
+
 
 android {
     namespace = "com.dev.chacha.ui"
@@ -38,36 +38,44 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AndroidConfig.javaVersion
+        targetCompatibility = AndroidConfig.javaVersion
     }
-
     kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs + "-Xjvm-default=all"
+        jvmTarget = AndroidConfig.jvmTarget
     }
-
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidConfig.kotlinCompilerExtension
+    }
 
-    packagingOptions {
+    packaging {
         resources {
+            exclude("META-INF/INDEX.LIST")
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             pickFirsts.add("META-INF/io.netty.versions.properties")
         }
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
-    }
 }
 
 dependencies {
+
+    implementation(platform(libs.compose.bom))
     implementation(libs.android.coreKtx)
     implementation(libs.android.appCompat)
     implementation(libs.android.material)
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.accompanist)
+    implementation(libs.compose.materialIcons)
+    implementation(libs.compose.materialWindow)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.compose.compiler)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.coil.gf)
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.timber)
     implementation(libs.android.hilt)
@@ -86,6 +94,7 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
 
+
     androidTestImplementation(libs.android.test.junit4)
     androidTestImplementation(libs.android.test.espresso)
     androidTestImplementation(libs.compose.ui.test.junit)
@@ -97,8 +106,6 @@ dependencies {
     testImplementation(libs.test.navigation)
     testImplementation(libs.test.mockk)
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.25.1")
-    implementation ("com.google.accompanist:accompanist-permissions:0.21.1-beta")
 }
 
 kotlin {

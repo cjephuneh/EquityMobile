@@ -7,9 +7,6 @@ plugins {
     kotlin("kapt")
 }
 
-apply {
-    from("$rootDir/base-module.gradle")
-}
 
 android {
     namespace = "com.dev.chacha.auth"
@@ -39,40 +36,43 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AndroidConfig.javaVersion
+        targetCompatibility = AndroidConfig.javaVersion
     }
-
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AndroidConfig.jvmTarget
         freeCompilerArgs + "-Xjvm-default=all"
-    }
 
+    }
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidConfig.kotlinCompilerExtension
+    }
 
-    packagingOptions {
+
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             pickFirsts.add("META-INF/io.netty.versions.properties")
         }
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
-    }
 }
 
 dependencies {
     implementation(project(Modules.domain))
     implementation(project(Modules.ui))
+    implementation(project(Modules.util))
 
 
+    implementation(platform(libs.compose.bom))
     implementation(libs.android.coreKtx)
     implementation(libs.android.appCompat)
     implementation(libs.android.material)
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.lifecycle)
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.timber)
     implementation(libs.android.hilt)
@@ -92,6 +92,8 @@ dependencies {
     debugImplementation(libs.compose.ui.test.manifest)
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.25.1")
     implementation ("com.google.accompanist:accompanist-permissions:0.21.1-beta")
+    implementation ("androidx.biometric:biometric:1.1.0")
+
 
     androidTestImplementation(libs.android.test.junit4)
     androidTestImplementation(libs.android.test.espresso)

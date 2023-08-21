@@ -5,9 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
 }
-apply {
-    from("$rootDir/base-module.gradle")
-}
+
 
 android {
     namespace = "com.dev.chacha.core_network"
@@ -31,22 +29,68 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AndroidConfig.javaVersion
+        targetCompatibility = AndroidConfig.javaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AndroidConfig.jvmTarget
     }
+
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.8.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(platform(libs.compose.bom))
+    implementation(libs.android.coreKtx)
+    implementation(libs.android.appCompat)
+    implementation(libs.android.material)
+    implementation(libs.accompanist.navigation)
+    implementation(libs.biometric)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.datastore)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.accompanist)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.bundles.koin)
+    api(libs.bundles.internal.camerax)
+    implementation(libs.lifecycle.runtimeKtx)
+    implementation(libs.timber)
+    implementation(libs.androidx.splashscreen)
+    implementation(libs.kotlin.coroutines.play.services)
+    implementation(libs.gms.play.services.auth)
+    implementation(libs.accompanist.flowlayout)
+    implementation(libs.lottie.compose)
+    implementation(libs.gson.gson)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.gf)
+    implementation(libs.timber)
+    implementation(libs.accompanist.swiperefresh)
+    implementation(libs.kotlin.coroutines.datetime)
+    implementation(libs.zeko.query.builder)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
+    androidTestImplementation(libs.android.test.junit4)
+    androidTestImplementation(libs.android.test.espresso)
+    androidTestImplementation(libs.compose.ui.test.junit)
+    testImplementation(libs.test.junit4)
+    testImplementation(libs.test.robolectric)
+    testImplementation(libs.compose.ui.test.junit)
+    testImplementation(libs.android.test.espresso)
+    testImplementation(libs.test.navigation)
+    testImplementation(libs.test.mockk)
+
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    implementation(libs.android.hilt.navigation.compose)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    implementation(libs.android.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.android.hilt.androidx.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
 
 
 }

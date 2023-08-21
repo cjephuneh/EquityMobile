@@ -1,1 +1,1 @@
-C:\Users\steve\AndroidStudioProjects\EquityMobile\buildSrc\build\classes\kotlin\main\Modules.class;C:\Users\steve\AndroidStudioProjects\EquityMobile\buildSrc\build\classes\kotlin\main\Versions.class
+C:\Users\Stephen\AndroidStudioProjects\EquityMobile\buildSrc\build\classes\kotlin\main\AndroidConfig.class;C:\Users\Stephen\AndroidStudioProjects\EquityMobile\buildSrc\build\classes\kotlin\main\Modules.class;C:\Users\Stephen\AndroidStudioProjects\EquityMobile\buildSrc\build\classes\kotlin\main\Versions.class

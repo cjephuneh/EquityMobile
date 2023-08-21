@@ -4,62 +4,57 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("org.jlleitschuh.gradle.ktlint")
     id("io.gitlab.arturbosch.detekt")
+
     kotlin("kapt")
 }
 
-apply {
-    from("$rootDir/base-module.gradle")
-}
-
 android {
-    compileSdk = 33
+    namespace = AndroidConfig.applicationId
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.chachadeveloper.equitymobile"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AndroidConfig.applicationId
+        minSdk = AndroidConfig.minSdk
+        targetSdk = AndroidConfig.targetSdk
+        versionCode = AndroidConfig.versionCode
+        versionName = AndroidConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner= "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary = true
+            useSupportLibrary =true
         }
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AndroidConfig.javaVersion
+        targetCompatibility = AndroidConfig.javaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AndroidConfig.jvmTarget
     }
     buildFeatures {
         compose = true
         viewBinding = true
+        buildConfig = true
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidConfig.kotlinCompilerExtension
     }
-
-    packagingOptions {
+    packaging {
         resources {
             pickFirsts.add("META-INF/io.netty.versions.properties")
             pickFirsts.add("META-INF/INDEX.LIST")
         }
     }
-
 }
 
 dependencies {
@@ -80,41 +75,35 @@ dependencies {
     implementation(project(Modules.more))
     implementation(project(Modules.onboarding))
 
+    implementation(platform(libs.compose.bom))
+    implementation(libs.datastore)
+    implementation(libs.androidx.splashscreen)
     implementation(libs.android.coreKtx)
     implementation(libs.android.appCompat)
     implementation(libs.android.material)
-    implementation(libs.bundles.compose)
-    implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.timber)
-    implementation(libs.android.hilt)
-    implementation(libs.androidx.splashscreen)
-    implementation(libs.kotlin.coroutines.play.services)
-    implementation(libs.gms.play.services.auth)
-    implementation(libs.accompanist.flowlayout)
-    implementation(libs.lottie.compose)
-    implementation(libs.gson.gson)
+    implementation(libs.accompanist.navigation)
     implementation(libs.accompanist.swiperefresh)
-    implementation(libs.kotlin.coroutines.datetime)
-    implementation(libs.zeko.query.builder)
-    kapt(libs.android.hilt.compiler)
-    implementation(libs.android.hilt.navigation.compose)
-    kapt(libs.android.hilt.androidx.compiler)
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
-
-    androidTestImplementation(libs.android.test.junit4)
-    androidTestImplementation(libs.android.test.espresso)
-    androidTestImplementation(libs.compose.ui.test.junit)
-
+    implementation(libs.accompanist.animation)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.accompanist)
+    implementation(libs.easycrop)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.test.junit4)
-    testImplementation(libs.test.robolectric)
-    testImplementation(libs.compose.ui.test.junit)
-    testImplementation(libs.android.test.espresso)
-    testImplementation(libs.test.navigation)
-    testImplementation(libs.test.mockk)
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.25.1")
-    implementation ("com.google.accompanist:accompanist-permissions:0.21.1-beta")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+
+
+     implementation("com.google.dagger:dagger:2.46.1")
+     kapt("com.google.dagger:dagger-compiler:2.46.1")
+     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+     implementation("com.google.dagger:hilt-android:2.46.1")
+     kapt("com.google.dagger:hilt-android-compiler:2.46.1")
+     kapt("androidx.hilt:hilt-compiler:1.0.0")
+     androidTestImplementation("com.google.dagger:hilt-android-testing:2.46.1")
+     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.46.1")
+
+
 }
 
 kotlin {
@@ -122,6 +111,9 @@ kotlin {
         all {
             languageSettings.apply {
                 optIn("androidx.compose.material3.ExperimentalMaterial3Api")
+                optIn("androidx.compose.material.ExperimentalMaterialApi")
+                optIn("androidx.compose.ui.ExperimentalComposeUiApi")
+                optIn("androidx.compose.material.ExperimentalMaterialApi")
             }
         }
     }

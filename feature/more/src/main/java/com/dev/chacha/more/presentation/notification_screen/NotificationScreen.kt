@@ -36,8 +36,6 @@ fun NotificationScreen(
             showBackArrow = true
         )
         Spacer(modifier = Modifier.height(5.dp))
-
-
         Column {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -48,16 +46,13 @@ fun NotificationScreen(
                         .fillMaxSize()
                         .padding(start = 25.dp, end = 25.dp)
                 ) {
-
-
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(90.dp)
                             .clickable {
                                navigateToNotificationPreferences()
-                            }
-                        ,
+                            },
                         shape = RoundedCornerShape(8.dp)
                     ) {
                         Row(
@@ -67,13 +62,11 @@ fun NotificationScreen(
                                 .fillMaxWidth()
                                 .padding(horizontal = 10.dp, vertical = 10.dp)
                         ) {
-
                             Icon(
                                 imageVector = Icons.Filled.Settings, contentDescription = null,
                                 tint = primaryPink,
                                 modifier = Modifier.size(60.dp)
                             )
-
                             Column(modifier = Modifier.padding(start = 10.dp)) {
                                 Text(
                                     text = "Notification Preferences",
@@ -91,8 +84,6 @@ fun NotificationScreen(
                                 contentDescription = null,
 
                                 )
-
-
                         }
 
                     }

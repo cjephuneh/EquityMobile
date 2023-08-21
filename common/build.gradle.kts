@@ -7,6 +7,8 @@ plugins {
     kotlin("kapt")
 }
 
+
+
 android {
     namespace = "com.dev.chacha.common"
     compileSdk = 33
@@ -27,13 +29,17 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AndroidConfig.javaVersion
+        targetCompatibility = AndroidConfig.javaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AndroidConfig.jvmTarget
     }
+
+
+
 }
 
 dependencies {
@@ -50,13 +56,13 @@ dependencies {
     implementation(project(Modules.auth))
 
 
-    implementation(project(Modules.data))
+//    implementation(project(Modules.data))
     implementation(project(Modules.domain))
-    implementation(project(Modules.coreNetwork))
+//    implementation(project(Modules.coreNetwork))
     implementation(project(Modules.coreDatabase))
 
 
-
+    implementation(platform(libs.compose.bom))
     implementation(libs.android.coreKtx)
     implementation(libs.android.appCompat)
     implementation(libs.android.material)
@@ -78,8 +84,7 @@ dependencies {
     kapt(libs.android.hilt.androidx.compiler)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.25.1")
-    implementation("com.google.accompanist:accompanist-permissions:0.21.1-beta")
+
 
     androidTestImplementation(libs.android.test.junit4)
     androidTestImplementation(libs.android.test.espresso)

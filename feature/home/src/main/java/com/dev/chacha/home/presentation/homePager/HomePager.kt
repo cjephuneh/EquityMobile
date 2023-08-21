@@ -48,10 +48,22 @@ fun HomePager() {
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painterResource(slideImage.value),
-                contentDescription = ""
-            )
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                items(3){
+                    Image(
+                        painterResource(slideImage.value),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(25.dp)
+                            .background(MaterialTheme.colorScheme.primary)
+                    )
+                }
+            }
+
         }
 
         Spacer(modifier = Modifier.padding(10.dp))
@@ -79,7 +91,7 @@ fun DotsIndicator(
 
     LazyRow(
         modifier = Modifier
-            .wrapContentWidth()
+            .fillMaxWidth()
             .wrapContentHeight()
 
     ) {
@@ -89,6 +101,7 @@ fun DotsIndicator(
                 Box(
                     modifier = Modifier
                         .size(5.dp)
+                        .background(Color.Black)
                         .clip(CircleShape)
                         .background(selectedColor)
                 )

@@ -1,5 +1,6 @@
 package com.dev.chacha.ui.common.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.*
@@ -22,6 +23,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.theme.Transparent
@@ -30,6 +32,7 @@ import com.dev.chacha.ui.common.theme.primaryPink
 @Composable
 fun StandardTextField(
     modifier: Modifier = Modifier,
+    title: String = "",
     text: String = "",
     hint: String = "",
     maxLength: Int = 50,
@@ -49,14 +52,12 @@ fun StandardTextField(
 
     val indicatorUnfocusedWidth = 1.dp
     val indicatorFocusedWidth = 2.dp
-    val textFieldPadding = 16.dp
+    val textFieldPadding = 17.dp
     val color = Color.White.copy(alpha = 0.78F)
-    val textFieldColors = TextFieldDefaults.outlinedTextFieldColors(
-        focusedBorderColor = Transparent,
-        unfocusedBorderColor = Transparent,
+    val textFieldColors = TextFieldDefaults.textFieldColors(
         focusedLabelColor = Transparent,
         unfocusedLabelColor = color,
-        disabledBorderColor = Transparent
+        containerColor = MaterialTheme.colorScheme.background
 
     )
 
@@ -64,10 +65,17 @@ fun StandardTextField(
     val indicatorWidth = if (isFocused) indicatorFocusedWidth else indicatorUnfocusedWidth
 
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 4.dp, end = 4.dp)
+        modifier = Modifier.fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(start = 4.dp, end = 4.dp),
+        verticalArrangement = Arrangement.Center
+
     ) {
+        Text(
+            text = title,
+            modifier = Modifier.fillMaxWidth()
+        )
+
         TextField(
             value = text,
             onValueChange = {
@@ -80,7 +88,7 @@ fun StandardTextField(
                 Text(
                     text = hint,
                     textAlign = TextAlign.Start,
-                    color = Color.DarkGray
+                    color = Color.DarkGray,
                 )
             },
             isError = error != "",
@@ -166,5 +174,47 @@ fun StandardTextField(
         }
     }
 
+
+}
+
+@Composable
+@Preview(showBackground = true)
+fun CustmTextField() {
+    var value by remember {
+        mutableStateOf("")
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+    ) {
+        Text(text = "Email")
+        AppTextField(
+            text = value,
+            onValueChange = {
+                value= it
+            },
+            hint = "Email",
+            keyboardType = KeyboardType.Password,
+            isPasswordToggleDisplayed = true,
+            error = "Error"
+
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Password")
+        StandardTextField(
+            text = value,
+            onValueChange = {
+                value= it
+            },
+            hint = "Password",
+            keyboardType = KeyboardType.Password,
+            isPasswordToggleDisplayed = true,
+            error = "Error"
+        )
+
+
+    }
 
 }

@@ -100,7 +100,6 @@ fun EquityMobileTheme(
         SideEffect {
             systemUiController.setSystemBarsColor(
                 color = if (darkTheme) colorScheme.background else colorScheme.onPrimary
-
             )
             /* systemUiController.setStatusBarColor(
                  color = if (darkTheme) colorScheme.background else colorScheme.background

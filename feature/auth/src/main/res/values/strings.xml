@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="change_password_title">Change your password</string>
+    <string name="change_password_description">Create a new password</string>
+</resources>

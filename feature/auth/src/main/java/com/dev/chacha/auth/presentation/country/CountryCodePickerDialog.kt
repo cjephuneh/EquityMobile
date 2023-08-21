@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.dev.chacha.auth.presentation.util.Country
-import com.dev.chacha.auth.presentation.util.getFlagEmojiFor
+import com.dev.chacha.auth.presentation.register.Country
+import com.dev.chacha.auth.presentation.register.getFlagEmojiFor
 
 @Composable
 fun CountryCodePickerDialog(

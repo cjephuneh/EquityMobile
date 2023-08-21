@@ -120,11 +120,6 @@ fun ResetPasswordScreen(
                             })
 
                         Spacer(modifier = Modifier.height(20.dp))
-
-                        /*
-                        Password Validation Ui
-                         */
-
                         Column {
                             Row(
                                 modifier = Modifier

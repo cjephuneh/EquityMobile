@@ -17,7 +17,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="signin">Sign in to Continue. Remember, your password is yours, do not share it with anyone.</string>
     <string name="account_hint">Enter an account or mobile number</string>
-    <string name="idnumber_hint">Enter your ID number</string>
+    <string name="id_number_hint">Enter your ID number</string>
     <string name="email_hint">Email address or mobile number</string>
     <string name="createPassword_hint">The harder the password, the better and safer</string>
     <string name="createPasswd_header">Create a strong password</string>
@@ -45,7 +45,7 @@
         needs
     </string>
     <string name="purpose">Borrow  up to 1,000,000 KES and pay back over up to twelve months</string>
-    <string name="managedevices">You can remove any of the devices connected to your profile</string>
+    <string name="manage_devices">You can remove any of the devices connected to your profile</string>
     <string name="getInTouch">Reach out to us anytime you need help and our talent team will be gladly assist you</string>
     <string name="country">Country</string>
     <string name="favourite">Your favourite contact will apear here. Add a new one to quickly transact</string>

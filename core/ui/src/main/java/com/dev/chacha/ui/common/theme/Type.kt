@@ -104,7 +104,7 @@ val AppTypography = Typography(
     ),
     titleLarge = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.W400,
+        fontWeight = FontWeight.SemiBold,
         letterSpacing = 0.sp,
         lineHeight = 28.sp,
         fontSize = 22.sp
