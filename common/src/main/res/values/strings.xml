@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="apply">Apply</string>
+    <string name="select_finish_date_title">Select End Date</string>
+    <string name="today">Today</string>
+
+    <plurals name="finish_date">
+        <item quantity="one">%1$s (%2$s day)</item>
+        <item quantity="other">%1$s (%2$s days)</item>
+    </plurals>
+
+    <string name="not_found_email">not found\n</string>
+    <string name="copy_to_clipboard">copied to clopboard</string>
+    <string name="open_account">Open account</string>
+
+</resources>

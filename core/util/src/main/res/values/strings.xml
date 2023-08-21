@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pinValidate_header">How to create a secure PIN:</string>
+    <string name="validateSequence">Avoid number sequences(e.g. 1234 or 9876)</string>
+    <string name="validateRepetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
+</resources>

@@ -1,0 +1,210 @@
+<resources>
+    <string name="app_name">EquityMobile</string>
+
+    <string name="password_visible_content_description">Hide password</string>
+    <string name="password_hidden_content_description">Show password</string>
+    <string name="dont_have_an_account_yet">Don\'t have an account? Please</string>
+    <string name="sign_up">Sign up!</string>
+    <string name="email">E-Mail</string>
+<!--    Register-->
+    <string name="register">Register</string>
+    <string name="create_your_profile">Create your profile</string>
+    <string name="country">Country</string>
+    <string name="select_country">Select a country</string>
+    <string name="account_number_hint">Enter an account or mobile number</string>
+    <string name="account_number_title">Account number</string>
+    <string name="id_number_hint">Enter your ID number</string>
+    <string name="id_number_title">ID number</string>
+    <string name="i_agree_to_the_terms_and_privacy_policy">I agree to the terms and privacy policy</string>
+    <string name="create_profile_add_accounts">Create profile + add accounts</string>
+<!---->
+
+<!--    Login-->
+    <string name="welcome_back">Welcome back</string>
+    <string name="hello_there">Hello there</string>
+    <string name="email_hint">Email address or mobile number</string>
+    <string name="login_password_hint">Enter password</string>
+    <string name="login_password_title">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="enter_password_to_sign_in">Enter password to sign in</string>
+    <string name="login_header_description">Sign in to Continue. Remember, your password is yours, do not share it with anyone.</string>
+
+<!--    -->
+
+    <string name="already_have_an_account">Already have an account? Go to the</string>
+    <string name="sign_in">Login Page</string>
+    <string name="username">Username</string>
+    <string name="login_hint">Username / E-Mail</string>
+    <string name="login">Login</string>
+    <string name="createPin_header">Create your 4-digit PIN</string>
+    <string name="createPin_hint">Make sure that your PIN is unique and secure</string>
+<!--    Create Password-->
+    <string name="password_hint">Enter password</string>
+    <string name="re_enter_password_hint">Re-enter your password</string>
+    <string name="create_password">Create password</string>
+    <string name="createPasswd_header">Create a strong password</string>
+    <string name="createPassword_hint">The harder the password, the better and safer</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password_title">Password</string>
+    <string name="validate_header">What is required?</string>
+    <string name="validateLetter">Must contain both numbers, uppercase and lowercase letters</string>
+    <string name="validateCharLong">Must be at least 8 characters long</string>
+    <string name="validate_specialChar"><![CDATA[Must contain a special character (e.g. !@#$&)]]></string>
+    <string name="passwordMatch">Password must match</string>
+
+<!--    -->
+    <string name="pinValidate_header">How to create a secure PIN:</string>
+    <string name="validateSequence">Avoid number sequences(e.g. 1234 or 9876)</string>
+    <string name="validateRepetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
+    <string name="verify_header">How would you like to get verified?</string>
+    <string name="select_hint">Select one of the options below</string>
+    <string name="greetings">Good evening, Stephen</string>
+    <string name="home_hint">What would you like to do today?</string>
+    <string name="purpose1">This loan is available to Equity members who  have had their Equity bank account for at least six months</string>
+    <string name="purpose2">You can borrow up to 1,000,000 KES, while can be paid over a period of 12 months.</string>
+    <string name="purpose3">How much can I borrow?</string>
+    <string name="purpose4">You can check your loan limit and find out</string>
+    <string name="loanDesc">Equity offers a variety of loans to help you meet your goals.
+        Look through our loan products to find one that is suited to your
+        needs
+    </string>
+    <string name="purpose">Borrow  up to 1,000,000 KES and pay back over up to twelve months</string>
+    <string name="manage_devices">You can remove any of the devices connected to your profile</string>
+    <string name="getInTouch">Reach out to us anytime you need help and our talent team will be gladly assist you</string>
+    <string name="favourite">Your favourite contact will apear here. Add a new one to quickly transact</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="change_password_title">Change your password</string>
+    <string name="change_password_description">Create a new password</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+    </string>
+
+    <string name="confirm_pass">Confirm</string>
+<!--    Transact-->
+    <string name="schedule_payment">Schedule payment</string>
+    <string name="western_union_hint">Western Union</string>
+    <string name="paypal_hint">PayPal</string>
+    <string name="add_favourite">Add a favorite</string>
+    <string name="favorite">Favorite</string>
+    <string name="own_equity_account">Own Equity account</string>
+    <string name="another_equity_account">Another Equity account</string>
+    <string name="pay_top_up">Pay to or top up card</string>
+    <string name="credit_prepaid">Credit and prepaid cards</string>
+    <string name="mobile_wallet">Mobile wallet</string>
+    <string name="send_to_mobile">Send to mobile money providers</string>
+    <string name="another_bank">Another Bank</string>
+    <string name="pay_bill">Pay bill</string>
+    <string name="buy_airtime">Buy airtime</string>
+    <string name="buy_goods">Buy goods</string>
+    <string name="agent">Agent</string>
+<!--    -->
+
+<!--    Loan-->
+    <string name="loans">Loans</string>
+    <string name="pay_loan">Pay loan</string>
+    <string name="get_loan">Get loan</string>
+    <string name="one_month_loan_title">One Month Loan</string>
+    <string name="one_month_loan_subtitle">Borrow up to 1,000,000 KES and pay it back in one month</string>
+
+    <string name="installment_loan_title">Installment Loan</string>
+    <string name="installment_loan_subtitle">Borrow up to 1,000,000 KES and pay it back over up to twelve months</string>
+
+    <string name="pension_loan_title">Pension Loan</string>
+    <string name="pension_loan_subtitle">Loan for members who receive a monthly pension</string>
+
+    <string name="salary_advance_loan_title">Salary Advance Loan</string>
+    <string name="salary_advance_loan_subtitle">Short-tern loan for members who receive a monthly salary</string>
+
+    <string name="ecosystem_loan_title">EcoSystem Loan</string>
+    <string name="ecosystem_loan_subtitle">This product is for approved retailers who sell products stocked by a local anchor or sub-anchor</string>
+
+
+
+<!--    Home-->
+    <string name="add_your_paypal_account">Add your PayPal account</string>
+    <string name="add_paypal_description">You can now move money from PayPal right into your bank account</string>
+    <string name="add_paypal_title_hint">There\'s a new kid on the block</string>
+    <string name="add_account">Add account</string>
+    <string name="add_account_description">Add an account,card or mobile wallet</string>
+    <string name="my_accounts">My accounts</string>
+    <string name="my_paypal_account_header">My Paypal accounts</string>
+    <string name="my_balance">My balance</string>
+    <string name="you_have_hint">You have</string>
+    <string name="yow_owe_hint">You owe</string>
+
+<!--    MoreScreen Hint-->
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_subtitle">View and manage your notifications</string>
+    <string name="security_title">Security</string>
+    <string name="security_subtitle">Change your sign-in details and password
+    </string> <string name="support_title">Support</string>
+    <string name="support_subtitle">Email,call or find us on social media</string>
+    <string name="change_language_title">Change Language</string>
+    <string name="recommend_equity_to_friend_title">Recommend Equity mobile to a friend</string>
+    <string name="sign_out">Sign out</string>
+
+<!--    Savings-->
+    <string name="save">Save</string>
+    <string name="open_an_account">Open an account</string>
+    <string name="learn_more">Learn more</string>
+    <string name="savings_title">Grow your Money</string>
+    <string name="savings_description">Equity Bank offers a variety of products that helps you save and invest your money to ensure you grow your wealth </string>
+    <string name="classic_savings_title">Classic savings</string>
+    <string name="classic_savings_subtitle">Save any amount as frequently as you can while earning a simple interest</string>
+
+    <string name="goal_savings_title">Goal savings</string>
+    <string name="goal_savings_subtitle">Set your goals and start saving towards them immediately while earning interest</string>
+
+    <string name="fixed_savings_title">Fixed deposit</string>
+    <string name="fixed_savings_subtitle">Access your deposit amount plus interest at the end of a fixed saving period</string>
+
+    <string name="call_savings_title">Call deposit</string>
+    <string name="call_savings_subtitle">Start saving and have immediate access to your funds plus interest,without any penalty</string>
+<!--    Security Screen Hint-->
+    <string name="change_your_password_title">Change your password</string>
+    <string name="change_your_password_subtitle">Create a new password</string>
+    <string name="manage_your_pin_title">Manage your PIN</string>
+    <string name="manage_your_pin_subtitle">Reset or change your PIN</string>
+    <string name="manage_security_question_title">Manage security questions</string>
+    <string name="manage_security_question_subtitle">Update your security questions</string>
+    <string name="enable_touch_title">Enable Touch ID</string>
+    <string name="enable_touch_subtitle">Unlock with Touch ID</string>
+    <string name="manage_your_devices_title">Manage your devices</string>
+    <string name="manage_your_devices_subtitle">Manage the devices connected to your profile</string>
+
+<!--    FORGOT PASSWORD-->
+    <string name="have_you_forgotten_your_password">Have you forgotten your password</string>
+    <string name="forgot_password_description">We\'ll email or text you a link to help you reset your password</string>
+    <string name="email_or_mobile_number">Email address or mobile number</string>
+
+<!--    CREATE PIN-->
+    <string name="pin_title">PIN</string>
+    <string name="pin_hint">Enter Pin</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="confirm_pin_hint">Confirm PIN</string>
+    <string name="set_pin">Set PIN</string>
+    <string name="create_dialog_description">You can now simplify some of your regular transactions with a unique and easy to remember,4-Digit PIN</string>
+    <string name="set_up_fingerprint_id">Set up Fingerprint ID</string>
+    <string name="apply_now">Apply now</string>
+
+<!--    BASE UI AND BOTTOM SHEET-->
+    <string name="apply">Apply</string>
+    <string name="select_finish_date_title">Select End Date</string>
+    <string name="today">Today</string>
+
+    <plurals name="finish_date">
+        <item quantity="one">%1$s (%2$s day)</item>
+        <item quantity="other">%1$s (%2$s days)</item>
+    </plurals>
+
+    <string name="not_found_email">not found\n</string>
+    <string name="copy_to_clipboard">copied to clopboard</string>
+    <string name="open_account">Open account</string>
+
+</resources>
