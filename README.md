@@ -32,7 +32,6 @@ The project utilizes a wide range of libraries to enhance development and mainta
 - [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html): For managing asynchronous programming.
 - [Retrofit](https://square.github.io/retrofit/): A type-safe HTTP client for Android and Java.
 - [Firebase](https://firebase.google.com/): Integrations for cloud services like messaging, crash reporting, and analytics.
-- [ExoPlayer](https://exoplayer.dev/): A media player library for playing audio and video content.
 - [Room](https://developer.android.com/jetpack/androidx/releases/room): Android's official persistence library.
 - [Accompanist](https://google.github.io/accompanist/): A collection of extension libraries for Jetpack Compose.
 - [Detekt](https://detekt.github.io/detekt/): A static code analysis tool for Kotlin.
