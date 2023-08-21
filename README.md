@@ -1,3 +1,10 @@
+## Work in Progress
+---
+
+⚠️ **Work in Progress**: This project is currently under active development. The information provided below is based on the latest available update. Expect changes and additions as we continue to enhance and refine the app.
+
+---
+
 
 # EquityMobile
 
