@@ -33,8 +33,6 @@ The project utilizes a wide range of libraries to enhance development and mainta
 - [Retrofit](https://square.github.io/retrofit/): A type-safe HTTP client for Android and Java.
 - [Firebase](https://firebase.google.com/): Integrations for cloud services like messaging, crash reporting, and analytics.
 - [ExoPlayer](https://exoplayer.dev/): A media player library for playing audio and video content.
-- [Koin](https://insert-koin.io/): A lightweight dependency injection framework for Kotlin.
-- [ZXing](https://github.com/zxing/zxing): A library for working with QR codes and barcodes.
 - [Room](https://developer.android.com/jetpack/androidx/releases/room): Android's official persistence library.
 - [Accompanist](https://google.github.io/accompanist/): A collection of extension libraries for Jetpack Compose.
 - [Detekt](https://detekt.github.io/detekt/): A static code analysis tool for Kotlin.
