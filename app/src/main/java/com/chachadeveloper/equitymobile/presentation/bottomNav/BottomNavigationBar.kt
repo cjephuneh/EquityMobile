@@ -7,13 +7,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.util.Graph.BORROW_SCREEN_ROUTE
 import com.dev.chacha.util.Graph.HOME_SCREEN_ROUTE
 import com.dev.chacha.util.Graph.MORE_SCREEN_ROUTE
@@ -49,7 +51,13 @@ fun BottomNavigationBar(navController: NavHostController) {
                             modifier = Modifier.size(24.dp)
                         )
                     },
-                    label = { Text(text = destination.title) },
+                    label = {
+                        Text(
+                            text = destination.title,
+                            textAlign = TextAlign.Center,
+                            fontSize = 10.sp
+                        )
+                            },
                     alwaysShowLabel = true,
                     onClick = {
                         navController.navigate(destination.route) {

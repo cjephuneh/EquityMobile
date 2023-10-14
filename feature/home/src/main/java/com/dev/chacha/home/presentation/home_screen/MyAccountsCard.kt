@@ -2,6 +2,8 @@ package com.dev.chacha.home.presentation.home_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,11 +38,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.dev.chacha.home.presentation.HomeNavigation
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
-fun MyAccountsCard() {
+
+fun MyAccountsCard(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -53,8 +59,11 @@ fun MyAccountsCard() {
 
         Card(
             modifier = Modifier
+                .fillMaxWidth()
                 .height(150.dp)
-                .width(250.dp),
+                .clickable(MutableInteractionSource(),null){
+                    navController.navigate(HomeNavigation.AccountCard.route)
+                },
             shape = RoundedCornerShape(8.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.primary,

@@ -12,6 +12,7 @@ import com.dev.chacha.loans.presentation.installment_loan.InstallmentLoanScreen
 import com.dev.chacha.loans.presentation.loan_list.GetLoanListScreen
 import com.dev.chacha.loans.presentation.one_month_loan.AboutOneMonthLoanScreen
 import com.dev.chacha.loans.presentation.one_month_loan.OneMonthLoanScreen
+import com.dev.chacha.loans.presentation.pay_loan.PayLoanScreen
 import com.dev.chacha.loans.presentation.pension_loan.AboutPensionLoanScreen
 import com.dev.chacha.loans.presentation.pension_loan.PensionLoanScreen
 import com.dev.chacha.loans.presentation.salary_advance.AboutSalaryAdvanceLoanScreen
@@ -44,7 +45,8 @@ fun NavGraphBuilder.borrowNavGraph(navController: NavHostController) {
                     route = BorrowScreenNavigation.CheckLoanLimit.route,
                     inclusive = false
                 )
-            }
+            },
+            navController = navController
         )
     }
     composable(BorrowScreenNavigation.ApplyLoan.route) {
@@ -88,7 +90,6 @@ fun NavGraphBuilder.borrowNavGraph(navController: NavHostController) {
     }
 
 
-
 }
 
 
@@ -100,14 +101,14 @@ sealed class BorrowScreenNavigation(val route: String){
     object CheckLoanLimit : BorrowScreenNavigation(route = "Check_loan")
 
     object ApplyLoan : BorrowScreenNavigation("apply_loan")
-    object AboutOneMonthLoan: BorrowScreenNavigation(route= "about_call_Deposit")
-    object OneMonthLoan: BorrowScreenNavigation( route = "call_Deposit")
-    object AboutInstallmentLoan: BorrowScreenNavigation(route = "about_classic_savings")
-    object InstallmentLoan: BorrowScreenNavigation(route = "classic_savings")
-    object AboutSalaryAdvanceLoan: BorrowScreenNavigation(route = "about_fixed_deposit")
-    object SalaryAdvanceLoan: BorrowScreenNavigation(route = "fixed_deposit")
-    object AboutPensionLoan: BorrowScreenNavigation(route = "about_goal_Savings")
-    object PensionLoan: BorrowScreenNavigation(route = "goal_savings")
-    object AboutEcoSystemLoan: BorrowScreenNavigation(route = "goal_savings")
-    object EcoSystemLoan: BorrowScreenNavigation(route = "goal_savings")
+    object AboutOneMonthLoan: BorrowScreenNavigation(route= "about_one_month_loan")
+    object OneMonthLoan: BorrowScreenNavigation( route = "one_month_loam")
+    object AboutInstallmentLoan: BorrowScreenNavigation(route = "about_installment_loam")
+    object InstallmentLoan: BorrowScreenNavigation(route = "installment_loam")
+    object AboutSalaryAdvanceLoan: BorrowScreenNavigation(route = "about_salary_advance_loam")
+    object SalaryAdvanceLoan: BorrowScreenNavigation(route = "salary_advance_loam")
+    object AboutPensionLoan: BorrowScreenNavigation(route = "about_pension_loam")
+    object PensionLoan: BorrowScreenNavigation(route = "pension_loam")
+    object AboutEcoSystemLoan: BorrowScreenNavigation(route = "about_ecosystem_loam")
+    object EcoSystemLoan: BorrowScreenNavigation(route = "ecosystem_loam")
 }

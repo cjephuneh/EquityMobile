@@ -39,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
 fun MyBalanceCard() {
     var expanded by remember { mutableStateOf(false) }
     val icons = if (expanded) Icons.Default.VisibilityOff else Icons.Default.Visibility

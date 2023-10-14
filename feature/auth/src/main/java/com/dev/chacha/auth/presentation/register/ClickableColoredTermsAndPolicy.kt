@@ -12,6 +12,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.dev.chacha.auth.presentation.AuthScreen
 
@@ -30,7 +31,7 @@ fun ClickableColoredTermsAndPolicy(
         val clickableText = SpanStyle(
             fontWeight = FontWeight.Normal,
             fontSize = 14.sp,
-            color = MaterialTheme.colorScheme.primary
+            color = MaterialTheme.colorScheme.primary,
         )
         val annotatedString = buildAnnotatedString {
             withStyle(style = styleCommon) {
@@ -62,6 +63,7 @@ fun ClickableColoredTermsAndPolicy(
                     }
                 }
             },
+            style = MaterialTheme.typography.labelSmall
         )
     }
 

@@ -9,6 +9,8 @@ object Graph {
     const val BORROW_SCREEN_ROUTE = "borrow_graph"
     const val SAVINGS_SCREEN_ROUTE = "savings_graph"
     const val MORE_SCREEN_ROUTE = "more_graph"
+    const val MY_LOANS_SCREEN_ROUTE = "my_loans_graph"
+
 
     // Transact
     const val SCHEDULE_PAYMENT_ROUTE = "schedule_payment_graph"

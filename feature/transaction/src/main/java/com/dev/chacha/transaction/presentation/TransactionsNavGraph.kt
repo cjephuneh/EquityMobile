@@ -4,6 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.dev.chacha.transaction.presentation.create_pin.CreatePinScreen
+import com.dev.chacha.transaction.presentation.third_party.pay_pal.PayPalFirstScreenSheet
+import com.dev.chacha.transaction.presentation.third_party.pay_pal.WithdrawFromPayPalSheet
 import com.dev.chacha.transaction.presentation.transaction.TransactionScreen
 import com.dev.chacha.util.Graph.ANOTHER_BANK_ROUTE
 import com.dev.chacha.util.Graph.ANOTHER_EQUITY_ACCOUNT_ROUTE
@@ -36,17 +38,27 @@ fun NavGraphBuilder.transactionNavGraph(
             navigateToWithdrawCashAgent = { navController.navigate(WITHDRAW_CASH_AGENT_ROUTE)},
             navigateToPayPal = { navController.navigate(PAYPAL_ROUTE)},
             navigateToWesternUnion = { navController.navigate(WESTERN_UNION_ROUTE)},
-            navigateToCreatePin ={ navController.navigate(TransactionScreen.CreatePin.route)}
+            navigateToCreatePin ={ navController.navigate(TransactionNavigation.CreatePin.route)}
         )
     }
-    composable(TransactionScreen.CreatePin.route){
+    composable(TransactionNavigation.CreatePin.route){
         CreatePinScreen()
     }
+
+
+
+
+
+
+
+
 
 }
 
 
 
-sealed class TransactionScreen(val route: String) {
-    object CreatePin:TransactionScreen("create_pin")
+sealed class TransactionNavigation(val route: String) {
+    object CreatePin:TransactionNavigation("create_pin")
+    object WithdrawFromPayPal: TransactionNavigation("withdraw_from_paypal")
+    object PayPalFirstScreenSheet: TransactionNavigation("first_from_paypal")
 }

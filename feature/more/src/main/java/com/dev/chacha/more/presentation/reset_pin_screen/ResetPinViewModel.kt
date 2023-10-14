@@ -1,43 +1,106 @@
 package com.dev.chacha.more.presentation.reset_pin_screen
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.dev.chacha.validate_pin.PinValidationState
+import com.dev.chacha.validate_pin.ValidatePin
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
-class ResetPinViewModel : ViewModel() {
+class ResetPinViewModel (
+    private val validatePassword: ValidatePin = ValidatePin()
+): ViewModel() {
 
-    private val _usernameText = mutableStateOf("")
-    val usernameText: State<String> = _usernameText
+    var currentPIN by mutableStateOf("")
+        private set
 
-    private val _passwordText = mutableStateOf("")
-    val passwordText: State<String> = _passwordText
+    var newPIN by mutableStateOf("") // New confirm PIN state
+        private set
 
-    private val _showPassword = mutableStateOf(false)
-    val showPassword: State<Boolean> = _showPassword
+    var confirmNewPIN by mutableStateOf("") // New confirm PIN state
+        private set
 
-    private val _usernameError = mutableStateOf("")
-    val usernameError: State<String> = _usernameError
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val pinError =
+        snapshotFlow { newPIN }
+            .combine(snapshotFlow { confirmNewPIN }) { pin, confirmPin ->
+                validatePassword.execute(pin, confirmPin)
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = PinValidationState()
+            )
 
-    private val _passwordError = mutableStateOf("")
-    val passwordError: State<String> = _passwordError
-
-    fun setUsernameText(username: String) {
-        _usernameText.value = username
+    fun changeCurrentPIN(value: String) {
+        currentPIN = value
     }
 
-    fun setPasswordText(password: String) {
-        _passwordText.value = password
+    fun changeNewPIN(value: String) {
+        newPIN = value
     }
 
-    fun setIsUsernameError(error: String) {
-        _usernameError.value = error
+    fun changeConfirmPIN(value: String) {
+        confirmNewPIN = value
     }
 
-    fun setIsPasswordError(error: String) {
-        _passwordError.value = error
+    private val _currentPINText = mutableStateOf("")
+    val currentPINText: State<String> = _currentPINText
+
+    private val _currentPINError = mutableStateOf("")
+    val currentPINError: State<String> = _currentPINError
+
+    fun setCurrentPINText(password: String) {
+        _currentPINText.value = password
     }
 
-    fun setShowPassword(showPassword: Boolean) {
-        _showPassword.value = showPassword
+    fun setIsCurrentPinError(error: String) {
+        _currentPINError.value = error
+    }
+
+
+    private val _newPINText = mutableStateOf("")
+    val newPINText: State<String> = _newPINText
+
+    private val _newPINError = mutableStateOf("")
+    val newPINError: State<String> = _newPINError
+
+    fun setNewPinText(username: String) {
+        _newPINText.value = username
+    }
+
+
+    fun setIsNewPinError(error: String) {
+        _newPINError.value = error
+    }
+
+    private val _confirmPINText = mutableStateOf("")
+    val confirmPINText: State<String> = _confirmPINText
+
+    private val _confirmPINError = mutableStateOf("")
+    val confirmPINError: State<String> = _confirmPINError
+
+    fun setConfirmPinText(username: String) {
+        _confirmPINText.value = username
+    }
+
+
+    fun setIsConfirmPinError(error: String) {
+        _confirmPINError.value = error
+    }
+
+
+    private val _showPIN = mutableStateOf(false)
+    val showPIN: State<Boolean> = _showPIN
+
+    fun setShowPIN(showPassword: Boolean) {
+        _showPIN.value = showPassword
     }
 }

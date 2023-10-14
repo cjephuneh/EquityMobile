@@ -93,6 +93,7 @@ dependencies {
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.kotlin.coroutines.datetime)
     implementation(libs.zeko.query.builder)
+    implementation(project(mapOf("path" to ":feature:transaction")))
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
     androidTestImplementation(libs.android.test.junit4)

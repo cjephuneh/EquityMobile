@@ -7,10 +7,13 @@ import android.os.Build
 import android.os.Parcelable
 import android.provider.CallLog
 import android.provider.ContactsContract
+import android.provider.Settings
 import android.provider.Telephony
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toJavaLocalDateTime
@@ -29,7 +32,7 @@ val hour = now.get(Calendar.HOUR_OF_DAY) // get the hour component of the curren
 val greeting = when (hour) { // determine the appropriate greeting based on the hour
     in 0..11 -> "Good morning"
     in 12..17 -> "Good afternoon"
-    in 18..21 -> "Good evening"
+    in 18..20 -> "Good evening"
     else -> "Goodnight"
 }
 

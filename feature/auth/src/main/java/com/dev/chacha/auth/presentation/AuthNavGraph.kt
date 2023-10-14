@@ -1,15 +1,19 @@
 package com.dev.chacha.auth.presentation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.dev.chacha.auth.presentation.auth_screen.AuthScreen
+import com.dev.chacha.auth.presentation.biometric.BiometricSetUpScreen
 import com.dev.chacha.auth.presentation.code_verification.SmsVerificationScreen
 import com.dev.chacha.auth.presentation.create_password.CreatePasswordScreen
 import com.dev.chacha.auth.presentation.forgot_password.ForgotPasswordScreen
 import com.dev.chacha.auth.presentation.login.LoginScreen
 import com.dev.chacha.auth.presentation.login.LoginViewModel
+import com.dev.chacha.auth.presentation.main_login.MainLoginScreen
 import com.dev.chacha.auth.presentation.register.PrivacyPolicy
 import com.dev.chacha.auth.presentation.register.RegisterScreen
 import com.dev.chacha.auth.presentation.register.TermsAndConditionScreen
@@ -17,6 +21,7 @@ import com.dev.chacha.auth.presentation.verification_options.ChooseVerificationS
 import com.dev.chacha.util.Graph
 
 
+@RequiresApi(Build.VERSION_CODES.P)
 fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.AUTHENTICATION,
@@ -92,14 +97,24 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         composable(AuthScreen.SmsCodeVerification.route){
             SmsVerificationScreen(navController)
         }
+        composable(AuthScreen.BiometricSetUp.route){
+            BiometricSetUpScreen(navController)
+        }
+
+        composable(AuthScreen.MainLogin.route){
+            MainLoginScreen(navController)
+        }
     }
 }
 
 
 sealed class AuthScreen(val route: String) {
 
+    object MainLogin: AuthScreen("main_login")
+
     object Welcome : AuthScreen("welcome")
     object Login : AuthScreen(route = "LOGIN")
+    object BiometricSetUp : AuthScreen(route = "biometric")
     object CodeVerification : AuthScreen("code")
     object SmsCodeVerification : AuthScreen("sms")
     object Register : AuthScreen(route = "REGISTER")

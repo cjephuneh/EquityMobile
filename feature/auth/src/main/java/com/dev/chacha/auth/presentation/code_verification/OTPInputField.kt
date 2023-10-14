@@ -1,6 +1,7 @@
 package com.dev.chacha.auth.presentation.code_verification
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -9,13 +10,12 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -41,12 +42,20 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.dev.chacha.auth.presentation.register.CountriesBottomSheets
+import com.dev.chacha.auth.presentation.AuthScreen
 import com.dev.chacha.ui.common.base.AppViewModel
 import com.dev.chacha.ui.common.base.BottomSheetWrapper
 import com.dev.chacha.ui.common.base.PathState
+import com.dev.chacha.ui.common.modal_sheet.EquityModalSheet
 import com.dev.chacha.util.Graph
 import kotlinx.coroutines.launch
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.dev.chacha.data.BiometricViewModel
 
 
 @SuppressLint("NewApi")
@@ -62,9 +71,15 @@ fun OTPInputField(
     singleLine: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     navController: NavController,
-    appViewModel: AppViewModel = viewModel()
 ) {
     val permissionState = remember { mutableStateOf(false) }
+    var isSheetOpen by rememberSaveable { mutableStateOf(false) }
+
+    val biometricViewModel: BiometricViewModel = hiltViewModel()
+    val biometricUiState by biometricViewModel.uiState.collectAsStateWithLifecycle()
+
+    val bottomSheetState = rememberModalBottomSheetState()
+
 
     val keyboardController = LocalSoftwareKeyboardController.current
     var otpValue by remember { mutableStateOf("") }
@@ -119,7 +134,7 @@ fun OTPInputField(
                         modifier = Modifier
                             .weight(1f)
                             .clickable {
-                                appViewModel.openSheet(PathState(SMS_BOTTOMSHEET))
+                                isSheetOpen = true
                                 if (index == 0) {
                                     permissionState.value = true
                                 }
@@ -155,12 +170,46 @@ fun OTPInputField(
     // Use LaunchedEffect to trigger navigation when the condition is met
     LaunchedEffect(otpValue) {
         if (otpValue.length == otpLength && otpValue == "123456") {
-            navController.navigate(Graph.HOME_SCREEN_ROUTE)
-        } 
+            if (biometricUiState.isBiometricEnabled){
+                navController.navigate(AuthScreen.MainLogin.route)
+            } else{
+                navController.navigate(AuthScreen.BiometricSetUp.route)
+
+            }
+        }
     }
 
 
     if (permissionState.value) {
+        if (isSheetOpen) {
+            ModalBottomSheet(
+                onDismissRequest = {
+                    isSheetOpen = false
+                },
+                sheetState = bottomSheetState,
+                dragHandle = { Spacer(modifier = Modifier
+                    .height(0.dp)
+                    .width(0.dp)
+                    .background(MaterialTheme.colorScheme.background))
+                },
+            ) {
+                PermissionBottomSheet(
+                    onPermissionGranted = {
+                        otpValue = "123456"
+                        onOtpChange(otpValue)
+                        permissionState.value = false
+                    },
+                    onPermissionDenied = {
+                        permissionState.value = false
+                    }
+                )
+
+            }
+        }
+    }
+
+
+  /*  if (permissionState.value) {
 
         BottomSheetWrapper(name = SMS_BOTTOMSHEET) {
             PermissionBottomSheet(
@@ -175,7 +224,7 @@ fun OTPInputField(
             )
         }
 
-    }
+    }*/
 
 
     LaunchedEffect(key1 = true) {
@@ -185,9 +234,7 @@ fun OTPInputField(
 
 }
 
-const val SMS_BOTTOMSHEET = "bottomsheetss"
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PermissionBottomSheet(
     onPermissionGranted: () -> Unit,
@@ -197,6 +244,7 @@ fun PermissionBottomSheet(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .safeGesturesPadding()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -207,7 +255,8 @@ fun PermissionBottomSheet(
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
             Button(
@@ -255,7 +304,7 @@ fun OTPCell(
     } else if (isFocus) {
         MaterialTheme.colorScheme.primary
     } else {
-        MaterialTheme.colorScheme.secondary
+        MaterialTheme.colorScheme.onBackground
     }
 
     Surface(

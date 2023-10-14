@@ -1,6 +1,5 @@
 package com.dev.chacha.transaction.presentation.transaction
 
-import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -8,20 +7,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.transaction.presentation.component.CreatePinAlertDialog
+import com.dev.chacha.transaction.presentation.modalsheet_layout.EquityModalSheetLayout
+import com.dev.chacha.transaction.presentation.modalsheet_layout.TransactionBottomSheetType
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.modal_sheet.EquityModalSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,6 +49,10 @@ fun TransactionScreen(
     navigateToCreatePin: ()->Unit
 ) {
     val shouldShowDialog = transactViewModel.shouldShowDialog.value
+    var isSheetOpen by rememberSaveable { mutableStateOf(false) }
+    var currentBottomSheet: TransactionBottomSheetType? by remember { mutableStateOf(null) }
+    val coroutineScope = rememberCoroutineScope()
+
     Scaffold(topBar = {
         StandardToolbar(
             title = "Transact",
@@ -54,8 +65,6 @@ fun TransactionScreen(
                 .padding(paddingValues),
             verticalArrangement = Arrangement.Center
         ) {
-
-
 
             if (shouldShowDialog) {
                 CreatePinAlertDialog(
@@ -115,13 +124,31 @@ fun TransactionScreen(
                 item {
                     ThirdPartyTransactions(
                         onClickPayPal = { navigateToPayPal() },
-                        onClickWesternUnion = {navigateToWesternUnion()}
+                        onClickWesternUnion = {
+                            isSheetOpen = true
+                            currentBottomSheet = TransactionBottomSheetType.WESTERN_UNION_SCREEN
+                        }
                     )
                 }
 
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
                 }
+            }
+        }
+    }
+
+    if (isSheetOpen) {
+        EquityModalSheet(
+            onDismissRequest = {
+                isSheetOpen = false
+            },
+        ) {
+            currentBottomSheet?.let {
+                EquityModalSheetLayout(
+                    bottomSheetType = it,
+                    onClose = {}
+                )
             }
         }
     }
@@ -145,7 +172,7 @@ fun TransactionHeader(onAddFavouriteClick:()->Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(130.dp)
+                .wrapContentHeight()
                 .clip(RoundedCornerShape(8.dp)),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.outline
@@ -153,7 +180,6 @@ fun TransactionHeader(onAddFavouriteClick:()->Unit) {
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
                     .padding(16.dp),
             ) {
                 Text(
@@ -234,13 +260,17 @@ fun ThirdPartyTransactions(
         TransactionTitle(
             drawable = R.drawable.paypal_icons,
             title = R.string.paypal_hint,
-            onItemClick = { onClickPayPal() }
+            onItemClick = { onClickPayPal() },
+            showDrawableColorTint = true
+
         )
         MiddleDivider()
         TransactionTitle(
             drawable = R.drawable.western_union_icon,
             title = R.string.western_union_hint,
-            onItemClick = { onClickWesternUnion() }
+            onItemClick = { onClickWesternUnion() },
+            showDrawableColorTint = true
+
         )
     }
 
@@ -398,15 +428,13 @@ fun Withdraw(onWithCashAgent: () -> Unit) {
             title = R.string.agent,
             onItemClick = {
                 onWithCashAgent()
-            }
+            },
         )
 
     }
 }
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun FingerPrintScreenPreview() {
     EquityMobileTheme {
         TransactionScreen(

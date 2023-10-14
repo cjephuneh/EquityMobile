@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.sp
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
 fun MyPayPalAccounts() {
     Column(
         modifier = Modifier.fillMaxWidth(),

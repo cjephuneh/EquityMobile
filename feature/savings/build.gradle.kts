@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
+    kotlin("plugin.serialization")
+    id("kotlin-parcelize")
 
 }
 

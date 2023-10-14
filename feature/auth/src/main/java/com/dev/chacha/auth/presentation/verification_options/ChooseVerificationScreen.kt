@@ -1,6 +1,5 @@
 package com.dev.chacha.auth.presentation.verification_options
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -11,16 +10,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.auth.presentation.AuthScreen
 import com.dev.chacha.ui.R
-import com.dev.chacha.ui.common.components.EquityButton
-import com.dev.chacha.ui.common.components.EquityOutlinedButton
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.components.TwoButtonsVertical
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,28 +35,16 @@ fun ChooseVerificationScreen(
             )
         },
         bottomBar = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp)
-                    .navigationBarsPadding(),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                EquityOutlinedButton(
-                    onClick = { navController.navigate(AuthScreen.SmsCodeVerification.route)},
-                    text = "I've changed my contact details",
+            selectedOption?.let {
+                TwoButtonsVertical(
+                    topButtonText = "I've changed my contact details",
+                    bottomButtonText = "Confirm",
+                    onTopButtonClick = { navController.navigate(AuthScreen.SmsCodeVerification.route) },
+                    onBottomButtonClick = { navController.navigate(AuthScreen.SmsCodeVerification.route)},
+                    enableBottomButton = it.equals(true)
                 )
-
-                selectedOption?.let {
-                    EquityButton(
-                        onClick = { /*TODO*/ },
-                        text = "Confirm",
-                        enable = it.equals(true)
-                    )
-                }
-
-
             }
+
         }
     ) { paddingValues ->
 
@@ -109,8 +94,6 @@ fun ChooseVerificationScreen(
 
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun FingerPrintScreenPreview() {
     EquityMobileTheme {
         ChooseVerificationScreen(rememberNavController())

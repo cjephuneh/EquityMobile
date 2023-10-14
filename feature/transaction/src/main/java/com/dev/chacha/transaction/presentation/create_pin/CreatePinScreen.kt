@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -16,10 +15,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.AppTextField
 import com.dev.chacha.ui.common.components.ConditionRow
@@ -40,16 +38,11 @@ fun CreatePinScreen(
         )
     },
         bottomBar = {
-            Column(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-            ) {
-                EquityButton(
-                    onClick = { /*TODO*/ },
-                    text = stringResource(id = R.string.set_pin)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
+            EquityButton(
+                onClick = { /*TODO*/ },
+                text = stringResource(id = R.string.set_pin)
+            )
 
-            }
         }
     ) { paddingValues ->
         Column(
@@ -64,7 +57,7 @@ fun CreatePinScreen(
                     .padding(20.dp),
                 contentAlignment = Alignment.TopStart
             ) {
-                Column{
+                Column {
                     Text(
                         text = stringResource(id = R.string.createPin_header),
                         style = MaterialTheme.typography.titleLarge
@@ -95,7 +88,7 @@ fun CreatePinScreen(
                     AppTextField(
                         title = stringResource(id = R.string.confirm_pin),
                         text = createPinViewModel.confirmPIN,
-                        onValueChange =createPinViewModel::changeConfirmPIN,
+                        onValueChange = createPinViewModel::changeConfirmPIN,
                         hint = stringResource(id = R.string.confirm_pin_hint),
                         keyboardType = KeyboardType.NumberPassword,
                         error = createPinViewModel.passwordError.value,
@@ -142,11 +135,26 @@ fun CreatePinScreen(
 
 
                         Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            ConditionRow(condition = "Minimum 4 digits", check = pinError.hasMinimum)
-                            ConditionRow(condition = "Valid PIN format", check = pinError.hasValidPIN)
-                            ConditionRow(condition = "PINs match", check = pinError.hasValidConfirmPIN)
-                            ConditionRow(condition = stringResource(com.dev.chacha.util.R.string.validateSequence), check = pinError.hasNoSequences)
-                            ConditionRow(condition = stringResource(com.dev.chacha.util.R.string.validateRepetetive), check = pinError.hasNoRepetitiveDigits)
+                            ConditionRow(
+                                condition = "Minimum 4 digits",
+                                check = pinError.hasMinimum
+                            )
+                            ConditionRow(
+                                condition = "Valid PIN format",
+                                check = pinError.hasValidPIN
+                            )
+                            ConditionRow(
+                                condition = "PINs match",
+                                check = pinError.hasValidConfirmPIN
+                            )
+                            ConditionRow(
+                                condition = stringResource(com.dev.chacha.util.R.string.validateSequence),
+                                check = pinError.hasNoSequences
+                            )
+                            ConditionRow(
+                                condition = stringResource(com.dev.chacha.util.R.string.validateRepetetive),
+                                check = pinError.hasNoRepetitiveDigits
+                            )
                         }
 
                     }

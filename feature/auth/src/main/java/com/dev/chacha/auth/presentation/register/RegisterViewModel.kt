@@ -5,6 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 class RegisterViewModel : ViewModel() {
     var mobileNumber by mutableStateOf("")
@@ -13,26 +16,19 @@ class RegisterViewModel : ViewModel() {
     val countriesList = getCountriesList()
     var mobileCountry by mutableStateOf<Country?>(null)
 
-    private val _usernameText = mutableStateOf("")
-    val usernameText: State<String> = _usernameText
+    private val _accountNumberText = mutableStateOf("")
+    val accountNumber: State<String> = _accountNumberText
 
-    private val _emailText = mutableStateOf("")
-    val emailText: State<String> = _emailText
+    private val _idNumberError = mutableStateOf("")
+    val idNumberError: State<String> = _idNumberError
 
-    private val _passwordText = mutableStateOf("")
-    val passwordText: State<String> = _passwordText
+    private val _idNumberText = mutableStateOf("")
+    val idNumberText: State<String> = _idNumberText
 
-    private val _showPassword = mutableStateOf(false)
-    val showPassword: State<Boolean> = _showPassword
 
-    private val _usernameError = mutableStateOf("")
-    val usernameError: State<String> = _usernameError
+    private val _accountNumberError = mutableStateOf("")
+    val accountNumberError: State<String> = _accountNumberError
 
-    private val _emailError = mutableStateOf("")
-    val emailError: State<String> = _emailError
-
-    private val _passwordError = mutableStateOf("")
-    val passwordError: State<String> = _passwordError
 
     private val _rememberMeState = mutableStateOf(false)
     val rememberMeState: State<Boolean> = _rememberMeState
@@ -40,12 +36,45 @@ class RegisterViewModel : ViewModel() {
         _rememberMeState.value = value
     }
 
-    fun setUsernameText(username: String) {
-        _usernameText.value = username
+    fun setAccountNumber(accountNumber: String) {
+        _accountNumberText.value = accountNumber
     }
 
-    fun setEmailText(email: String) {
-        _emailText.value = email
+    fun setIdNumberText(idNumber: String) {
+        _idNumberText.value = idNumber
+    }
+
+    private val _uiState = MutableStateFlow(RegisterUiState())
+    val uiState = _uiState.asStateFlow()
+
+    fun onRegisterEvent(event: RegisterUiEvent) {
+        when (event) {
+            is RegisterUiEvent.OnAmountChanged -> {
+                _uiState.update { it.copy(amount = event.amount) }
+            }
+
+            is RegisterUiEvent.OnCurrencyChanged -> {
+                _uiState.update { it.copy(currency = event.currency) }
+
+            }
+
+            is RegisterUiEvent.OnMobileNumberChanged -> {
+                _uiState.update { it.copy(mobileNumber = event.mobileNumber) }
+
+            }
+
+            is RegisterUiEvent.OnCountryCodeSelected -> {
+                _uiState.update { it.copy(countryCode = event.countryCode) }
+            }
+            is RegisterUiEvent.OnCountryFullNameSelected -> {
+                _uiState.update { it.copy(countryFullName = event.countryFullName) }
+
+            }
+            is RegisterUiEvent.OnCountryNameSelected -> {
+                _uiState.update { it.copy(countryName = event.countryName) }
+
+            }
+        }
     }
 
 }

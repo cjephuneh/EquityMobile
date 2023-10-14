@@ -37,7 +37,7 @@ val AppTypography = Typography(
         fontWeight = FontWeight.Medium,
         letterSpacing = 0.5.sp,
         lineHeight = 16.sp,
-        fontSize = 11.sp
+        fontSize = 13.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Poppins,
@@ -121,6 +121,6 @@ val AppTypography = Typography(
         fontWeight = FontWeight.Medium,
         letterSpacing = 0.10000000149011612.sp,
         lineHeight = 20.sp,
-        fontSize = 14.sp
+        fontSize = 12.sp
     ),
 )

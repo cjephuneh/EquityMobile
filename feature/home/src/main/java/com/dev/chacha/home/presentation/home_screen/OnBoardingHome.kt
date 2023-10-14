@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -134,11 +135,11 @@ fun OnBordingHomePager(
 ) {
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         items(item) { onboardItem ->
             Column(
-                modifier = Modifier.padding(horizontal = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Box(
@@ -160,12 +161,17 @@ fun OnBordingHomePager(
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = onboardItem.title,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
+                    overflow = TextOverflow.Clip,
+                    maxLines = 1
                 )
                 Text(
                     text = onboardItem.desc,
                     fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
+                    overflow = TextOverflow.Clip,
+                    maxLines = 1
+
                 )
             }
         }

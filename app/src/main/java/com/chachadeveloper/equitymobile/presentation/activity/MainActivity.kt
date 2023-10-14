@@ -2,14 +2,11 @@ package com.chachadeveloper.equitymobile.presentation.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.RequiresApi
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -17,34 +14,31 @@ import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
-import com.dev.chacha.auth.presentation.biometric.BiometricChecker
+import androidx.fragment.app.FragmentActivity
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
     private val isDone: MutableState<Boolean> = mutableStateOf(false)
     private val permissionRequestCode = 123 // You can choose any request code
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         installSplashScreen().setKeepOnScreenCondition { !isDone.value }
         super.onCreate(savedInstanceState)
         setContent {
             LaunchedEffect(Unit) {
                 isDone.value = true
                 checkAndRequestPermission()
-
-
             }
+            val isSystemDarkState = isSystemInDarkTheme()
+            val systemUiController  = rememberSystemUiController()
 
             if (isDone.value) {
                 EquityMobileTheme {
-                    Surface(
+                    Box(
                         modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.background
                     ) {
                         MainScreen()
                     }
@@ -78,5 +72,7 @@ class MainActivity : ComponentActivity() {
             isDone.value = true
         }
     }
+
+
 }
 

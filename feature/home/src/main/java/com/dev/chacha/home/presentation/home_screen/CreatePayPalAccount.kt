@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -33,11 +34,11 @@ import androidx.compose.ui.unit.sp
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
 fun CreatePayPalAccount() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .wrapContentHeight()
             .background(
                 Color(0xFF0092D7), shape = RoundedCornerShape(8.dp)
             ),
@@ -74,7 +75,7 @@ fun CreatePayPalAccount() {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(145.dp),
+                .wrapContentHeight(),
             shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.outline
@@ -82,7 +83,7 @@ fun CreatePayPalAccount() {
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .wrapContentHeight()
                     .padding(16.dp),
                 verticalArrangement = Arrangement.Center
             ) {

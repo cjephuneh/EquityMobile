@@ -1,12 +1,10 @@
 package com.dev.chacha.auth.presentation.auth_screen
 
 
-import android.content.res.Configuration
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -22,14 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.extensions.greeting
 import com.dev.chacha.ui.R
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -215,8 +211,6 @@ fun AuthScreen(
 }
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun AuthScreenPreview() {
     EquityMobileTheme {
         AuthScreen(

@@ -1,6 +1,5 @@
 package com.dev.chacha.home.presentation.homePager
 
-import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,9 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.dev.chacha.ui.R
 import com.google.accompanist.pager.ExperimentalPagerApi
 
@@ -35,7 +33,7 @@ fun HomePager() {
         when (page) {
 
             0 -> {
-                slideImage.value = R.drawable.ic_launcher_foreground
+                slideImage.value = R.drawable.outline_verified_user_24
             }
 
             1 -> {
@@ -123,8 +121,6 @@ fun DotsIndicator(
 
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun FingerPrintScreenPreview() {
     EquityMobileTheme {
         HomePager()

@@ -53,8 +53,10 @@ fun PinScreen(
             ConditionRow(condition = "Minimum 4 digits", check = pinError.hasMinimum)
             ConditionRow(condition = "Valid PIN format", check = pinError.hasValidPIN)
             ConditionRow(condition = "PINs match", check = pinError.hasValidConfirmPIN)
-            ConditionRow(condition = stringResource(R.string.validateSequence), check = !pinError.hasNoSequences)
-            ConditionRow(condition = stringResource(R.string.validateRepetetive), check = !pinError.hasNoRepetitiveDigits)
+            ConditionRow(condition = stringResource(R.string.validateSequence),
+                check = !pinError.hasNoSequences)
+            ConditionRow(condition = stringResource(R.string.validateRepetetive),
+                check = !pinError.hasNoRepetitiveDigits)
         }
     }
 }

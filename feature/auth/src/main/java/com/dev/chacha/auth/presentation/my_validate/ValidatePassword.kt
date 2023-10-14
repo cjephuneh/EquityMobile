@@ -24,12 +24,13 @@ class ValidatePassword {
     }
 
 
-    private fun validateSpecialCharacter(password: String): Boolean =
-        password.matches(Regex("[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]"))
+    private fun validateSpecialCharacter(password: String): Boolean {
+        return password.matches(Regex(".*[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*"))
+    }
 
-    private fun validateCapitalizedLetter(password: String): Boolean =
-        password.matches(Regex(".*[A-Z].*"))
+    private fun validateCapitalizedLetter(password: String): Boolean {
+        return password.matches(Regex(".*[A-Z].*"))
+    }
 
-    private fun validateMinimum(password: String): Boolean =
-        password.matches(Regex(".{8,}"))
+    private fun validateMinimum(password: String): Boolean = password.length >= 8
 }

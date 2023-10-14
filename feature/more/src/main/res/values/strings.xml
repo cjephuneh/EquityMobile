@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="service_update_desc">Get alert about any upgrades,outage or scheduled downtime</string>
+    <string name="web_devices_no">% device</string>
+</resources>

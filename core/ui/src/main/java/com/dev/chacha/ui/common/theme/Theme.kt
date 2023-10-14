@@ -1,4 +1,4 @@
-package com.chachadeveloper.equitymobile.presentation.common.theme
+package com.dev.chacha.ui.common.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-import com.chachadeveloper.equitymobile.presentation.common.theme.*
 import com.dev.chacha.ui.common.theme.*
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -83,7 +82,7 @@ private val DarkColorScheme = darkColorScheme(
 fun EquityMobileTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

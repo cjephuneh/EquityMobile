@@ -124,7 +124,7 @@ fun GetLoanListScreen(navController: NavController) {
                 item {
                     EquityOutlinedCard(
                         onClickLearnMore = { navController.navigate(BorrowScreenNavigation.AboutOneMonthLoan.route) },
-                        onClickButton = { navController.navigate(BorrowScreenNavigation.OneMonthLoan.route) },
+                        onClickButton = { navController.navigate(BorrowScreenNavigation.AboutOneMonthLoan.route) },
                         buttonText = stringResource(id = R.string.apply_now),
                         title = stringResource(id = R.string.one_month_loan_title),
                         subtitle = stringResource(id = R.string.one_month_loan_subtitle)
@@ -134,7 +134,7 @@ fun GetLoanListScreen(navController: NavController) {
                 item {
                     EquityOutlinedCard(
                         onClickLearnMore = { navController.navigate(BorrowScreenNavigation.AboutInstallmentLoan.route) },
-                        onClickButton = { navController.navigate(BorrowScreenNavigation.InstallmentLoan.route) },
+                        onClickButton = { navController.navigate(BorrowScreenNavigation.AboutInstallmentLoan.route) },
                         buttonText = stringResource(id = R.string.apply_now),
                         title = stringResource(id = R.string.installment_loan_title),
                         subtitle = stringResource(id = R.string.installment_loan_subtitle)
@@ -144,7 +144,7 @@ fun GetLoanListScreen(navController: NavController) {
                 item {
                     EquityOutlinedCard(
                         onClickLearnMore = { navController.navigate(BorrowScreenNavigation.AboutPensionLoan.route) },
-                        onClickButton = { navController.navigate(BorrowScreenNavigation.PensionLoan.route) },
+                        onClickButton = { navController.navigate(BorrowScreenNavigation.AboutPensionLoan.route) },
                         buttonText = stringResource(id = R.string.apply_now),
                         title = stringResource(id = R.string.pension_loan_title),
                         subtitle = stringResource(id = R.string.pension_loan_subtitle)
@@ -155,7 +155,7 @@ fun GetLoanListScreen(navController: NavController) {
                 item {
                     EquityOutlinedCard(
                         onClickLearnMore = { navController.navigate(BorrowScreenNavigation.AboutSalaryAdvanceLoan.route) },
-                        onClickButton = { navController.navigate(BorrowScreenNavigation.SalaryAdvanceLoan.route) },
+                        onClickButton = { navController.navigate(BorrowScreenNavigation.AboutSalaryAdvanceLoan.route) },
                         buttonText = stringResource(id = R.string.apply_now),
                         title = stringResource(id = R.string.salary_advance_loan_title),
                         subtitle = stringResource(id = R.string.salary_advance_loan_subtitle)
@@ -166,7 +166,7 @@ fun GetLoanListScreen(navController: NavController) {
                 item {
                     EquityOutlinedCard(
                         onClickLearnMore = { navController.navigate(BorrowScreenNavigation.AboutEcoSystemLoan.route) },
-                        onClickButton = { navController.navigate(BorrowScreenNavigation.EcoSystemLoan.route) },
+                        onClickButton = { navController.navigate(BorrowScreenNavigation.AboutEcoSystemLoan.route) },
                         buttonText = stringResource(id = R.string.apply_now),
                         title = stringResource(id = R.string.ecosystem_loan_title),
                         subtitle = stringResource(id = R.string.ecosystem_loan_subtitle)

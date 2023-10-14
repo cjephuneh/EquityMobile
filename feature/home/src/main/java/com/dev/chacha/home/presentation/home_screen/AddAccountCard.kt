@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
 fun AddAccountCard() {
     OutlinedCard(
         modifier = Modifier.fillMaxWidth(),

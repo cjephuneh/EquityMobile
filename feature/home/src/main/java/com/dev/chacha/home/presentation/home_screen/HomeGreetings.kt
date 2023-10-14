@@ -19,7 +19,6 @@ import com.dev.chacha.extensions.greeting
 import com.dev.chacha.ui.R
 
 @Composable
-@Preview
 fun HomeGreetings() {
     Column(
         modifier = Modifier.fillMaxWidth(),
