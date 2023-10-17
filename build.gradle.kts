@@ -11,14 +11,10 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.hilt.plugin) apply false
 }
 
 
-buildscript {
-    dependencies {
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.45")
-    }
-}
 
 allprojects {
     apply(plugin = "org.jetbrains.dokka")

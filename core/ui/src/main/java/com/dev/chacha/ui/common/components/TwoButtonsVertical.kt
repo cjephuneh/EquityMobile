@@ -28,11 +28,14 @@ fun TwoButtonsVertical(
     onBottomButtonClick:() -> Unit,
     modifier: Modifier = Modifier,
     enableTopButton: Boolean = false,
-    enableBottomButton: Boolean = false
+    enableBottomButton: Boolean = false,
+    showTopButton: Boolean = false
 ) {
     Column(modifier = modifier) {
         EquityDivider(modifier = Modifier.fillMaxWidth())
-        Spacer(modifier = Modifier.height(12.dp))
+        if (showTopButton){
+            Spacer(modifier = Modifier.height(12.dp))
+        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -45,23 +48,25 @@ fun TwoButtonsVertical(
                     bottom = 20.dp
                 )
         ) {
-            OutlinedButton(
-                onClick = { onTopButtonClick() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = Color.Transparent
-                )
+            if (showTopButton){
+                OutlinedButton(
+                    onClick = { onTopButtonClick() },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = Color.Transparent
+                    )
 
-            ) {
-                Text(
-                    text = topButtonText,
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
+                ) {
+                    Text(
+                        text = topButtonText,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
 
 
@@ -81,7 +86,7 @@ fun TwoButtonsVertical(
                 Text(
                     text = bottomButtonText,
                     style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.background,
                 )
             }
         }

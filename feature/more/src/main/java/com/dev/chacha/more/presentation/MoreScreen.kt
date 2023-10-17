@@ -1,6 +1,7 @@
 package com.dev.chacha.more.presentation
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -9,6 +10,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -16,7 +19,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dev.chacha.more.presentation.component.SignOutAlertDialog
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.MoreVerticalItem
+import com.dev.chacha.ui.common.components.MoreVerticalItemWithCard
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.theme.DefaultBackground
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,53 +35,103 @@ fun MoreScreen(
 ) {
     val moreViewModel: MoreViewModel = hiltViewModel()
     val moreUiState by moreViewModel.moreUiState.collectAsStateWithLifecycle()
-    val shouldShowDialog = moreViewModel.shouldShowDialog.value
+    val uriHandler = LocalUriHandler.current
 
-    if (shouldShowDialog) {
-        SignOutAlertDialog(
-            onDismissClick = { moreViewModel.setShowDialogState(!moreViewModel.shouldShowDialog.value) },
-            onClick = {  }
-        )
-    }
 
     val userName = "Stephen Chacha"
     Scaffold(
         topBar = {
             StandardToolbar(
-                title = "More",
-                showForwardArrow = true,
-                showBackArrow = true
+                title = "Settings and more",
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = DefaultBackground
+                ),
+                showTitleWithUsername = true,
+                userName = "Stephen Chacha"
             )
-        }
+        },
+        containerColor = DefaultBackground
     ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(DefaultBackground)
                 .padding(paddingValues)
                 .padding(start = 24.dp, end = 16.dp)
         ) {
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 item {
-                    MoreUserAccount()
-                }
-                item{
-                    Box{}
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        MoreUserAccount()
+                        MoreVerticalItemWithCard(
+                            drawable = R.drawable.outline_notifications_none_24,
+                            title = R.string.notifications_title,
+                            subtitle = R.string.notifications_subtitle,
+                            onClick = {
+                                navigateToNotifications()
+                            }
+                        )
+                        MoreVerticalItemWithCard(
+                            drawable = R.drawable.outline_language_24,
+                            title = R.string.change_language_title,
+                            onClick = {
+                                navigateToChangeLanguage()
+                            }
+                        )
+                    }
+
                 }
                 item {
-                    MoreVerticalItem(
-                        drawable = R.drawable.outline_notifications_none_24,
-                        title = R.string.notifications_title,
-                        subtitle = R.string.notifications_subtitle,
-                        onClick = {
-                            navigateToNotifications()
-                        }
+                    Text(
+                        text = "Support",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.SemiBold
                     )
                 }
                 item {
-                    MoreVerticalItem(
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        MoreVerticalItemWithCard(
+                            drawable = R.drawable.whatsapp,
+                            title = R.string.activate_chat_banking,
+                            subtitle = R.string.activate_chat_banking_desc,
+                            onClick = {
+                                uriHandler.openUri("https://equitygroupholdings.com/ke")
+
+                            },
+                            showColorFilter = true
+                        )
+                        MoreVerticalItemWithCard(
+                            drawable = R.drawable.outline_headset_mic_24,
+                            title = R.string.get_in_touch,
+                            subtitle = R.string.get_in_touch_subtitle,
+                            onClick = {
+                                navigateToGetInTouch()
+                            }
+                        )
+
+
+                    }
+
+                }
+
+                item {
+                    Text(
+                        text = "Security",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+
+                item {
+                    MoreVerticalItemWithCard(
                         drawable = R.drawable.outline_verified_user_24,
                         title = R.string.security_title,
                         subtitle = R.string.security_subtitle,
@@ -87,51 +142,25 @@ fun MoreScreen(
                 }
 
                 item {
-                    MoreVerticalItem(
-                        drawable = R.drawable.outline_headset_mic_24,
-                        title = R.string.get_in_touch,
-                        subtitle = R.string.get_in_touch_subtitle,
-                        onClick = {
-                            navigateToGetInTouch()
-                        }
+                    Text(
+                        text = "About us",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.SemiBold
                     )
                 }
                 item {
-                    MoreVerticalItem(
-                        drawable = R.drawable.outline_language_24,
-                        title = R.string.change_language_title,
-                        onClick = {
-                            navigateToChangeLanguage()
-                        }
-                    )
-                }
-                item {
-                    MoreVerticalItem(
+                    MoreVerticalItemWithCard(
                         drawable = R.drawable.outline_phone_android,
-                        title = R.string.recommend_equity_to_friend_title,
+                        title = R.string.recommed,
+                        subtitle = R.string.recommend_equity_to_friend_title,
                         onClick = {}
                     )
                 }
 
-                item {
-                    MoreVerticalItem(
-                        drawable = R.drawable.outline_power_settings_new_24,
-                        title = R.string.sign_out,
-                        onClick = {
-                            moreViewModel.setShowDialogState(true)
-                        }
-                    )
+                item{
+                    Box{}
                 }
-                item {
-                    Box(modifier = Modifier.fillMaxWidth()){
-                        Text(
-                            text = "Version 0.0.67",
-                            color = Color.DarkGray,
-                            fontSize = 12.sp
-                        )
-                    }
 
-                }
             }
         }
 

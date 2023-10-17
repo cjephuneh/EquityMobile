@@ -23,25 +23,42 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.MoreVerticalItem
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.theme.HintGray
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun GetInTouchScreen() {
+fun GetInTouchScreen(
+    navController: NavController
+) {
     val bottomSheetState = rememberBottomSheetState(
         initialValue = BottomSheetValue.Collapsed
     )
     val sheetState = rememberModalBottomSheetState()
+    val context = LocalContext.current
+
+    val uriHandler = LocalUriHandler.current
+    var expanded by remember {
+        mutableStateOf(false)
+    }
+
 
 
     val scaffoldState = rememberBottomSheetScaffoldState()
@@ -66,7 +83,10 @@ fun GetInTouchScreen() {
         topBar = {
             StandardToolbar(
                 title = stringResource(R.string.get_in_touch),
-                showBackArrow = true
+                showBackArrow = true,
+                onNavigateBack = {
+                    navController.navigateUp()
+                }
             )
         },
         sheetDragHandle = null,
@@ -82,7 +102,7 @@ fun GetInTouchScreen() {
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ){
                 item {
                     Column(
@@ -90,6 +110,7 @@ fun GetInTouchScreen() {
                     ) {
                         Text(
                             text = stringResource(R.string.how_can_we_help_you),
+                            style = MaterialTheme.typography.titleLarge,
                             modifier = Modifier.clickable {
                                 scope.launch {
                                     scaffoldState.bottomSheetState.expand()
@@ -104,7 +125,11 @@ fun GetInTouchScreen() {
                     Column(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(text = stringResource(R.string.get_in_touch_desc))
+                        Text(
+                            text = stringResource(R.string.get_in_touch_desc),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = HintGray
+                        )
                     }
 
                 }
@@ -116,9 +141,25 @@ fun GetInTouchScreen() {
                         subtitle = getInTouchItem.subTitle,
                         onClick = {
                             when(it){
-                                R.string.contact_us ->{}
-                                R.string.email_us ->{}
-                                R.string.website ->{}
+                                R.string.contact_us ->{
+                                    val u = Uri.parse("tel:" + "+254 763 063000")
+                                    val i = Intent(Intent.ACTION_DIAL, u)
+                                    try {
+                                        context.startActivity(i)
+                                    } catch (s: SecurityException) {
+
+                                        // show() method display the toast with
+                                        // exception message.
+
+                                    }
+
+                                }
+                                R.string.email_us ->{
+                                    uriHandler.openUri("info@equitybank.co.ke")
+                                }
+                                R.string.website ->{
+                                    uriHandler.openUri("https://equitygroupholdings.com/ke")
+                                }
                             }
                         },
                     )
@@ -132,10 +173,14 @@ fun GetInTouchScreen() {
                         onClick = {
                             when(it){
                                 R.string.twitter ->{
-
+                                    uriHandler.openUri("https://twitter.com/KeEquityBank")
                                 }
-                                R.string.facebook ->{}
-                                R.string.linkedin ->{}
+                                R.string.facebook ->{
+                                    uriHandler.openUri("https://www.facebook.com/KeEquityBank")
+                                }
+                                R.string.linkedin ->{
+                                    uriHandler.openUri("https://www.linkedin.com/company/equity-bank-limited/")
+                                }
                             }
                         },
                         showColorFilter = true
@@ -152,6 +197,14 @@ fun GetInTouchScreen() {
 
 
 }
+
+fun handleUriActions(uriHandler: UriHandler) {
+    // You can use uriHandler here to open URIs or perform actions
+    uriHandler.openUri("tel:123456789") // Example: Open the phone dialer
+    uriHandler.openUri("mailto:someone@example.com") // Example: Open the email client
+    uriHandler.openUri("https://www.example.com") // Example: Open a website
+}
+
 
 data class GetInTouchItem(
     @StringRes val title: Int,
@@ -183,17 +236,17 @@ private val getInTouchWithColorFilterList = listOf(
     GetInTouchItem(
         R.string.twitter,
         R.string.equity_twitter,
-        R.drawable.ic_twitter
+        R.drawable.twitter
     ),
     GetInTouchItem(
         R.string.facebook,
         R.string.equity_facebook,
-        R.drawable.ic__facebook
+        R.drawable.facebook
     ),
     GetInTouchItem(
         R.string.linkedin,
         R.string.equity_linkedin,
-        R.drawable.ic__linkedin
+        R.drawable.linkedin
     )
 
 )

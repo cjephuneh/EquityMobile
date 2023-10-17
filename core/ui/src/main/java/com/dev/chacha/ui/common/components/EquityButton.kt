@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -21,14 +22,17 @@ fun EquityButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
     text: String,
-    enable: Boolean = false
+    enable: Boolean = false,
+    showDivider: Boolean = true
 ) {
     Column (modifier = modifier){
-        EquityDivider()
+        if (showDivider){
+            EquityDivider()
+        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(
                     start = 16.dp,
@@ -39,7 +43,9 @@ fun EquityButton(
         ) {
             Button(
                 onClick = { onClick() },
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier
+                    .height(50.dp)
+                    .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (enable) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
                     contentColor = MaterialTheme.colorScheme.onBackground
@@ -49,14 +55,12 @@ fun EquityButton(
             ) {
                 Text(
                     text = text,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(8.dp),
+                    style = MaterialTheme.typography.titleSmall,
                     color = if (enable) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.background,
                     )
             }
         }
 
     }
-
 
 }

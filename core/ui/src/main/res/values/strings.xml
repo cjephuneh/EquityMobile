@@ -26,7 +26,7 @@
     <string name="login_password_hint">Enter password</string>
     <string name="login_password_title">Password</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="enter_password_to_sign_in">Enter password to sign in</string>
+    <string name="enter_password_to_sign_in">Enter password </string>
     <string name="login_header_description">Sign in to Continue. Remember, your password is yours, do not share it with anyone.</string>
 
 <!--    -->
@@ -94,9 +94,9 @@
     <string name="favorite">Favorite</string>
     <string name="own_equity_account">Own Equity account</string>
     <string name="another_equity_account">Another Equity account</string>
-    <string name="pay_top_up">Pay to or top up card</string>
+    <string name="pay_top_up">Pay to card</string>
     <string name="credit_prepaid">Credit and prepaid cards</string>
-    <string name="mobile_wallet">Mobile wallet</string>
+    <string name="mobile_wallet">Mobile money</string>
     <string name="send_to_mobile">Send to mobile money providers</string>
     <string name="another_bank">Another Bank</string>
     <string name="pay_bill">Pay bill</string>
@@ -114,7 +114,7 @@
     <string name="add_paypal_description">You can now move money from PayPal right into your bank account</string>
     <string name="add_paypal_title_hint">There\'s a new kid on the block</string>
     <string name="add_account">Add account</string>
-    <string name="add_account_description">Add an account,card or mobile wallet</string>
+    <string name="add_account_description">A bank account,card,mobile wallet or PayPal account</string>
     <string name="my_accounts">My accounts</string>
     <string name="my_paypal_account_header">My Paypal accounts</string>
     <string name="my_balance">My balance</string>
@@ -406,5 +406,12 @@
     <string name="western_union_send_money_subtitle">Send money internationally through Western Union</string>
     <string name="receive_money">Receive Money</string>
     <string name="western_union_receive_money_subtitle">Receive money by entering a Western Union tracking number</string>
+    <string name="sign_in_with_touch_id">Sign in with Touch ID</string>
+    <string name="recommed">Recommend</string>
+    <string name="activate_chat_banking">Activate Chat Banking</string>
+    <string name="activate_chat_banking_desc">Transact with Equity\'s Virtual Assistant</string>
+    <string name="add_an_equity_account">Add an Equity account</string>
+    <string name="add_an_equity_account_des">An an Equity account to your profile</string>
+    <string name="add_your_paypal_account_desc">Link any two PayPal accounts to your bank accounts</string>
 
 </resources>

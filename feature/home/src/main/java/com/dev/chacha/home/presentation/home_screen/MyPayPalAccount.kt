@@ -2,6 +2,8 @@ package com.dev.chacha.home.presentation.home_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,9 +35,15 @@ import androidx.compose.ui.unit.sp
 import com.dev.chacha.ui.R
 
 @Composable
-fun MyPayPalAccounts() {
+fun MyPayPalAccounts(
+    onClick:()->Unit
+) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .clickable(MutableInteractionSource(),null){
+                onClick()
+            }
+            .fillMaxWidth().padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.Center
     ) {
         Text(
@@ -50,7 +58,7 @@ fun MyPayPalAccounts() {
                     Color(0xFF0092D7),
                     RoundedCornerShape(8.dp)
                 )
-                .height(120.dp),
+                .height(140.dp),
             contentAlignment = Alignment.Center
         ){
             Image(
@@ -75,12 +83,16 @@ fun MyPayPalAccounts() {
                         text = "stevechacha4@gmail.com",
                         maxLines = 1,
                         fontSize = 12.sp,
-                        color = Color.White
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleSmall,
                     )
+
                     Image(
                         painter = painterResource(id = R.drawable.more),
                         contentDescription = null,
-                        modifier = Modifier.size(20.dp),
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.background)
+                            .size(20.dp),
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                     )
 
@@ -88,7 +100,8 @@ fun MyPayPalAccounts() {
                 Text(
                     text = "0.00 EURO",
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    style = MaterialTheme.typography.titleMedium,
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Box(
@@ -99,9 +112,8 @@ fun MyPayPalAccounts() {
                         text = "Last updated 2 hours ago",
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.End,
-                        color = Color.White
-
-
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleSmall,
                     )
                 }
 

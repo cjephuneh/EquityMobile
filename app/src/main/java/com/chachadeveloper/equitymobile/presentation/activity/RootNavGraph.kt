@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import com.dev.chacha.auth.presentation.authNavGraph
 import com.dev.chacha.onboarding.onboard.OnBoardViewModel
 import com.dev.chacha.home.presentation.homeScreenNavGraph
+import com.dev.chacha.home.presentation.transaction_history.accountScreenNavGraph
 import com.dev.chacha.loans.presentation.borrowNavGraph
 import com.dev.chacha.more.presentation.moreScreenNavGraph
 import com.dev.chacha.onboarding.onboard.onboardingNavGraph
@@ -43,6 +44,7 @@ fun RootNavGraph(
         onboardingNavGraph(navController)
         authNavGraph(navController)
         homeScreenNavGraph(navController)
+        accountScreenNavGraph(navController)
         transactionNavGraph(navController)
         borrowNavGraph(navController)
         savingsNavGraph(navController)

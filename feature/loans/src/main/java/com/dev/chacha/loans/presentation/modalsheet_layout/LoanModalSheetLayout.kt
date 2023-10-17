@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun EquityModalSheetLayout(
+fun LoanModalSheetLayout(
     bottomSheetType: LoanBottomSheetType,
     onClose: () -> Unit,
     navController: NavController = rememberNavController()

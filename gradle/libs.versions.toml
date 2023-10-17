@@ -45,6 +45,7 @@ ksp = "1.8.10-1.0.9"
 ktor = "2.0.3"
 lifecycle = "2.6.1"
 lottie-compose = "5.0.3"
+msz-progress-indicator = "0.2.0"
 material = "1.6.1"
 navigation-compose = "2.7.1"
 paging-common = "3.1.1"
@@ -63,6 +64,7 @@ test-navigation = "2.5.0"
 test-mockk = "1.12.7"
 timber = "5.0.1"
 zeko-query-builder = "1.4.4"
+vico = "1.11.3"
 
 
 
@@ -167,10 +169,10 @@ lifecycle-ktx = {module = "androidx.lifecycle:lifecycle-viewmodel-ktx",version.r
 lifecycle-ktx-compose = {module = "androidx.lifecycle:lifecycle-runtime-compose",version.ref = "lifecycle"}
 lifecycle-ktx-compose-viewmodel = {module = "androidx.lifecycle:lifecycle-viewmodel-compose",version.ref = "lifecycle"}
 
-
-
-
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
+
+msz-progress-indicator = { module = "com.ehsanmsz:msz-progress-indicator", version.ref = "msz-progress-indicator" }
+
 paging-common = { module = "androidx.paging:paging-common-ktx", version.ref = "paging-common" }
 paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-compose" }
 result-jvm = { module = "com.github.kittinunf.result:result-jvm", version.ref = "result-jvm" }
@@ -206,9 +208,13 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version = "1.1.5" }
 
+vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
+vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
+vico-core = { group = "com.patrykandpatrick.vico", name = "core", version.ref = "vico" }
+
 [bundles]
 accompanist = ["accompanist-animation","accompanist-flowlayout","accompanist-indicator","accompanist-permissions","accompanist-material","accompanist-navigation","accompanist-insets","accompanist-pager","accompanist-permission","accompanist-swiperefresh","accompanist-systemui"]
-compose = ["compose-foundation","androidx-navigation-compose","compose-materialWindow", "compose-material","coil-compose", "compose-activity", "compose-compiler", "compose-runtime", "compose-material-3", "compose-materialIcons", "compose-runtimeLivedata", "compose-ui", "compose-ui-util", "compose-ui-tooling", "compose-ui-tooling-preview", "paging-compose", "compose-preview-customview", "compose-preview-customview-poolingcontainer", "compose-constraintlayout"]
+compose = ["compose-foundation","msz-progress-indicator","androidx-navigation-compose","compose-materialWindow", "compose-material","coil-compose", "compose-activity", "compose-compiler", "compose-runtime", "compose-material-3", "compose-materialIcons", "compose-runtimeLivedata", "compose-ui", "compose-ui-util", "compose-ui-tooling", "compose-ui-tooling-preview", "paging-compose", "compose-preview-customview", "compose-preview-customview-poolingcontainer", "compose-constraintlayout"]
 lifecycle = ["lifecycle-livedataKtx", "lifecycle-ktx","lifecycle-ktx-compose","lifecycle-ktx-compose-viewmodel","lifecycle-runtimeKtx", "lifecycle-viewmodel-compose", "lifecycle-viewmodel"]
 room = ["room-ktx", "room-paging", "room-runtime"]
 ktor = ["ktor-core", "ktor-android", "ktor-json", "ktor-content-negotiation"]

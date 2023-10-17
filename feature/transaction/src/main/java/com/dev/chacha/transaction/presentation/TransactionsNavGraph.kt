@@ -25,7 +25,7 @@ fun NavGraphBuilder.transactionNavGraph(
     navController: NavHostController
 ) {
     composable(route = TRANSACTION_SCREEN_ROUTE) {
-        TransactionScreen(
+      /*  TransactionScreen(
             navigateToSchedulePayment = { navController.navigate(SCHEDULE_PAYMENT_ROUTE)},
             navigateToOwnEquityAccount = { navController.navigate(OWN_EQUITY_ACCOUNT_ROUTE)},
             navigateToAnotherEquityAccount = { navController.navigate(ANOTHER_EQUITY_ACCOUNT_ROUTE)},
@@ -39,7 +39,8 @@ fun NavGraphBuilder.transactionNavGraph(
             navigateToPayPal = { navController.navigate(PAYPAL_ROUTE)},
             navigateToWesternUnion = { navController.navigate(WESTERN_UNION_ROUTE)},
             navigateToCreatePin ={ navController.navigate(TransactionNavigation.CreatePin.route)}
-        )
+        )*/
+        NewTransactionScreen(navController = navController)
     }
     composable(TransactionNavigation.CreatePin.route){
         CreatePinScreen()

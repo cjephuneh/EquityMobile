@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import com.dev.chacha.ui.common.theme.*
@@ -80,7 +81,7 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun EquityMobileTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
@@ -97,8 +98,11 @@ fun EquityMobileTheme(
     val systemUiController = rememberSystemUiController()
     if (!view.isInEditMode) {
         SideEffect {
-            systemUiController.setSystemBarsColor(
-                color = if (darkTheme) colorScheme.background else colorScheme.onPrimary
+            systemUiController.setStatusBarColor(
+                color =  Color.White
+            )
+            systemUiController.setNavigationBarColor(
+                color =  Color.White
             )
             /* systemUiController.setStatusBarColor(
                  color = if (darkTheme) colorScheme.background else colorScheme.background

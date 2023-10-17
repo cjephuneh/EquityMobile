@@ -6,17 +6,21 @@ import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -33,7 +37,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -121,17 +127,34 @@ fun MainLoginScreen(
                         onClick = {
                             biometricPrompt.authenticate(promptInfo)
                         },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.height(50.dp).fillMaxWidth(),
                         shape = RoundedCornerShape(8.dp),
                         enabled = true,
                         border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
 
                         ) {
-                        Text(
-                            text = "Authenticate with Biometric",
-                            color = Color.Black,
-                            modifier = Modifier.padding(10.dp)
-                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Icon(
+                                painter = painterResource(id = R.drawable.fingerprint),
+                                contentDescription = stringResource(R.string.sign_in_with_touch_id),
+                                modifier = Modifier.size(24.dp),
+                                tint = MaterialTheme.colorScheme.primary,
+                            )
+                            Spacer(modifier = Modifier.width(5.dp))
+                            Text(
+                                text = stringResource(R.string.sign_in_with_touch_id),
+                                color = MaterialTheme.colorScheme.primary,
+                                fontWeight = FontWeight.SemiBold
+                            )
+
+                        }
+
                     }
                 } else{
                     Text(text = " ")
@@ -141,7 +164,9 @@ fun MainLoginScreen(
                     onClick = {
                         navController.navigate(Graph.HOME_SCREEN_ROUTE)
                     },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .height(50.dp)
+                        .fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Red,
                         containerColor = if (textState.value.isNotEmpty()){
@@ -153,12 +178,11 @@ fun MainLoginScreen(
                     shape = RoundedCornerShape(8.dp),
                     enabled = textState.value.isNotEmpty()
 
-
                 ) {
+
                     Text(
                         text = "Let me in",
-                        color = Color.Black,
-                        modifier = Modifier.padding(10.dp)
+                        color = MaterialTheme.colorScheme.background,
                     )
                 }
 
@@ -175,14 +199,14 @@ fun MainLoginScreen(
             Box(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-                    .background(MaterialTheme.colorScheme.primary, CircleShape)
-                    .size(80.dp),
+                    .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
+                    .size(64.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = getInitials(myName),
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontSize = 28.sp,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontSize = 20.sp,
                     textAlign = TextAlign.Center
                 )
             }
@@ -192,7 +216,8 @@ fun MainLoginScreen(
                 text = "$greeting, Stephen",
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge,
             )
             Spacer(Modifier.height(20.dp))
             
@@ -215,12 +240,12 @@ fun MainLoginScreen(
                 text = "Forgot your password?",
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleSmall
             )
 
         }
 
     }
-
 
 }

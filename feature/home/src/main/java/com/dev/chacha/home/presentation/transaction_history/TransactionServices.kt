@@ -42,7 +42,6 @@ fun TransactionServices() {
         modifier = Modifier.fillMaxWidth()
             .wrapContentHeight()
             .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         TransactionServiceItem(
@@ -79,9 +78,8 @@ fun TransactionServiceItem(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.width(92.dp)
+        modifier = Modifier.width(95.dp)
             .clickable(MutableInteractionSource(), null){ onClick() },
-        verticalArrangement = Arrangement.Center
     ) {
         Box(
             modifier = Modifier
@@ -103,8 +101,6 @@ fun TransactionServiceItem(
             text = stringResource(id = text),
             textAlign = TextAlign.Center,
             fontSize = 12.sp,
-
-
         )
 
     }

@@ -27,20 +27,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dev.chacha.ui.R
+import com.dev.chacha.ui.common.components.StandardCard
 
 @Composable
 fun AddAccountCard() {
-    OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.outlinedCardColors(
-            containerColor = Color.Transparent
-        )
-    ) {
+    StandardCard{
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -65,8 +59,14 @@ fun AddAccountCard() {
             Column(
                 modifier = Modifier.padding(start = 10.dp),
             ) {
-                Text(text = stringResource(id = R.string.add_account))
-                Text(text = stringResource(id = R.string.add_account_description))
+                Text(
+                    text = stringResource(id = R.string.add_account),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = stringResource(id = R.string.add_account_description),
+                    style = MaterialTheme.typography.titleSmall
+                )
             }
             Spacer(modifier = Modifier.weight(1f))
             Icon(

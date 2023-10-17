@@ -50,7 +50,7 @@ fun OnBoardingHome(
         OnBoardingItem(
             id = 0,
             "Send to",
-            "Equity account",
+            "Equity",
             R.drawable.sync_alt
         )
     )
@@ -59,8 +59,8 @@ fun OnBoardingHome(
         OnBoardingItem(
             id = 1,
             "Send to",
-            "Mobile money",
-            R.drawable.account_balance_wallet
+            "Mobile",
+            R.drawable.outline_send_to_mobile_24
         )
     )
 
@@ -68,7 +68,7 @@ fun OnBoardingHome(
         OnBoardingItem(
             id = 2,
             "Send to",
-            "Another bank",
+            "Another",
             R.drawable.account_balance
         )
     )
@@ -76,7 +76,7 @@ fun OnBoardingHome(
         OnBoardingItem(
             id = 3,
             "Pay",
-            "Pay bill",
+            "Bill",
             R.drawable.receipt
         )
     )
@@ -85,7 +85,7 @@ fun OnBoardingHome(
         OnBoardingItem(
             id = 4,
             "Buy",
-            "Buy goods",
+            "Goods",
             R.drawable.trolley
         )
     )
@@ -99,7 +99,7 @@ fun OnBoardingHome(
     )
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -141,6 +141,8 @@ fun OnBordingHomePager(
         items(item) { onboardItem ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.width(85.dp),
+                verticalArrangement = Arrangement.Center
             ) {
                 Box(
                     modifier = Modifier

@@ -154,14 +154,18 @@ fun RegisterScreen(
                         },
                     )
 
-                    ClickableColoredTermsAndPolicy(navController)
+                    ClickableColoredTermsAndPolicy(
+                       onClick = {
 
+                       }
+                    )
 
                 }
             }
         }
 
     }
+
 
     if (isSheetOpen) {
         EquityModalSheet(

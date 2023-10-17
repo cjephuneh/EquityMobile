@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -27,6 +28,15 @@ fun TransactionHistoryItem(
     val currencySymbol = when (transactionType) {
         TransactionType.DEPOSIT -> " " // Customize the symbol as needed
         TransactionType.WITHDRAWAL -> "-" // Customize the symbol as needed
+        TransactionType.FEE -> "-" // Customize the symbol as needed
+        TransactionType.TRANSFER -> "-" // Customize the symbol as needed
+        TransactionType.PURCHASE -> "-" // Customize the symbol as needed
+        TransactionType.INTEREST -> "-" // Customize the symbol as needed
+        TransactionType.PAYMENT -> "-" // Customize the symbol as needed
+        TransactionType.BUY_AIRTIME -> "-" // Customize the symbol as needed
+        TransactionType.BUY_GOODS -> "-" // Customize the symbol as needed
+        TransactionType.ADJUSTMENT -> "-" // Customize the symbol as needed
+        TransactionType.PAY_BILL -> "-" // Customize the symbol as needed
         else -> "" // Default symbol for other transaction types
     }
 
@@ -37,7 +47,16 @@ fun TransactionHistoryItem(
     val textColor = when (transactionType) {
         TransactionType.DEPOSIT -> Color.Green // Customize the color as needed
         TransactionType.WITHDRAWAL -> Color.Red // Customize the color as needed
-        else -> Color.Black // Default color for other transaction types
+        TransactionType.FEE -> Color.Red // Customize the color as needed
+        TransactionType.TRANSFER -> Color.Red // Customize the color as needed
+        TransactionType.PURCHASE -> Color.Red // Customize the color as needed
+        TransactionType.PAYMENT -> Color.Red // Customize the color as needed
+        TransactionType.INTEREST -> Color.Red // Customize the color as needed
+        TransactionType.PAY_BILL -> Color.Red // Customize the color as needed
+        TransactionType.BUY_GOODS -> Color.Red // Customize the color as needed
+        TransactionType.BUY_AIRTIME -> Color.Red // Customize the color as needed
+        TransactionType.ADJUSTMENT -> Color.Red // Customize the color as needed
+        else -> Color.Green // Default color for other transaction types
     }
 
 
@@ -76,13 +95,15 @@ fun TransactionHistoryItem(
             text = formattedAmount,
             textAlign = TextAlign.End,
             style = MaterialTheme.typography.labelSmall,
-            color = textColor // Set the text color based on the transaction type
+            color = textColor,
+            fontWeight = FontWeight.SemiBold
 
         )
 
     }
 
 }
+
 
 data class TransactionHistoryItemData(
     val transactionDescription: String,
@@ -99,14 +120,14 @@ val transactionHistoryList = listOf(
         transactionNumber = "123456",
         transactionDate = "2023-10-15",
         transactionType = TransactionType.DEPOSIT,
-        amount = 100.00
+        amount = 150.00
     ),
     TransactionHistoryItemData(
         transactionDescription = "Withdrawal",
         transactionNumber = "789012",
         transactionDate = "2023-10-16",
         transactionType = TransactionType.WITHDRAWAL,
-        amount = 100.00
+        amount = 500.00
 
     ),
     TransactionHistoryItemData(
@@ -114,7 +135,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "567890",
         transactionDate = "2023-10-17",
         transactionType = TransactionType.TRANSFER,
-        amount = 100.00
+        amount = 700.00
 
     ),
     TransactionHistoryItemData(
@@ -122,7 +143,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "234567",
         transactionDate = "2023-10-18",
         transactionType = TransactionType.PURCHASE,
-        amount = 100.00
+        amount = 1870.00
 
     ),
     TransactionHistoryItemData(
@@ -130,7 +151,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "456789",
         transactionDate = "2023-10-19",
         transactionType = TransactionType.PAYMENT,
-        amount = 100.00
+        amount = 1089.00
 
     ),
     TransactionHistoryItemData(
@@ -138,7 +159,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "345678",
         transactionDate = "2023-10-20",
         transactionType = TransactionType.INTEREST,
-        amount = 100.00
+        amount = 6800.00
 
     ),
     TransactionHistoryItemData(
@@ -146,7 +167,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "987654",
         transactionDate = "2023-10-21",
         transactionType = TransactionType.FEE,
-        amount = 100.00
+        amount = 108.00
 
     ),
     TransactionHistoryItemData(
@@ -154,7 +175,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "876543",
         transactionDate = "2023-10-22",
         transactionType = TransactionType.ADJUSTMENT,
-        amount = 100.00
+        amount = 52100.00
 
     ),
     TransactionHistoryItemData(
@@ -162,7 +183,7 @@ val transactionHistoryList = listOf(
         transactionNumber = "654321",
         transactionDate = "2023-10-23",
         transactionType = TransactionType.OTHER,
-        amount = 100.00
+        amount = 650.00
 
     )
 )
@@ -178,5 +199,8 @@ enum class TransactionType {
     INTEREST,      // For receiving interest on the account balance
     FEE,           // For deducting fees from the account
     ADJUSTMENT,    // For any other adjustments or special transactions
-    OTHER
+    OTHER,
+    PAY_BILL,
+    BUY_GOODS,
+    BUY_AIRTIME
 }

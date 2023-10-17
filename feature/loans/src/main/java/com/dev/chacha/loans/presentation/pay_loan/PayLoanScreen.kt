@@ -7,7 +7,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.dev.chacha.loans.presentation.modalsheet_layout.EquityModalSheetLayout
+import com.dev.chacha.loans.presentation.modalsheet_layout.LoanModalSheetLayout
 import com.dev.chacha.loans.presentation.modalsheet_layout.LoanBottomSheetType
 import com.dev.chacha.ui.common.components.AccountTextField
 import com.dev.chacha.ui.common.components.EquityButton
@@ -92,7 +92,7 @@ fun PayLoanScreen(
             },
         ) {
             currentBottomSheet?.let {
-                EquityModalSheetLayout(
+                LoanModalSheetLayout(
                     bottomSheetType = it,
                     onClose = {}
                 )

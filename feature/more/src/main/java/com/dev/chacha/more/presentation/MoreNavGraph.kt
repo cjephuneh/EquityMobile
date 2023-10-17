@@ -76,7 +76,7 @@ fun NavGraphBuilder.moreScreenNavGraph(navController: NavHostController) {
     }
 
     composable(MoreScreenNavigation.GetInTouch.route){
-        GetInTouchScreen()
+        GetInTouchScreen(navController)
     }
 
     composable(MoreScreenNavigation.BankAccountNotification.route){

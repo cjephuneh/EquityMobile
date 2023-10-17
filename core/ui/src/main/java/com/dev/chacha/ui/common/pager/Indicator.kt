@@ -98,7 +98,7 @@ fun BasicIndicator(
     unSelectWidth: Dp = 10.dp,
     selectWidth: Dp = 10.dp,
     spaceSize: Dp = 6.dp,
-    unSelectColor: Color = MaterialTheme.colorScheme.onBackground,
+    unSelectColor: Color = MaterialTheme.colorScheme.primary,
     selectColor: Color = MaterialTheme.colorScheme.primary
 ) {
     Row(

@@ -149,7 +149,8 @@ fun BiometricSetUpScreen(navController: NavController) {
 
 
                 },
-                enableBottomButton = true
+                enableBottomButton = true,
+                showTopButton = true
             )
 
 

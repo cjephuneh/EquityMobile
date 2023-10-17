@@ -41,7 +41,8 @@ fun ChooseVerificationScreen(
                     bottomButtonText = "Confirm",
                     onTopButtonClick = { navController.navigate(AuthScreen.SmsCodeVerification.route) },
                     onBottomButtonClick = { navController.navigate(AuthScreen.SmsCodeVerification.route)},
-                    enableBottomButton = it.equals(true)
+                    enableBottomButton = it.equals(true),
+                    showTopButton = true
                 )
             }
 

@@ -47,6 +47,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.theme.HintGray
 import com.dev.chacha.util.Graph
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -90,7 +91,7 @@ fun OnBoardScreen(
             val coroutineScope = rememberCoroutineScope()
 
             val autoScrollEnabled = !isOnBoardingCompleted
-            val autoScrollInterval = 2000L // Time in milliseconds between auto-scrolls
+            val autoScrollInterval = 5000L // Time in milliseconds between auto-scrolls
 
             LaunchedEffect(autoScrollEnabled) {
                 if (autoScrollEnabled) {
@@ -185,7 +186,7 @@ fun PageIndicator(
     pageSize:Int,
     selectedPage: Int,
     selectedColor: Color = MaterialTheme.colorScheme.primary,
-    unSelectedColor: Color = MaterialTheme.colorScheme.onBackground
+    unSelectedColor: Color = HintGray
 ) {
     Row(
         modifier = modifier,
@@ -216,8 +217,7 @@ fun PagerScreen(
     onBoardingPage: OnBoardingPage
 ) {
     Column(
-        modifier = modifier
-            .fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
             .padding(top = 40.dp)
     ) {
         LoaderIntro(
@@ -233,7 +233,7 @@ fun PagerScreen(
             text = onBoardingPage.title,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            fontSize = 22.sp
+            style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
@@ -243,7 +243,7 @@ fun PagerScreen(
             text = onBoardingPage.description,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleSmall
         )
         Spacer(modifier = Modifier.height(60.dp))
 

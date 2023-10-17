@@ -33,7 +33,8 @@ fun AboutPensionLoanScreen() {
                 topButtonText = stringResource(id = R.string.check_loan_limit),
                 bottomButtonText = stringResource(id = R.string.apply_now),
                 onTopButtonClick = { /*TODO*/ },
-                onBottomButtonClick = { /*TODO*/ }
+                onBottomButtonClick = { /*TODO*/ },
+                showTopButton = true
             )
         }
     ) { paddingValues ->

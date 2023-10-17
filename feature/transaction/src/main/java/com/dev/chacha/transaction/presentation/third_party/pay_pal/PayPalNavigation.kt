@@ -13,29 +13,27 @@ import com.dev.chacha.transaction.presentation.TransactionNavigation
 import com.dev.chacha.transaction.presentation.modalsheet_layout.TransactionBottomSheetType
 import com.dev.chacha.ui.common.modal_sheet.EquityModalSheet
 import com.dev.chacha.util.Graph.PAYPAL_ROUTE
+import com.dev.chacha.util.Graph.WITHDRAW_FROM_PAYPAL_ROUTE
 
 fun NavGraphBuilder.payPalNavGraph(
     navController: NavHostController
 ) {
-
-
     composable(route = PAYPAL_ROUTE) {
         PayPalScreen(navController)
     }
     composable(PayPalNavigation.WithdrawFromPayPal.route){
-
         WithdrawFromPayPalSheet(
             navController = navController,
             onNavigateBack = {
                 navController.popBackStack(
-                    route = PayPalNavigation.PayPalFirstScreenSheet.route,
+                    route = WITHDRAW_FROM_PAYPAL_ROUTE,
                     inclusive = false
                 )
             }
         )
     }
 
-    composable(PayPalNavigation.PayPalFirstScreenSheet.route){
+    composable(WITHDRAW_FROM_PAYPAL_ROUTE){
         PayPalFirstScreenSheet(navController)
     }
 

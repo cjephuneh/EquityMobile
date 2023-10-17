@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -19,8 +20,10 @@ import com.dev.chacha.auth.presentation.AuthScreen
 
 @Composable
 fun ClickableColoredTermsAndPolicy(
-    navController: NavController,
+    onClick:()->Unit
 ) {
+
+    val uriHandler = LocalUriHandler.current
 
     Column(modifier =  Modifier) {
         val styleCommon = SpanStyle(
@@ -58,8 +61,12 @@ fun ClickableColoredTermsAndPolicy(
                 val annotations = annotatedString.getStringAnnotations(offset, offset)
                 annotations.firstOrNull()?.let { annotation ->
                     when (annotation.tag) {
-                        "Terms" -> navController.navigate(AuthScreen.TermsCondition.route)
-                        "PrivacyPolicy" -> navController.navigate(AuthScreen.PrivacyTerms.route)
+                        "Terms" -> {
+                            onClick()
+                        }
+                        "PrivacyPolicy" ->{
+                           uriHandler.openUri("https://equitygroupholdings.com/privacy-policy/")
+                        }
                     }
                 }
             },

@@ -34,7 +34,8 @@ fun AboutClassicSavingsScreen() {
                 topButtonText = stringResource(id = R.string.view_term_and_condition),
                 bottomButtonText = stringResource(id = R.string.open_an_account),
                 onTopButtonClick = { /*TODO*/ },
-                onBottomButtonClick = { /*TODO*/ }
+                onBottomButtonClick = { /*TODO*/ },
+                showTopButton = true
             )
         }
     ) { paddingValues ->

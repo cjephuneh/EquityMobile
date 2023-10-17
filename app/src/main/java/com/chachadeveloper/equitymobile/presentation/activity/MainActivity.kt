@@ -9,13 +9,18 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.chachadeveloper.equitymobile.presentation.bottomNav.StandardScaffold
 import com.dev.chacha.ui.common.theme.EquityMobileTheme
+import com.dev.chacha.util.Graph
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,14 +39,31 @@ class MainActivity : FragmentActivity() {
             }
             val isSystemDarkState = isSystemInDarkTheme()
             val systemUiController  = rememberSystemUiController()
+            val navController = rememberNavController()
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
 
             if (isDone.value) {
                 EquityMobileTheme {
-                    Box(
+
+                    StandardScaffold(
+                        navController = navController,
+                        showBottomBar = navBackStackEntry?.destination?.route in listOf(
+                            Graph.ACCOUNTS_SCREEN_ROUTE,
+                            Graph.HOME_SCREEN_ROUTE,
+                            Graph.MORE_SCREEN_ROUTE,
+                        ),
+                        modifier = Modifier.fillMaxSize(),
+                        onFabClick = {
+                            navController.navigate(Graph.HOME_SCREEN_ROUTE)
+                        }
+                    ) {
+                        RootNavGraph(navController)
+                    }
+                    /*Box(
                         modifier = Modifier.fillMaxSize(),
                     ) {
                         MainScreen()
-                    }
+                    }*/
                 }
             }
         }

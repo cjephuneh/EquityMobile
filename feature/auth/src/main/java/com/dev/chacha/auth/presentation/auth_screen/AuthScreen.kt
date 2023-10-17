@@ -38,12 +38,7 @@ fun AuthScreen(
     onSignUp: () -> Unit, onLogin: () -> Unit
 
 ) {
-    val systemUiController = rememberSystemUiController()
-    val statusBarColor = Color(0xFF8F221F)
-    val navigationBarColor = Color(0xFF8F221F)
 
-    val statusBarColorDefault = MaterialTheme.colorScheme.background
-    val navigationBarColorDefault = MaterialTheme.colorScheme.background
 
     val buttonScale = remember { Animatable(1f) }
     val coroutineScope = rememberCoroutineScope()
@@ -69,37 +64,6 @@ fun AuthScreen(
 
 
 
-    DisposableEffect(Unit) {
-        // Apply Status Change in the current Screen
-        systemUiController.setStatusBarColor(
-            color = statusBarColor,
-            darkIcons = false
-        )
-        systemUiController.setNavigationBarColor(
-            color = navigationBarColor,
-        )
-        onDispose {
-            // Clear the StatusBar to default when the composable is disposed
-            systemUiController.setStatusBarColor(
-                color = statusBarColorDefault,
-            )
-            systemUiController.setNavigationBarColor(
-                color = navigationBarColorDefault,
-            )
-
-            coroutineScope.launch {
-                buttonScale.stop()
-
-            }
-
-        }
-    }
-
-    // Apply the animate modifier to the buttons
-    val signInModifier = Modifier.animateContentSize()
-    val registerModifier = Modifier.animateContentSize()
-
-
     Scaffold(
         topBar = {
             Icon(
@@ -114,7 +78,8 @@ fun AuthScreen(
         bottomBar = {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth().padding(20.dp),
+                    .fillMaxWidth()
+                    .padding(20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -126,27 +91,26 @@ fun AuthScreen(
                     fontSize = 14.sp,
                     color = Color.White
                     )
+                Spacer(modifier = Modifier.height(24.dp))
 
-                OutlinedButton(
+                Button(
                     onClick = { onLogin() },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .offset(y = signInPosition)
-                        .padding(horizontal = 8.dp),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White,
-                        containerColor = Color.Transparent,
-                    ),
-                    border = BorderStroke(1.dp, Color.White),
-                    shape = RoundedCornerShape(12)
+                        .height(50.dp)
+                        .offset(y = signInPosition),
+                    shape = RoundedCornerShape(12),
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        containerColor =MaterialTheme.colorScheme.background
+                    )
                 ) {
                     Text(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
+                            .fillMaxWidth(),
                         textAlign = TextAlign.Center,
-                        text = "Enter password to sign in",
-                        fontSize = 16.sp
+                        text = "Sign in",
+                        fontSize = 14.sp
                     )
                 }
                 Spacer(modifier = Modifier.height(15.dp))
@@ -154,22 +118,21 @@ fun AuthScreen(
                     onClick = { onSignUp() },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .offset(y = registerPosition)
-                        .padding(horizontal = 8.dp),
+                        .height(50.dp)
+                        .offset(y = registerPosition),
                     shape = RoundedCornerShape(12),
                     colors = ButtonDefaults.buttonColors(
                         contentColor = MaterialTheme.colorScheme.primary,
-                        containerColor = Color.White
+                        containerColor =MaterialTheme.colorScheme.background
                     ),
 
                     ) {
                     Text(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
+                            .fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         text = "Register",
-                        fontSize = 16.sp
+                        fontSize = 14.sp
                     )
                 }
                 Spacer(modifier = Modifier.height(8.dp))
