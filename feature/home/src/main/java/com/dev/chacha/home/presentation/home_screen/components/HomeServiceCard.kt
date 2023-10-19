@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
@@ -73,6 +74,7 @@ fun VerticalImageText(
 ) {
     Column(
         modifier = Modifier
+            .width(100.dp)
             .wrapContentHeight()
             .clickable { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally,

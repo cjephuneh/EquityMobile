@@ -148,14 +148,20 @@ fun GetInTouchScreen(
                                         context.startActivity(i)
                                     } catch (s: SecurityException) {
 
-                                        // show() method display the toast with
-                                        // exception message.
-
                                     }
 
                                 }
                                 R.string.email_us ->{
-                                    uriHandler.openUri("info@equitybank.co.ke")
+                                    val i = Intent(Intent.ACTION_SEND)
+                                    val emailAddress = arrayOf("info@equitybank.co.ke")
+                                    i.putExtra(Intent.EXTRA_EMAIL,emailAddress)
+                                    i.putExtra(Intent.EXTRA_SUBJECT,"")
+                                    i.putExtra(Intent.EXTRA_TEXT,"")
+                                    
+                                    i.setType("message/rfc822")
+
+                                    // on the below line we are starting our activity to open email application.
+                                    context.startActivity(Intent.createChooser(i,"Choose an Email client : "))
                                 }
                                 R.string.website ->{
                                     uriHandler.openUri("https://equitygroupholdings.com/ke")

@@ -1,15 +1,12 @@
 package com.dev.chacha.auth.presentation.auth_screen
 
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,13 +25,11 @@ import androidx.compose.ui.unit.sp
 import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.extensions.greeting
 import com.dev.chacha.ui.R
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun AuthScreen(
+fun WelcomeScreen(
     onSignUp: () -> Unit, onLogin: () -> Unit
 
 ) {
@@ -176,7 +171,7 @@ fun AuthScreen(
 @Composable
 fun AuthScreenPreview() {
     EquityMobileTheme {
-        AuthScreen(
+        WelcomeScreen(
             onSignUp = { /*TODO*/ }) {
 
         }

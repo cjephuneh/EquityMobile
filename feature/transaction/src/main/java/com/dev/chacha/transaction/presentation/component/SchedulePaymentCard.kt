@@ -33,6 +33,7 @@ fun SchedulePaymentCard() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(4.dp)
             .wrapContentHeight()
     ) {
         Row(

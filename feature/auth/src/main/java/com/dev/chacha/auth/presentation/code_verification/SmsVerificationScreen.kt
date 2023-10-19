@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,14 +56,13 @@ fun SmsVerificationScreen(navController: NavController, appViewModel:AppViewMode
         bottomBar = {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp),
+                    .fillMaxWidth().padding(24.dp),
                 verticalArrangement = Arrangement.Bottom
             ) {
                 EquityOutlinedButton(
                     onClick = { /*TODO*/ },
                     text = "Need help?",
-                     enable = enableButton.value
+                    enable = enableButton.value
                 )
             }
         }
@@ -78,32 +78,29 @@ fun SmsVerificationScreen(navController: NavController, appViewModel:AppViewMode
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.outline_phone_android),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
+                        .height(250.dp)
                 )
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     text = "We have sent a verification code to your registered ${formatContact(userContact)}",
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
                 )
 
                 Text(
-                    text = "Please enter the code",
+                    text = "Please enter the code below",
                     style = MaterialTheme.typography.titleSmall
+                )
 
-                )
-//                Error
-                Text(
-                    text = "There is Bug Needs to be fixed for bottom sheet though it allows to autofill",
-                    color = Color.Red
-                )
+
                 OTPInputField(
                     otpLength = 6,
                     onOtpChange = {},

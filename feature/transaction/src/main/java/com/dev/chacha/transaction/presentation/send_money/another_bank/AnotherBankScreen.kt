@@ -97,7 +97,6 @@ fun AnotherBankScreen(navController: NavController) {
             )
 
 
-            PagerView()
 
 
         }

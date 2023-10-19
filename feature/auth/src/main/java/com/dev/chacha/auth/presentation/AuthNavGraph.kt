@@ -2,11 +2,14 @@ package com.dev.chacha.auth.presentation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.dev.chacha.auth.presentation.auth_screen.AuthScreen
+import com.dev.chacha.auth.presentation.auth_screen.WelcomeScreen
 import com.dev.chacha.auth.presentation.biometric.BiometricSetUpScreen
 import com.dev.chacha.auth.presentation.code_verification.SmsVerificationScreen
 import com.dev.chacha.auth.presentation.create_password.CreatePasswordScreen
@@ -18,17 +21,19 @@ import com.dev.chacha.auth.presentation.register.PrivacyPolicy
 import com.dev.chacha.auth.presentation.register.RegisterScreen
 import com.dev.chacha.auth.presentation.register.TermsAndConditionScreen
 import com.dev.chacha.auth.presentation.verification_options.ChooseVerificationScreen
+import com.dev.chacha.data.BiometricViewModel
 import com.dev.chacha.util.Graph
 
 
 @RequiresApi(Build.VERSION_CODES.P)
 fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
+
     navigation(
         route = Graph.AUTHENTICATION,
         startDestination = AuthScreen.Welcome.route
     ) {
         composable(AuthScreen.Welcome.route) {
-            AuthScreen(
+            WelcomeScreen(
                 onSignUp = {
                     navController.navigate(AuthScreen.Register.route)
                 },
@@ -69,7 +74,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
             CreatePasswordScreen(
                 onClickAction = {
                     navController.popBackStack()
-                    navController.navigate(Graph.HOME_SCREEN_ROUTE)
+                    navController.navigate(AuthScreen.CodeVerification.route)
                 }
             )
         }

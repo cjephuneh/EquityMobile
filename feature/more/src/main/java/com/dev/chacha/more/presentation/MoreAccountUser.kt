@@ -55,11 +55,14 @@ fun MoreUserAccount(
             ) {
                 Text(
                     text = userName,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
                 )
                 Text(
                     text = "stevechacha4@gmail.com",
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
+
                 )
                 Text(
                     text = "254746656813",

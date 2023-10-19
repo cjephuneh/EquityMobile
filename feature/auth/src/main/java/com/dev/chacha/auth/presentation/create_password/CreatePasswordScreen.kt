@@ -43,7 +43,6 @@ fun CreatePasswordScreen(
                 onClick = { onClickAction() },
                 text = stringResource(id = R.string.confirm_pass),
                 enable = !passwordError.successful
-
             )
         }
     ) { paddingValues ->

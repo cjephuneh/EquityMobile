@@ -17,22 +17,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.dev.chacha.ui.R
 import com.dev.chacha.util.Graph.ANOTHER_BANK_ROUTE
-import com.dev.chacha.util.Graph.ANOTHER_EQUITY_ACCOUNT_ROUTE
 import com.dev.chacha.util.Graph.BUY_AIRTIME_ROUTE
 import com.dev.chacha.util.Graph.BUY_GOODS_ROUTE
 import com.dev.chacha.util.Graph.MOBILE_WALLET_ROUTE
 import com.dev.chacha.util.Graph.OWN_EQUITY_ACCOUNT_ROUTE
 import com.dev.chacha.util.Graph.PAY_BILL_ROUTE
-import com.dev.chacha.util.Graph.PAY_TO_CARD_ROUTE
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 
@@ -99,7 +93,9 @@ fun OnBoardingHome(
     )
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -109,13 +105,33 @@ fun OnBoardingHome(
             onItemClick = { itemId ->
                 // Handle click action here based on itemId
                 when (itemId) {
-                    0 -> { navController.navigate(OWN_EQUITY_ACCOUNT_ROUTE) }
-                    1 -> { navController.navigate(MOBILE_WALLET_ROUTE) }
-                    2 -> { navController.navigate(ANOTHER_BANK_ROUTE) }
-                    3 -> { navController.navigate(PAY_BILL_ROUTE) }
-                    4 -> { navController.navigate(BUY_GOODS_ROUTE) }
-                    5 -> { navController.navigate(BUY_AIRTIME_ROUTE) }
-                    else  -> {navController.popBackStack()}
+                    0 -> {
+                        navController.navigate(OWN_EQUITY_ACCOUNT_ROUTE)
+                    }
+
+                    1 -> {
+                        navController.navigate(MOBILE_WALLET_ROUTE)
+                    }
+
+                    2 -> {
+                        navController.navigate(ANOTHER_BANK_ROUTE)
+                    }
+
+                    3 -> {
+                        navController.navigate(PAY_BILL_ROUTE)
+                    }
+
+                    4 -> {
+                        navController.navigate(BUY_GOODS_ROUTE)
+                    }
+
+                    5 -> {
+                        navController.navigate(BUY_AIRTIME_ROUTE)
+                    }
+
+                    else -> {
+                        navController.popBackStack()
+                    }
                 }
             }
         )
@@ -123,9 +139,8 @@ fun OnBoardingHome(
     }
 
 
-
-
 }
+
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun OnBordingHomePager(
@@ -141,14 +156,14 @@ fun OnBordingHomePager(
         items(item) { onboardItem ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.width(85.dp),
+                modifier = Modifier.width(80.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Box(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primary),
+                        .background(MaterialTheme.colorScheme.background),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
@@ -156,25 +171,27 @@ fun OnBordingHomePager(
                         contentDescription = onboardItem.title,
                         modifier = Modifier
                             .size(24.dp)
-                            .clickable { onItemClick(onboardItem.id) } ,// Set onClick action
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.background)
+                            .clickable { onItemClick(onboardItem.id) },// Set onClick action
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                     )
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = onboardItem.title,
-                    fontSize = 14.sp,
                     overflow = TextOverflow.Clip,
-                    maxLines = 1
-                )
+                    maxLines = 1,
+                    style = MaterialTheme.typography.titleSmall,
+
+                    )
                 Text(
                     text = onboardItem.desc,
-                    fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.primary,
                     overflow = TextOverflow.Clip,
-                    maxLines = 1
+                    maxLines = 1,
+                    style = MaterialTheme.typography.titleSmall,
 
-                )
+
+                    )
             }
         }
     }
@@ -192,7 +209,6 @@ fun PagerIndicator(size: Int, currentPage: Int) {
         }
     }
 }
-
 
 
 @Composable

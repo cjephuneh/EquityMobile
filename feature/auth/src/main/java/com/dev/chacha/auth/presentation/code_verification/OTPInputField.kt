@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -52,10 +53,13 @@ import kotlinx.coroutines.launch
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dev.chacha.data.BiometricViewModel
+import com.dev.chacha.ui.common.theme.HintGray
 
 
 @SuppressLint("NewApi")
@@ -80,7 +84,6 @@ fun OTPInputField(
 
     val bottomSheetState = rememberModalBottomSheetState()
 
-
     val keyboardController = LocalSoftwareKeyboardController.current
     var otpValue by remember { mutableStateOf("") }
     val keyboardState = keyboardAsState(KeyboardState.Closed)
@@ -103,7 +106,6 @@ fun OTPInputField(
             if (value.length <= otpLength) {
                 otpValue = value
                 onOtpChange(otpValue)
-
             }
         },
         visualTransformation = visualTransformation,
@@ -119,7 +121,7 @@ fun OTPInputField(
         decorationBox = { innerTextField ->
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 repeat(otpLength) { index ->
                     val char = when {
@@ -127,19 +129,24 @@ fun OTPInputField(
                         else -> ""
                     }
                     val isFocus = index == otpValue.length
-                    OTPCell(
-                        char = char,
-                        isFocus = isFocus,
-                        isShowingWarning = isShowingWarning,
-                        modifier = Modifier
-                            .weight(1f)
-                            .clickable {
-                                isSheetOpen = true
-                                if (index == 0) {
-                                    permissionState.value = true
+                    Box(
+                        modifier = Modifier.weight(1f),
+                        contentAlignment = Alignment.Center
+                    ){
+                        OTPCell(
+                            char = char,
+                            isFocus = isFocus,
+                            isShowingWarning = isShowingWarning,
+                            modifier = Modifier
+                                .clickable {
+                                    isSheetOpen = true
+                                    if (index == 0) {
+                                        permissionState.value = true
+                                    }
                                 }
-                            }
-                    )
+                        )
+                    }
+
                 }
             }
             innerTextField()
@@ -174,12 +181,11 @@ fun OTPInputField(
                 navController.navigate(AuthScreen.MainLogin.route)
             } else{
                 navController.navigate(AuthScreen.BiometricSetUp.route)
-
             }
         }
     }
 
-
+    val code = "123456"
     if (permissionState.value) {
         if (isSheetOpen) {
             ModalBottomSheet(
@@ -187,15 +193,14 @@ fun OTPInputField(
                     isSheetOpen = false
                 },
                 sheetState = bottomSheetState,
-                dragHandle = { Spacer(modifier = Modifier
-                    .height(0.dp)
-                    .width(0.dp)
-                    .background(MaterialTheme.colorScheme.background))
-                },
+                dragHandle = null,
+                shape = RoundedCornerShape(0.dp)
             ) {
                 PermissionBottomSheet(
+                    titleMessage = "Allow Equity Mobile to read the message and enter the code",
+                    message = "Never share this code with anyone,including us. Use $code to sign in",
                     onPermissionGranted = {
-                        otpValue = "123456"
+                        otpValue = code
                         onOtpChange(otpValue)
                         permissionState.value = false
                     },
@@ -208,25 +213,6 @@ fun OTPInputField(
         }
     }
 
-
-  /*  if (permissionState.value) {
-
-        BottomSheetWrapper(name = SMS_BOTTOMSHEET) {
-            PermissionBottomSheet(
-                onPermissionGranted = {
-                    otpValue = "123456"
-                    onOtpChange(otpValue)
-                    permissionState.value = false
-                },
-                onPermissionDenied = {
-                    permissionState.value = false
-                }
-            )
-        }
-
-    }*/
-
-
     LaunchedEffect(key1 = true) {
         focusRequester.requestFocus()
         keyboardController?.hide()
@@ -238,23 +224,36 @@ fun OTPInputField(
 @Composable
 fun PermissionBottomSheet(
     onPermissionGranted: () -> Unit,
-    onPermissionDenied: () -> Unit
+    onPermissionDenied: () -> Unit,
+    titleMessage: String ="",
+    message: String = ""
 ) {
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .safeGesturesPadding()
-            .padding(16.dp),
+            .padding(top = 10.dp, start = 16.dp, end = 16.dp, bottom = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Allow OTP autofill?",
+            text = titleMessage,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold
+
         )
         Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = message,
+            style = MaterialTheme.typography.titleSmall,
+            color = HintGray
+        )
+
+
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .align(Alignment.End),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
@@ -309,11 +308,17 @@ fun OTPCell(
 
     Surface(
         modifier = modifier
+            .background(HintGray, MaterialTheme.shapes.small)
             .aspectRatio(1f)
-            .border(1.dp, color = borderColor, MaterialTheme.shapes.small)
+            .border(
+                1.dp,
+                color = HintGray,
+                MaterialTheme.shapes.small
+            )
     ) {
         Box(
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.wrapContentSize()
         ) {
             Text(
                 text = char,

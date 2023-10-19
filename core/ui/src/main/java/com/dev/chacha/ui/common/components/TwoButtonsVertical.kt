@@ -34,7 +34,7 @@ fun TwoButtonsVertical(
     Column(modifier = modifier) {
         EquityDivider(modifier = Modifier.fillMaxWidth())
         if (showTopButton){
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

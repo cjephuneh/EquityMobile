@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.dev.chacha.transaction.presentation.TransactViewModel
 import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.transaction.presentation.component.CreatePinAlertDialog
 import com.dev.chacha.transaction.presentation.modalsheet_layout.EquityModalSheetLayout
@@ -160,15 +161,10 @@ fun TransactionHeader(onAddFavouriteClick:()->Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 20.dp, end = 20.dp, top = 16.dp),
+            .padding(start = 4.dp, end = 4.dp, top = 8.dp),
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = "What would you like to do?",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(modifier = Modifier.height(10.dp))
+
         Card(
             modifier = Modifier
                 .fillMaxWidth()
