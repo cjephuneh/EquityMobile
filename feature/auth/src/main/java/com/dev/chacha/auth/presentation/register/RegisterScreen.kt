@@ -1,9 +1,6 @@
 package com.dev.chacha.auth.presentation.register
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,32 +10,38 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
-import com.dev.chacha.auth.presentation.AuthScreen
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
+import com.dev.chacha.auth.presentation.navigation.AuthScreen
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.base.AppViewModel
-import com.dev.chacha.ui.common.base.PathState
 import com.dev.chacha.ui.common.components.AppTextField
+import com.dev.chacha.ui.common.components.AppTopBar
 import com.dev.chacha.ui.common.components.EquityButton
+import com.dev.chacha.ui.common.components.EquityTextField
 import com.dev.chacha.ui.common.components.StandardToolbar
+import com.dev.chacha.ui.common.modal_sheet.EquityModalSheet
+import kotlinx.coroutines.launch
 
 @SuppressLint("NewApi")
 @Composable
@@ -49,6 +52,8 @@ fun RegisterScreen(
     navController: NavController,
     appViewModel: AppViewModel = viewModel()
 ) {
+    var isSheetOpen by rememberSaveable { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -56,27 +61,22 @@ fun RegisterScreen(
             StandardToolbar(
                 title = stringResource(id = R.string.register),
                 showForwardArrow = true,
-                showBackArrow = true
+                showBackArrow = true,
+                onNavigateBack = {
+                    navController.navigateUp()
+                }
             )
         },
         bottomBar = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp)
-            ) {
-                EquityButton(
-                    onClick = {
-                        navController.navigate(AuthScreen.CreatePassword.route)
-                    },
-                    text = stringResource(R.string.create_profile_add_accounts),
-                    enable = true
-                )
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-            }
-
+            EquityButton(
+                onClick = {
+                    navController.navigate(AuthScreen.CreatePassword.route)
+                },
+                text = stringResource(R.string.create_profile_add_accounts),
+                enable = true
+            )
+            
         }
     ) { paddingValues ->
 
@@ -99,61 +99,51 @@ fun RegisterScreen(
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
-
-                AppTextField(
-                    text = registerViewModel.usernameText.value,
+                EquityTextField(
+                    value = registerViewModel.mobileCountry?.fullName ?: "",
                     onValueChange = {
-                        registerViewModel.setUsernameText(it)
+                        isSheetOpen = true
+                        registerViewModel.onRegisterEvent(RegisterUiEvent.OnCountryFullNameSelected(it))
+                        registerViewModel.onRegisterEvent(RegisterUiEvent.OnCountryCodeSelected(it))
+                        registerViewModel.onRegisterEvent(RegisterUiEvent.OnCountryNameSelected(it))
                     },
-                    keyboardType = KeyboardType.Text,
-                    error = registerViewModel.usernameError.value,
-                    hint = stringResource(id = R.string.country),
+                    readOnly = true,
                     title = stringResource(id = R.string.select_country),
-                    trailingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.ArrowDownward,
-                            contentDescription = null,
-                            modifier = Modifier.clickable(MutableInteractionSource(), null) {
-                                appViewModel.openSheet(PathState(COUNTRY_BOTTOMSHEET))
-                            }
-                        )
-                    },
-                    onClick = {
-                        appViewModel.openSheet(PathState(COUNTRY_BOTTOMSHEET))
-
-                    }
-
+                    hint = stringResource(id = R.string.country),
+                    enabled = false,
+                    showDefaultTrailingIcon = true
                 )
 
+
+
+
                 AppTextField(
-                    text = registerViewModel.usernameText.value,
+                    text = registerViewModel.accountNumber.value,
                     onValueChange = {
-                        registerViewModel.setUsernameText(it)
+                        registerViewModel.setAccountNumber(it)
                     },
                     keyboardType = KeyboardType.Number,
-                    error = registerViewModel.usernameError.value,
+                    error = registerViewModel.accountNumberError.value,
                     hint = stringResource(id = R.string.account_number_hint),
                     title = stringResource(id = R.string.account_number_title),
                 )
 
 
                 AppTextField(
-                    text = registerViewModel.usernameText.value,
+                    text = registerViewModel.idNumberText.value,
                     onValueChange = {
-                        registerViewModel.setUsernameText(it)
+                        registerViewModel.setIdNumberText(it)
                     },
                     keyboardType = KeyboardType.Number,
-                    error = registerViewModel.usernameError.value,
+                    error = registerViewModel.idNumberError.value,
                     hint = stringResource(id = R.string.id_number_hint),
                     title = stringResource(id = R.string.id_number_title),
                 )
 
-
-
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .padding(start = 5.dp),
+                        .padding(start = 3.dp),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -164,8 +154,11 @@ fun RegisterScreen(
                         },
                     )
 
-                    ClickableColoredTermsAndPolicy(navController)
+                    ClickableColoredTermsAndPolicy(
+                       onClick = {
 
+                       }
+                    )
 
                 }
             }
@@ -173,13 +166,63 @@ fun RegisterScreen(
 
     }
 
-    CountriesBottomSheets(appViewModel)
+
+    if (isSheetOpen) {
+        EquityModalSheet(
+            onDismissRequest = {
+                isSheetOpen = false
+            },
+        ) {
+            val selectedCountry = registerViewModel.mobileCountry
+            Box(modifier = Modifier.fillMaxWidth()
+            ){
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+
+                    ) {
+                    AppTopBar(
+                        title = "Country",
+                        initialValue = "",
+                        onSearchParamChange = {},
+                        showSearchBar = true,
+                        searchHint = stringResource(id = R.string.search_for_country),
+                        showTopBar = true
+                    )
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        items(registerViewModel.countriesList) { country ->
+                            CountrySelectionListItems(
+                                country = country,
+                                selectedCountry = selectedCountry == country,
+                                onCountrySelected = {
+                                    registerViewModel.mobileCountry = it
+                                    registerViewModel.mobileCountryCode = it.code
+                                    coroutineScope.launch {
+                                        isSheetOpen = false
+                                    }
+
+                                }
+                            )
+                        }
+                        item {
+                            Spacer(modifier = Modifier.height(100.dp))
+                        }
+                    }
+                }
+
+            }
+        }
+    }
 
 }
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun FingerPrintScreenPreview() {
     EquityMobileTheme {
         RegisterScreen(
@@ -192,7 +235,7 @@ fun FingerPrintScreenPreview() {
 
 }
 
-const val COUNTRY_BOTTOMSHEET = "counties bottomsheet"
+const val COUNTRY_BOTTOM_SHEET = "counties bottom-sheet"
 
 
 

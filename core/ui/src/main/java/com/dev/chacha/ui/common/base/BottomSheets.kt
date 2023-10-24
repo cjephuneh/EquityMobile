@@ -58,6 +58,14 @@ fun BottomSheets(
         )
     }
 
+    BottomSheetWrapper(name = ACCOUNT_BALANCE) {
+
+    }
+    BottomSheetWrapper(name = SEND_MONEY_TO_BANK) {
+
+
+    }
+
 }
 
 @Composable
@@ -69,6 +77,8 @@ fun CurrencyEditor( onClose: () -> Unit) {
 
 }
 
+const val ACCOUNT_BALANCE = "account_balance"
+const val SEND_MONEY_TO_BANK = "send_money_to_bank"
 const val WALLET_SHEET = "wallet_sheet"
 const val DEFAULT_RECALC_BUDGET_CHOOSER = "default_recalc_budget_chooser"
 const val CURRENCY_EDITOR = "currency_editor"

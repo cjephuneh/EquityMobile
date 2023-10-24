@@ -8,14 +8,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -29,6 +27,7 @@ fun TransactionTitle(
     @DrawableRes drawable: Int,
     @StringRes title: Int,
     onItemClick : () -> Unit,
+    showDrawableColorTint: Boolean = false
 
     ) {
     val sizeIcon = dimensionResource(id = R.dimen.margin_24)
@@ -56,7 +55,7 @@ fun TransactionTitle(
                     painter = painterResource(id = drawable),
                     contentDescription = "",
                     modifier = Modifier.size(sizeIcon),
-                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
+                    colorFilter = if (showDrawableColorTint)  null else ColorFilter.tint(MaterialTheme.colorScheme.primary)
 
                 )
 

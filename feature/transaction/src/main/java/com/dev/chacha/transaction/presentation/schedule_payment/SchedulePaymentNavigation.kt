@@ -12,7 +12,7 @@ fun NavGraphBuilder.schedulePaymentNavGraph(
     navController: NavHostController
 ) {
     composable(route = SCHEDULE_PAYMENT_ROUTE) {
-        SchedulePaymentScreen()
+        SchedulePaymentScreen(navController)
     }
 
 }

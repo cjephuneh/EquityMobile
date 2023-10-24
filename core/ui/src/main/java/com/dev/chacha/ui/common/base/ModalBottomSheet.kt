@@ -31,6 +31,7 @@ import com.chacha.presentation.util.SwipeableDefaults
 import com.chacha.presentation.util.SwipeableState
 import com.chacha.presentation.util.PreUpPostDownNestedScrollConnection
 import com.chacha.presentation.util.swipeable
+import com.google.accompanist.insets.navigationBarsWithImePadding
 
 
 @ExperimentalMaterialApi
@@ -242,6 +243,7 @@ fun ModalBottomSheetLayout(
             ) {
                 Box(
                     modifier = Modifier
+                        .navigationBarsPadding().imePadding()
                         .onGloballyPositioned {
                             sheetHeightState.value = it.size.height.toFloat()
                         }

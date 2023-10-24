@@ -1,41 +1,75 @@
 package com.dev.chacha.more.presentation.reset_password_screen
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.dev.chacha.validation.PasswordValidationState
+import com.dev.chacha.validation.ValidatePassword
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
-class ResetPasswordViewModel : ViewModel() {
+class ResetPasswordViewModel(
+    private val validatePassword: ValidatePassword = ValidatePassword()
 
-    private val _usernameText = mutableStateOf("")
-    val usernameText: State<String> = _usernameText
-
-    private val _passwordText = mutableStateOf("")
-    val passwordText: State<String> = _passwordText
+) : ViewModel() {
 
     private val _showPassword = mutableStateOf(false)
     val showPassword: State<Boolean> = _showPassword
 
-    private val _usernameError = mutableStateOf("")
-    val usernameError: State<String> = _usernameError
+    var currentPassword by mutableStateOf("")
+        private set
+    var newPassword by mutableStateOf("")
+        private set
 
-    private val _passwordError = mutableStateOf("")
-    val passwordError: State<String> = _passwordError
+    var confirmNewPassword by mutableStateOf("") // New confirmation password state
+        private set
 
-    fun setUsernameText(username: String) {
-        _usernameText.value = username
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val passwordError =
+        snapshotFlow { newPassword }
+            .combine(snapshotFlow { confirmNewPassword }) { pass, confirmPass ->
+                validatePassword.execute(pass, confirmPass)
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = PasswordValidationState()
+            )
+
+
+    fun changeCurrentPassword(value: String) {
+        currentPassword = value
     }
+
+    fun changePassword(value: String) {
+        newPassword = value
+    }
+
+
+
+    fun changeConfirmNewPassword(value: String) {
+        confirmNewPassword = value
+    }
+
+
+
+
+
+    private val _passwordText = mutableStateOf("")
+    val passwordText: State<String> = _passwordText
+
+
 
     fun setPasswordText(password: String) {
         _passwordText.value = password
     }
 
-    fun setIsUsernameError(error: String) {
-        _usernameError.value = error
-    }
-
-    fun setIsPasswordError(error: String) {
-        _passwordError.value = error
-    }
 
     fun setShowPassword(showPassword: Boolean) {
         _showPassword.value = showPassword

@@ -7,18 +7,23 @@ import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.CancellationSignal
-import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
+import com.dev.chacha.auth.presentation.navigation.AuthScreen
 import timber.log.Timber
 
 @RequiresApi(Build.VERSION_CODES.P)
-class BiometricChecker(private val authListener: AuthListener, val navController: NavController, val activity: ComponentActivity): BiometricPrompt.AuthenticationCallback() {
+class BiometricChecker(
+    private val authListener: AuthListener,
+    val navController: NavController,
+    val activity: FragmentActivity
+): BiometricPrompt.AuthenticationCallback() {
 
     private var cancellationSignal: CancellationSignal? = null
 
-    private val authenticationCallback = @RequiresApi(Build.VERSION_CODES.P)
+    private val authenticationCallback =
     object : BiometricPrompt.AuthenticationCallback() {
         override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
             notifyUser("Authentication Error $errorCode")
@@ -38,7 +43,7 @@ class BiometricChecker(private val authListener: AuthListener, val navController
             notifyUser("Authentication Succeeded")
             super.onAuthenticationSucceeded(result)
 
-//            navController.navigate(Graph.HOME)
+            navController.navigate(AuthScreen.MainLogin.route)
 
 
         }
@@ -58,7 +63,11 @@ class BiometricChecker(private val authListener: AuthListener, val navController
                 }
                 .build()
 
-            biometricPrompt.authenticate(getCancellationSignal(), activity.mainExecutor, authenticationCallback)
+            biometricPrompt.authenticate(
+                getCancellationSignal(),
+                activity.mainExecutor,
+                authenticationCallback
+            )
         }
     }
 

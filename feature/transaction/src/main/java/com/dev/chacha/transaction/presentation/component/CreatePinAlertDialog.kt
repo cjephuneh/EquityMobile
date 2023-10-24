@@ -3,8 +3,10 @@ package com.dev.chacha.transaction.presentation.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.safeGesturesPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
@@ -35,7 +37,9 @@ fun CreatePinAlertDialog(
     onClick: () -> Unit ={}
 ) {
     AlertDialog(
-        modifier = modifier,
+        modifier = modifier
+            .safeGesturesPadding()
+            .wrapContentHeight(),
         containerColor = MaterialTheme.colorScheme.outline,
         iconContentColor = MaterialTheme.colorScheme.primary,
         shape = RoundedCornerShape(0.dp),
@@ -43,13 +47,13 @@ fun CreatePinAlertDialog(
         textContentColor = MaterialTheme.colorScheme.onBackground,
         titleContentColor = MaterialTheme.colorScheme.onBackground,
         properties = DialogProperties(
-            usePlatformDefaultWidth = true,
+            usePlatformDefaultWidth = false,
             decorFitsSystemWindows = true
         ),
         tonalElevation = 0.dp,
         text = {
             Column(
-                modifier = modifier,
+                modifier = modifier.wrapContentHeight(),
                 verticalArrangement = Arrangement.Center
             ) {
                 IconButton(
@@ -74,7 +78,7 @@ fun CreatePinAlertDialog(
                 Text(
                     text = stringResource(id = R.string.create_dialog_description ),
                     textAlign = TextAlign.Start,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.labelSmall
                 )
             }
         },
@@ -87,12 +91,22 @@ fun CreatePinAlertDialog(
                 ),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text(text = "Crate PIN now")
+                Text(
+                    text = "Crate PIN now",
+                    style = MaterialTheme.typography.labelSmall
+
+                )
             }
         },
         dismissButton = {
-            TextButton(onClick = { onDismissClick()}) {
-                Text(text = "Create PIN later")
+            TextButton(
+                onClick = { onDismissClick()},
+            ) {
+                Text(
+                    text = "Create PIN later",
+                    style = MaterialTheme.typography.labelSmall
+                )
+
             }
         }
     )

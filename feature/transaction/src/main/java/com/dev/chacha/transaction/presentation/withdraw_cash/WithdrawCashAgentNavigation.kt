@@ -12,7 +12,7 @@ fun NavGraphBuilder.withDrawCashAgentNavGraph(
     navController: NavHostController
 ) {
     composable(route = WITHDRAW_CASH_AGENT_ROUTE) {
-        WithdrawCashAgentScreen()
+        WithdrawCashAgentScreen(navController)
     }
 
 }

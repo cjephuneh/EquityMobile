@@ -11,12 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Circle
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -65,8 +60,14 @@ fun MyScreen(
 
         Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
             ConditionRow(condition = "Minimum 8 characters", check = passwordError.hasMinimum)
-            ConditionRow(condition = "Has special character", check = passwordError.hasSpecialCharacter)
-            ConditionRow(condition = "Has capitalized letter", check = passwordError.hasCapitalizedLetter)
+            ConditionRow(
+                condition = "Has special character",
+                check = passwordError.hasSpecialCharacter
+            )
+            ConditionRow(
+                condition = "Has capitalized letter",
+                check = passwordError.hasCapitalizedLetter
+            )
             ConditionRow(condition = "Passwords match", check = passwordError.hasPasswordMatch)
         }
     }
@@ -83,12 +84,17 @@ fun ConditionRow(
         label = "text color"
     )
 
-    val icon = if (check) { R.drawable._check_24 } else { R.drawable.ic_circle_icon }
+    val icon = if (check) {
+        R.drawable._check_24
+    } else {
+        R.drawable.ic_circle_icon
+    }
 
-    Row (
+
+    Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().padding(8.dp)
-    ){
+        modifier = Modifier.fillMaxWidth().padding(top = 5.dp)
+    ) {
         Icon(
             painter = painterResource(id = icon),
             tint = color,
@@ -98,7 +104,9 @@ fun ConditionRow(
         Text(
             text = condition,
             color = color,
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.labelSmall
         )
     }
+
+
 }

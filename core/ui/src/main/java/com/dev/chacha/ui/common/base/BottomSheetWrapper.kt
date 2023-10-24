@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dev.chacha.ui.common.util.observeLiveData
+import com.google.accompanist.insets.navigationBarsWithImePadding
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -90,6 +91,7 @@ fun BottomSheetWrapper(
         sheetContent = {
             Box(
                 modifier = Modifier
+                    .navigationBarsPadding().imePadding()
                     .padding(
                         top = statusBarHeight * statusBarFillProgress
                     )

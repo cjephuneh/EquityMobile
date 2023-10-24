@@ -5,10 +5,13 @@ object Graph {
     const val ONBOARDING_ROUTE = "onbording"
     const val AUTHENTICATION = "auth_graph"
     const val HOME_SCREEN_ROUTE = "home_graph"
+    const val ACCOUNTS_SCREEN_ROUTE = "accounts_graph"
     const val TRANSACTION_SCREEN_ROUTE = "transaction_graph"
     const val BORROW_SCREEN_ROUTE = "borrow_graph"
     const val SAVINGS_SCREEN_ROUTE = "savings_graph"
     const val MORE_SCREEN_ROUTE = "more_graph"
+    const val MY_LOANS_SCREEN_ROUTE = "my_loans_graph"
+
 
     // Transact
     const val SCHEDULE_PAYMENT_ROUTE = "schedule_payment_graph"
@@ -27,6 +30,7 @@ object Graph {
     const val WITHDRAW_CASH_AGENT_ROUTE = "withdraw_Cash_graph"
     // THIRD PARTY
     const val PAYPAL_ROUTE = "paypal_graph"
+    const val WITHDRAW_FROM_PAYPAL_ROUTE = "paypal_graph"
     const val WESTERN_UNION_ROUTE = "western_union_graph"
 
 

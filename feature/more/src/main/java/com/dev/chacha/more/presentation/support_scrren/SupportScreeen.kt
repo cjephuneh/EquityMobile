@@ -10,9 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
-import com.dev.chacha.more.presentation.component.MoreItemRow
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
+import com.dev.chacha.ui.common.components.MoreVerticalItem
 import com.dev.chacha.ui.common.components.StandardToolbar
 
 
@@ -54,39 +54,39 @@ fun SupportScreen() {
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
-                    MoreItemRow(
+                    MoreVerticalItem(
                         drawable = R.drawable.ic_security_foreground,
                         title = R.string.change_password_title,
                         subtitle = R.string.change_password_description,
-                        onItemClick = {}
+                        onClick = {}
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    MoreItemRow(
+                    MoreVerticalItem(
                         drawable = R.drawable.ic_support_foreground,
                         title = R.string.change_password_title,
                         subtitle = R.string.change_password_description,
-                        onItemClick = {}
+                        onClick = {}
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    MoreItemRow(
+                    MoreVerticalItem(
                         drawable = R.drawable.ic_security_foreground,
                         title = R.string.change_password_title,
                         subtitle = R.string.change_password_description,
-                        onItemClick = {}
+                        onClick = {}
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    MoreItemRow(
+                    MoreVerticalItem(
                         drawable = R.drawable.ic_fingerprint_foreground,
                         title = R.string.change_password_title,
                         subtitle = R.string.change_password_description,
-                        onItemClick = {}
+                        onClick = {}
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    MoreItemRow(
+                    MoreVerticalItem(
                         drawable = R.drawable.devices,
                         title = R.string.change_password_title,
                         subtitle = R.string.change_password_description,
-                        onItemClick = {}
+                        onClick = {}
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                 }

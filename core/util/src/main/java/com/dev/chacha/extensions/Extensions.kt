@@ -7,10 +7,13 @@ import android.os.Build
 import android.os.Parcelable
 import android.provider.CallLog
 import android.provider.ContactsContract
+import android.provider.Settings
 import android.provider.Telephony
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toJavaLocalDateTime
@@ -22,6 +25,10 @@ import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.text.NumberFormat
+import java.util.Currency
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 
 val now = Calendar.getInstance() // get the current time
 val hour = now.get(Calendar.HOUR_OF_DAY) // get the hour component of the current time
@@ -29,7 +36,7 @@ val hour = now.get(Calendar.HOUR_OF_DAY) // get the hour component of the curren
 val greeting = when (hour) { // determine the appropriate greeting based on the hour
     in 0..11 -> "Good morning"
     in 12..17 -> "Good afternoon"
-    in 18..21 -> "Good evening"
+    in 18..20 -> "Good evening"
     else -> "Goodnight"
 }
 
@@ -170,98 +177,40 @@ fun formatDate(date: String): String? {
     return parsedDate?.let { outputFormat.format(it) }
 }
 
+fun formatKenyanShillings(amount: Double): String {
+    val currencyCode = "KES"
+    val currencyInstance = Currency.getInstance(currencyCode)
+    val format = NumberFormat.getCurrencyInstance(Locale("sw", "KE")) // Swahili, Kenya locale
+    format.currency = currencyInstance
+    val formattedAmount = format.format(amount)
 
-fun getContactsList(context: Context): List<Contact> {
-    val contacts = mutableStateListOf<Contact>()
-    val cursor = context.contentResolver.query(
-        ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null
-    )
-    cursor?.use {
-        while (it.moveToNext()) {
-            val contactName =
-                it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-            val contactPhoneNumber =
-                it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-            val contactEmail =
-                it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Email.ADDRESS)
-            val contactId = it.getColumnIndex(ContactsContract.Contacts._ID)
-
-            val name = it.getString(contactName)
-            val phoneNumber = it.getString(contactPhoneNumber)
-            val email = it.getString(contactEmail)
-            val numberId = it.getString(contactId)
-
-            // Remove spaces, hyphens, and parentheses from the phone number
-            val cleanedPhoneNumber = phoneNumber.replace("[\\s-()]".toRegex(), "")
-
-            // Check if the phone number has more than 10 digits
-            if (cleanedPhoneNumber.length > 10 && cleanedPhoneNumber.startsWith("+")) {
-                val formattedPhoneNumber = "0${cleanedPhoneNumber.substring(4)}"
-                contacts.add(Contact(name, formattedPhoneNumber, email, numberId))
-                if (formattedPhoneNumber.length<10) {
-                    val secondFormatted = "0${formattedPhoneNumber}"
-                    contacts.add(Contact(name, secondFormatted, email, numberId))
-                    if (secondFormatted.length<10) {
-                        val thirdFormatted = "0${secondFormatted}"
-                        contacts.add(Contact(name, thirdFormatted, email, numberId))
-                    }
-                }
-            } else {
-                contacts.add(Contact(name, cleanedPhoneNumber, email, numberId))
-            }
-        }
-    }
-    cursor?.close()
-
-    // Remove duplicates and sort by name
-    return contacts.sortedBy { it.name }
+    // Replace "KES" with "KSH" in uppercase
+    return formattedAmount.replace("KES", "KSH").uppercase()
 }
 
-@Parcelize
-data class Message(
-    val address: String?,
-    val body: String,
-    val date: String,
-    val time: String,
-    val id: String,
-): Parcelable
+/*fun formatCurrency(amount: Double): String {
+    val currencyCode = "KES"
+    val currencyInstance = Currency.getInstance(currencyCode)
+    val format = NumberFormat.getCurrencyInstance(Locale("sw", "KE")) // Swahili, Kenya locale
+    format.currency = currencyInstance
+    val formattedAmount = format.format(amount)
 
-fun getMessageList(context: Context){
-    val messageList = arrayListOf<Message>()
-    val cursor3 = context.contentResolver.query(
-        Telephony.Sms.CONTENT_URI,
-        null, null, null, null
-    )
+    // Remove non-numeric characters and convert to uppercase
+    val numericAmount = formattedAmount.replace("[^0-9.]".toRegex(), "")
+    return "$numericAmount KSH"
+}*/
 
-    while (cursor3 != null && cursor3.moveToNext()) {
-        //Date
-        val smsDate =
-            cursor3.getString(cursor3.getColumnIndexOrThrow(Telephony.Sms.DATE)).toLong()
-        val date = Date()
-        date.time = smsDate
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val dateString = simpleDateFormat.format(date)
-        // Time
-        val smsTime =
-            cursor3.getString(cursor3.getColumnIndexOrThrow(Telephony.Sms.DATE)).toLong()
-        val time = Date()
-        time.time = smsTime
-        val simpleTimeFormat = SimpleDateFormat("HH:mm:ss")
-        val timeString = simpleTimeFormat.format(time)
-        // Sender address
-        val address = cursor3.getString(cursor3.getColumnIndexOrThrow(Telephony.Sms.ADDRESS))
-        // Message Body
-        val body =
-            cursor3.getString(cursor3.getColumnIndexOrThrow(Telephony.Sms.BODY)).toString()
-        // Message Id
-        val id = cursor3.getString(cursor3.getColumnIndexOrThrow(Telephony.Sms._ID))
-
-        messageList.add(Message(address, body, dateString, timeString, id))
-    }
-    cursor3?.close()
-
+fun formatDateMonthYear(date: String): String? {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    val parsedDate = inputFormat.parse(date)
+    return parsedDate?.let { outputFormat.format(it) }
 }
 
+fun formatCurrency(amount: Double): String {
+    val format = DecimalFormat("#,##0.00", DecimalFormatSymbols(Locale.getDefault()))
+    return "${format.format(amount)} KSH"
+}
 
 @Parcelize
 

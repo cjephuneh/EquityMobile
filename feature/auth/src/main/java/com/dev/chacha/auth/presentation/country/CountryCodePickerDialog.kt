@@ -11,16 +11,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.dev.chacha.auth.presentation.register.Country
 import com.dev.chacha.auth.presentation.register.getFlagEmojiFor
-
+import com.dev.chacha.ui.common.country_search.getCountriesList
+@Preview
 @Composable
 fun CountryCodePickerDialog(
-    countries: List<Country>,
-    onSelection: (Country) -> Unit,
-    dismiss: () -> Unit,
+    countries: List<Country> = com.dev.chacha.auth.presentation.register.getCountriesList(),
+    onSelection: (Country) -> Unit ={},
+    dismiss: () -> Unit = {},
 ) {
     Dialog(onDismissRequest = dismiss) {
         Box {
@@ -40,7 +43,8 @@ fun CountryCodePickerDialog(
                                 }
                                 .fillMaxWidth()
                                 .padding(10.dp),
-                            text = "${getFlagEmojiFor(country.nameCode)} ${country.fullName}"
+                            text = "${getFlagEmojiFor(country.nameCode)}",
+                            fontSize = 50.sp
                         )
                     }
                 }
@@ -48,3 +52,4 @@ fun CountryCodePickerDialog(
         }
     }
 }
+

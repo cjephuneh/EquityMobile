@@ -30,7 +30,7 @@
     <string name="passwordMatch">Password must match</string>
     <string name="pinValidate_header">How to create a secure PIN:</string>
     <string name="validateSequence">Avoid number sequences(e.g. 1234 or 9876)</string>
-    <string name="validateRepetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
+    <string name="validate_repetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
     <string name="verify_header">How would you like to get verified?</string>
     <string name="select_hint">Select one of the options below</string>
     <string name="greetings">Good evening, Stephen</string>

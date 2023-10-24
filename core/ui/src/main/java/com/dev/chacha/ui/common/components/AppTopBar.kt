@@ -3,6 +3,8 @@ package com.dev.chacha.ui.common.components
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -20,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,66 +38,90 @@ import com.dev.chacha.ui.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(
+    modifier: Modifier = Modifier,
     title: String,
     showSearchBar: Boolean = false,
     initialValue: String,
     onSearchParamChange: (searchParam: String) -> Unit,
     showMenuBar: Boolean = false,
-    showBackArrow: Boolean = false
+    showBackArrow: Boolean = false,
+    searchHint: String = "Search",
+    showTopBar: Boolean = false,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: ()->Unit = {}
 ) {
     Surface {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.Start
         ) {
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(
-                        text = title,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+            if (showTopBar){
+                CenterAlignedTopAppBar(
+                    title = {
+                        Text(
+                            text = title,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            fontSize = 18.sp
+                        )
 
-                },
-                navigationIcon = {
-                    if (showBackArrow) {
-                        IconButton(onClick = { /*TODO*/ }) {
+                    },
+                    navigationIcon = {
+                        if (showBackArrow) {
+                            IconButton(onClick = { /*TODO*/ }) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.ic_arrow_back),
+                                    contentDescription = null,
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        if (navigationIcon != null) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_arrow_back),
+                                imageVector = navigationIcon,
                                 contentDescription = null,
-                                tint = Color.Black
+                                modifier = modifier.clickable(MutableInteractionSource(),null){
+                                    onNavigateBack()
+                                }
                             )
                         }
-                    }
-                },
+                    },
 
-                actions = {
-                    if (showMenuBar) {
-                        IconButton(onClick = { }) {
-                            Image(
-                                painter = painterResource(id = R.drawable.ic_menu),
-                                contentDescription = null
-                            )
+                    actions = {
+                        if (showMenuBar) {
+                            IconButton(onClick = { }) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.ic_menu),
+                                    contentDescription = null
+                                )
+                            }
                         }
-                    }
-                }
-            )
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.background
+                    )
+                )
+            }
 
-            AnimatedVisibility(visible = showSearchBar) {
+            AnimatedVisibility(
+                visible = showSearchBar,
+                modifier = Modifier.background(MaterialTheme.colorScheme.background)
+            ) {
                 Box(
-                    modifier = Modifier
-                        .padding(start=20.dp, end = 20.dp, bottom = 4.dp)
+                    modifier = modifier
+                        .padding(bottom = 4.dp)
                         .clip(CircleShape)
-                        .background(colorScheme.onSurface.copy(alpha = .08F))
+                        .height(50.dp)
                         .fillMaxWidth()
-                        .height(54.dp)
+                        .background(MaterialTheme.colorScheme.background),
+                    contentAlignment = Alignment.Center
                 ) {
                     var searchParam: String by remember { mutableStateOf(initialValue) }
                     val focusRequester = remember { FocusRequester() }
                     val focusManager = LocalFocusManager.current
 
-                    TextField(
+                    OutlinedTextField(
                         value = searchParam,
                         onValueChange = { newValue ->
                             searchParam = if (newValue.trim().isNotEmpty()) newValue else ""
@@ -102,18 +129,21 @@ fun AppTopBar(
                         },
                         modifier = Modifier
                             .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
                             .focusRequester(focusRequester = focusRequester),
                         singleLine = true,
                         placeholder = {
                             Text(
-                                text = "Search...",
-                                color = colorScheme.onSurface.copy(alpha = .32F)
+                                text = searchHint,
+                                color = colorScheme.onSurface.copy(alpha = .32F),
+                                style = MaterialTheme.typography.labelSmall
                             )
                         },
-                        colors = ExposedDropdownMenuDefaults.textFieldColors(
-                            containerColor = Color.Transparent,
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent
+                        colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = colorScheme.onBackground,
+                            unfocusedBorderColor = colorScheme.onBackground,
+                            focusedContainerColor = colorScheme.onSurface.copy(alpha = .08F),
+                            unfocusedContainerColor = colorScheme.onSurface.copy(alpha = .08F)
                         ), keyboardOptions = KeyboardOptions(
                             autoCorrect = true,
                             keyboardType = KeyboardType.Text,
@@ -148,7 +178,8 @@ fun AppTopBar(
                                     )
                                 }
                             }
-                        }
+                        },
+                        shape = CircleShape
                     )
                 }
             }

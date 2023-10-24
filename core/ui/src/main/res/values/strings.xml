@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EquityMobile</string>
-
+<!--    Components Register-->
     <string name="password_visible_content_description">Hide password</string>
     <string name="password_hidden_content_description">Show password</string>
     <string name="dont_have_an_account_yet">Don\'t have an account? Please</string>
@@ -26,7 +26,7 @@
     <string name="login_password_hint">Enter password</string>
     <string name="login_password_title">Password</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="enter_password_to_sign_in">Enter password to sign in</string>
+    <string name="enter_password_to_sign_in">Enter password </string>
     <string name="login_header_description">Sign in to Continue. Remember, your password is yours, do not share it with anyone.</string>
 
 <!--    -->
@@ -55,7 +55,7 @@
 <!--    -->
     <string name="pinValidate_header">How to create a secure PIN:</string>
     <string name="validateSequence">Avoid number sequences(e.g. 1234 or 9876)</string>
-    <string name="validateRepetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
+    <string name="validate_repetetive">Avoid using repetitive digits (e.g. 0000, 1111)</string>
     <string name="verify_header">How would you like to get verified?</string>
     <string name="select_hint">Select one of the options below</string>
     <string name="greetings">Good evening, Stephen</string>
@@ -71,7 +71,7 @@
     <string name="purpose">Borrow  up to 1,000,000 KES and pay back over up to twelve months</string>
     <string name="manage_devices">You can remove any of the devices connected to your profile</string>
     <string name="getInTouch">Reach out to us anytime you need help and our talent team will be gladly assist you</string>
-    <string name="favourite">Your favourite contact will apear here. Add a new one to quickly transact</string>
+    <string name="favourite">Your favourite contact will appear here. Add a new one to quickly transact</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -94,9 +94,9 @@
     <string name="favorite">Favorite</string>
     <string name="own_equity_account">Own Equity account</string>
     <string name="another_equity_account">Another Equity account</string>
-    <string name="pay_top_up">Pay to or top up card</string>
+    <string name="pay_top_up">Pay to card</string>
     <string name="credit_prepaid">Credit and prepaid cards</string>
-    <string name="mobile_wallet">Mobile wallet</string>
+    <string name="mobile_wallet">Mobile money</string>
     <string name="send_to_mobile">Send to mobile money providers</string>
     <string name="another_bank">Another Bank</string>
     <string name="pay_bill">Pay bill</string>
@@ -105,24 +105,7 @@
     <string name="agent">Agent</string>
 <!--    -->
 
-<!--    Loan-->
-    <string name="loans">Loans</string>
-    <string name="pay_loan">Pay loan</string>
-    <string name="get_loan">Get loan</string>
-    <string name="one_month_loan_title">One Month Loan</string>
-    <string name="one_month_loan_subtitle">Borrow up to 1,000,000 KES and pay it back in one month</string>
 
-    <string name="installment_loan_title">Installment Loan</string>
-    <string name="installment_loan_subtitle">Borrow up to 1,000,000 KES and pay it back over up to twelve months</string>
-
-    <string name="pension_loan_title">Pension Loan</string>
-    <string name="pension_loan_subtitle">Loan for members who receive a monthly pension</string>
-
-    <string name="salary_advance_loan_title">Salary Advance Loan</string>
-    <string name="salary_advance_loan_subtitle">Short-tern loan for members who receive a monthly salary</string>
-
-    <string name="ecosystem_loan_title">EcoSystem Loan</string>
-    <string name="ecosystem_loan_subtitle">This product is for approved retailers who sell products stocked by a local anchor or sub-anchor</string>
 
 
 
@@ -131,7 +114,7 @@
     <string name="add_paypal_description">You can now move money from PayPal right into your bank account</string>
     <string name="add_paypal_title_hint">There\'s a new kid on the block</string>
     <string name="add_account">Add account</string>
-    <string name="add_account_description">Add an account,card or mobile wallet</string>
+    <string name="add_account_description">A bank account,card,mobile wallet or PayPal account</string>
     <string name="my_accounts">My accounts</string>
     <string name="my_paypal_account_header">My Paypal accounts</string>
     <string name="my_balance">My balance</string>
@@ -204,7 +187,231 @@
     </plurals>
 
     <string name="not_found_email">not found\n</string>
-    <string name="copy_to_clipboard">copied to clopboard</string>
+    <string name="copy_to_clipboard">copied to clipboard</string>
     <string name="open_account">Open account</string>
+
+	<!--    Loan-->
+    <string name="loans">Loans</string>
+    <string name="borrow">Borrow</string>
+    <string name="pay_loan">Pay loan</string>
+    <string name="get_loan">Get loan</string>
+    <string name="one_month_loan_title">One Month Loan</string>
+    <string name="one_month_loan_subtitle">Borrow up to 1,000,000 KES and pay it back in one month</string>
+
+    <string name="installment_loan_title">Installment Loan</string>
+    <string name="installment_loan_subtitle">Borrow up to 1,000,000 KES and pay it back over up to twelve months</string>
+
+    <string name="pension_loan_title">Pension Loan</string>
+    <string name="pension_loan_subtitle">Loan for members who receive a monthly pension</string>
+
+    <string name="salary_advance_loan_title">Salary Advance Loan</string>
+    <string name="salary_advance_loan_subtitle">Short-tern loan for members who receive a monthly salary</string>
+
+    <string name="ecosystem_loan_title">EcoSystem Loan</string>
+    <string name="ecosystem_loan_subtitle">This product is for approved retailers who sell products stocked by a local anchor or sub-anchor</string>
+
+
+	<!--    About One Month loan-->
+	<string name="about_one_month_loan_1">This loan is available to Equity members who have had their Equity bank account for at least six months</string>
+    <string name="about_one_month_loan_2">You can borrow up to 1,000,000 KES, which can be paid in 1 month</string>
+    <string name="about_one_month_loan_3">How much can I borrow?</string>
+    <string name="about_one_month_loan_4">You can check your loan limit to find out</string>
+
+	<!--    About Installment loan -->
+	<string name="about_installment_loan_1">This loan is available to Equity members who have had their Equity bank account for at least six months</string>
+    <string name="about_installment_loan_2">You can borrow up to 1,000,000 KES, which can be paid over a period of 12 months</string>
+    <string name="about_installment_loan_3">How much can I borrow?</string>
+    <string name="about_installment_loan_4">You can check your loan limit to find out</string>
+
+	<!--    About pension loan -->
+	<string name="about_pension_loan_1">As a pensioner, it is important for you to enjoy your time in retirement while also being able to have everything you need and want. The Pension Loan is designed to help you meet your emergency needs, and is based on your account profile</string>
+    <string name="about_pension_loan_2">For this loan, We offer a repayment period of up to 48 months.\n You can qualify for a maximum loan amount of 3,800,000 KES</string>
+    <string name="about_pension_loan_3">How much can I borrow?</string>
+    <string name="about_pension_loan_4">You can check your loan limit to find out</string>
+
+	<!--    About Salary Advance loan -->
+	<string name="about_salary_loan_1">This is a short-term loan to help you meet your emergency needs. The loan is based on your profile.</string>
+    <string name="about_salary_loan_2">For this loan, We offer a repayment period of up to 12 months.\n To qualify, your salary must have been coming into your Equity Bank account for at least three months</string>
+    <string name="about_salary_loan_3">You can qualify for a maximum amount of 4 times your monthly salary.</string>
+    <string name="about_salary_loan_4">Any amount exceeding 300,000 KES must be secured with either a log book or title deed.</string>
+	<string name="about_salary_loan_5">How much can I borrow?</string>
+    <string name="about_salary_loan_6">You can check your loan limit to find out</string>
+
+	<!--    About EcoSystem loan -->
+	<string name="about_ecosystem_loan_1">This product is for approved retailers who sell products stocked by a local anchor or sub-anchor. Through this facility, retailers can withdraw funds for stock financing requirements, quickly and conveniently, whenever it is needed. </string>
+    <string name="about_ecosystem_loan_2">A retailer has the option to insure the goods they order, to cover any loss or damage that can occur while the products are in transit</string>
+    <string name="about_ecosystem_loan_3">How much can I borrow?\n- A minimum amount of KES\n-A maximum amount of 1,000,000 KES (This depends on the anchor\n- Any amount above 1,000,000 KES should be fully secured</string>
+    <string name="about_ecosystem_loan_4">Any amount exceeding 300,000 KES must be secured with either a log book or title deed.</string>
+	<string name="about_ecosystem_loan_5">The ecosystem loan is a revolving stock financing facility. Each drawn will be repaid within the agreed period, which is a maximum of 30 days, depending on the customer segement. The overall loan limit is approved for a 3-month period, which can be renewed based on the review of previous performance</string>
+	<string name="about_ecosystem_loan_6">How much can I borrow?</string>
+    <string name="about_ecosystem_loan_7">You can check your loan limit to find out</string>
+
+    <!-- About Classic savings -->
+    <string name="about_classic_savings_title">Classic account</string>
+    <string name="about_classic_account">Save any amount and deposit as frequently as you can, while earning compounded interest on deposits.</string>
+    <string name="about_classic_interest_title">Interest rate</string>
+    <string name="about_classic_interest_rate_desc_1">The interest you\'ll earn with a Classic savings account is calculated on a simple interest basis. It is based on the amount you deposit into the account and is subject to change.</string>
+    <string name="about_classic_account_rate_desc_2">Interest will only be earned for an account balance of above 20,000.00 KES and is credited at the end of the year and/or at account closure.</string>
+    <string name="about_classic_interest_information">For more information on the interest rate,\nClick here.</string>
+    <string name="what_should_you_get_account">Why should you get this account?</string>
+    <string name="what_should_you_get_classic_account_desc">&#8226; Deposit funds into the account as often as you would like to.\n&#8226; Your savings are easily available on request.\n&#8226; Earn a daily annual return.\n&#8226; No charges to move money from your savings account to a bank account.</string>
+    <string name="about_classic_bonus">Bonus:\n&#8226; There are no monthly charges or fees to operate this account.</string>
+    <string name="what_you_need_classic_account">What you need</string>
+    <string name="what_you_need_classic_account_desc">All you need is a minimum opening balance of 1,000 KES and an active Equity online profile.</string>
+    <string name="about_classic_withdrawals">Withdrawals:</string>
+    <string name="about_classic_withdraw_desc_1">One free withdrawal is allowed per month. A withdrawal charge of 60.00 KES is applied for any subsequent withdrawals within the same month.</string>
+    <string name="about_classic_account_withdraw_3">If your withdrawals leave less than 20,000 KES in the account, you will forfeit any interest earned.</string>
+    <string name="about_classic_account_withdraw_4">With a full withdrawal, the account will be closed and the funds will be transferred to your source account.</string>
+
+
+
+
+    <!-- About Call Deposit -->
+    <string name="about_call_deposit_title">Call deposit account</string>
+    <string name="about_call_deposit_desc">This savings account allows you to deposit a principal amount, earn interest, and access your money anytime.</string>
+    <string name="about_call_deposit_interest">Interest rate</string>
+    <string name="about_call_deposit_information">For more information on the interest rate, click here.</string>
+    <string name="about_call_benefit">&#8226; During the investment period, interest is accrued daily.\n&#8226; No maximum deposit amount.\n&#8226; Unlimited account access on mobile and online.\n&#8226; Monthly free e-statements.\n&#8226; No monthly charges on your account.</string>
+    <string name="ideal_account_call">This account is ideal if:</string>
+    <string name="call_deposit_ideal_desc">&#8226; You have disposable income.\n&#8226; You\'re looking for a great way to earn a return on your savings.</string>
+    <string name="what_you_need_call_deposit_title">What you need</string>
+    <string name="what_you_need_call_deposit">You need to be 18 years of age with an active Equity profile and a minimum balance of 50,000 KES. The maximum deposit period is 12 months.</string>
+    <string name="call_deposit_top_and_withdraw_title">Top up and Withdraw</string>
+    <string name="call_deposit_top_and_withdraw">Top up your account as often as you would like via the available Move money options. Partial withdrawals are allowed. However, if your account is closed, the funds will be transferred to your source account.</string>
+    <string name="call_deposit_account_closure">Account closure:</string>
+    <string name="call_deposit_account_closure_desc">You can manually close your account after one full day of the account being opened. Funds will then be transferred to the source account.</string>
+
+
+    <!-- About Fixed Deposit -->
+    <string name="about_fixed_account">Fixed deposit account</string>
+    <string name="about_fixed_account_desc">This account is ideal if you\'re looking for a way to earn a profitable amount of interest on some spare money you have.</string>
+    <string name="about_fixed_deposit_interest">Interest rate</string>
+    <string name="about_fixed_deposit_desc">The account earns daily simple interest.</string>
+    <string name="about_fixed_deposit_information">For more information on the interest rate,\nClick here.</string>
+    <string name="about_fixed_should_you_account">Why should you get this account?</string>
+    <string name="about_fixed_should_you_this_account_desc">&#8226; The minimum period for a Fixed deposit is only one month.\n&#8226;  The deposit amount and interest rate are fixed during the investment period.\n&#8226; At the time of opening this account, you are informed of the interest you will earn.\n&#8226; Principal and interest payment is done upon maturity or account closure.\n&#8226; KES is supported.\n&#8226; No monthly charges.\n&#8226; You can choose to reinvest your savings into a new Fixed deposit account at the end of your deposit period.</string>
+    <string name="about_what_do_need_to_open_hint">What should you get this account?</string>
+    <string name="about_what_do_need_to_open_desc">All you need is a minimum opening balance of 50,000 KES and an active Equity online profile.</string>
+    <string name="fixed_withdrawal">If you withdraw your funds before reaching your selected deposit period, the account will be closed and the accrued interest will be reduced. The funds will then be transferred to your source account.</string>
+
+
+<string name="about_goal_savings_title">Goal account</string>
+<string name="about_goal_account">This savings account allows you to set a goal, deposit funds, and seamlessly save towards your financial goals.</string>
+<string name="goal_interest_title">Interest rate</string>
+<string name="about_goal_interest_rate">For more information on the interest rate,\nClick here.</string>
+<string name="about_goal_account_benefit">Benefits:</string>
+<string name="about_goal_account_benefit_1">\n&#8226; Earn daily simple interest as you save towards your goal.\n&#8226; No maximum savings account.\n&#8226; Unlimited account access on mobile and online.\n&#8226; No monthly charges on the account.</string>
+<string name="about_goal_account_ideal">This account is ideal if:</string>
+<string name="about_goal_account_ideal_desc">\n&#8226; You have a regular and stable income.\n&#8226; You have disposable income.\n&#8226; You\'re looking for a great way to save towards your financial goals.</string>
+<string name="about_goal_account_what_you_need">What you need</string>
+<string name="about_goal_account_what_you_need_description">You need to be 18 years of age with an active Equity profile and a minimum opening balance of 300.00 KES. This account does not have a minimum term length.</string>
+<string name="about_goal_account_top_up_and_withdraw">Top up and withdraw</string>
+<string name="about_goal_account_top_up_and_withdraw_desc">Top up your account as often as you like with Move money. You can make 1 free withdrawal every 6 months. After that, a withdrawal charge of 60.00 KES is applied.</string>
+<string name="about_goal_account_account_closure">Account closure</string>
+<string name="about_goal_account_account_closure_desc">You can close your account manually at any time. Funds will then be transferred to the source account.</string>
+
+
+
+    <string name="check_loan_limit">Check loan limit</string>
+    <string name="view_your_loan_limit">View your loan limit</string>
+    <string name="make_purchase">Make a purchase</string>
+    <string name="view_term_and_condition">View terms and condition</string>
+    <string name="reminders">Reminders</string>
+    <string name="reminder_desc">Get notified when your schedule payments are coming up</string>
+    <string name="bank_account_alert">Bank account alearts</string>
+    <string name="bank_account_alert_desc">Get important updates about your bank accounts or card</string>
+    <string name="service_update">Service updates</string>
+    <string name="service_update_desc">Get alert about any upgrades,outage or scheduled downtime</string>
+    <string name="marketing_content">Marketing content</string>
+    <string name="marketing_content_desc">We\'ll let you know about new products or promotion</string>
+    <string name="events">Events</string>
+    <string name="events_desc">Get notified about any upcoming important events</string>
+    <string name="don_t_use_a_previous_or_old_pin">Don\'t use a previous or old PIN</string>
+    <string name="payment_reason">Payment reason</string>
+    <string name="optional">Optional</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="transaction_alert">Transaction alerts</string>
+    <string name="transaction_alert_desc">Get alerts about your account transactions</string>
+    <string name="transact">Transact</string>
+    <string name="account_information">Account Information</string>
+    <string name="view_your_statement">View your statement</string>
+    <string name="account_balance">Balance information</string>
+    <string name="send_to_a_bank_account">Send to a bank account</string>
+    <string name="send_to_phone_linked_account">Send to a phone-linked account</string>
+    <string name="search_for_bank">Search for a bank</string>
+    <string name="continue_hint">Continue</string>
+    <string name="pay_bill_hint">Pay bill</string>
+    <string name="how_can_we_help_you">How can we help you?</string>
+    <string name="get_in_touch">Get in touch</string>
+
+
+<!--    Get in Touch-->
+    <string name="contact_us">Contact us</string>
+    <string name="equity_contact">+254 763 063000</string>
+    <string name="email_us">Email us</string>
+    <string name="equity_email">info@equitybank.co.ke</string>
+    <string name="website">Visit our website</string>
+    <string name="equity_website">https://equitygroupholdings.com/ke/</string>
+    <string name="twitter">Follow us on Twitter</string>
+    <string name="equity_twitter">\@KeEquityBank</string>
+    <string name="facebook">Like us on Facebook</string>
+    <string name="equity_facebook">https://www.facebook.com/KeEquityBank/</string>
+    <string name="linkedin">Follow us on LinkedIn</string>
+    <string name="equity_linkedin">Equity Bank Limited</string>
+
+<!--    Manage Devices-->
+    <string name="mobile_device">Mobile devices</string>
+    <string name="no_of_mobile_devices">% device</string>
+    <string name="web_devices">Web devices</string>
+    <string name="web_devices_no">% devices</string>
+    <string name="get_in_touch_desc">Reach out to us any time you need help and our talented team will gladly assist you</string>
+    <string name="which_device_would_you_like_to_remove">Which device would you like to remove?</string>
+    <string name="mobile_devices_desc">Choose the device you want to remove. TO connect it again, simply sign in to your profile using that device</string>
+    <string name="change_your_pin">Change your PIN</string>
+    <string name="change_your_existing_pin">Change your existing PIN</string>
+    <string name="reset_your_pin">Reset your PIN</string>
+    <string name="reset_your_pin_if_you_ve_forgotten_it">Reset your PIN if you\'ve forgotten it</string>
+    <string name="make_sure_your_pin_easy">Make sure your PIN is easy to remember</string>
+    <string name="enter_current_pin">Enter your current PIN</string>
+    <string name="enter_new_pin">Enter your new PIN</string>
+    <string name="new_pin">New PIN</string>
+    <string name="current_pin">Current PIN</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="new_password">New password</string>
+    <string name="current_password">Current Password</string>
+
+<!--    Notifications-->
+    <string name="select_the_account_you_want_to_get_transaction_alert_for">Select the account you want to get transaction alert for</string>
+    <string name="how_do_you_want_to_receive_your_alerts">How do you want to receive your alerts?</string>
+    <string name="notification_disabled">Notifications disabled</string>
+    <string name="sms_alert">SMS alerts</string>
+    <string name="alert_enabled">Alert enabled</string>
+    <string name="enable_all_accounts">Enable all accounts</string>
+    <string name="notification_enabled">Notifications enabled</string>
+    <string name="select_the_account_you_want_to_get_reminders_alert_for">Select the accounts you want to get reminders for</string>
+    <string name="how_do_you_want_to_receive_your_notification">How do you want to receive your notifications?</string>
+    <string name="email_notification">Email</string>
+    <string name="push_notification">Push notification</string>
+    <string name="account_user">Stephen Chacha Marwa</string>
+    <string name="account_number">123456789</string>
+    <string name="buy_for_someone_new">Buy for someone new</string>
+    <string name="search_for_country">Search for a country</string>
+    <string name="get_in_touch_subtitle">Email,call or find us on social media</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="send_to_someone_new">Send to someone new</string>
+    <string name="enter_an_account_number">Enter an account number</string>
+    <string name="withdraw_from_paypal">Withdraw from PayPal</string>
+    <string name="withdraw_cash">Withdraw cash</string>
+    <string name="send_money">Send money</string>
+    <string name="western_union_send_money_subtitle">Send money internationally through Western Union</string>
+    <string name="receive_money">Receive Money</string>
+    <string name="western_union_receive_money_subtitle">Receive money by entering a Western Union tracking number</string>
+    <string name="sign_in_with_touch_id">Sign in with Touch ID</string>
+    <string name="recommed">Recommend</string>
+    <string name="activate_chat_banking">Activate Chat Banking</string>
+    <string name="activate_chat_banking_desc">Transact with Equity\'s Virtual Assistant</string>
+    <string name="add_an_equity_account">Add an Equity account</string>
+    <string name="add_an_equity_account_des">An an Equity account to your profile</string>
+    <string name="add_your_paypal_account_desc">Link any two PayPal accounts to your bank accounts</string>
 
 </resources>

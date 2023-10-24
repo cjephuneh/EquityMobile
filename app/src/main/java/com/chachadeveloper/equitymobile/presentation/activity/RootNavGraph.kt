@@ -1,41 +1,31 @@
 package com.chachadeveloper.equitymobile.presentation.activity
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.chachadeveloper.equitymobile.presentation.bottomNav.BottomNavigationBar
-import com.dev.chacha.auth.presentation.authNavGraph
-import com.dev.chacha.onboarding.onboard.OnBoardViewModel
-import com.dev.chacha.home.presentation.homeScreenNavGraph
-import com.dev.chacha.loans.presentation.borrowNavGraph
-import com.dev.chacha.more.presentation.moreScreenNavGraph
-import com.dev.chacha.onboarding.onboard.onboardingNavGraph
-import com.dev.chacha.savings.presentation.savingsNavGraph
+import com.dev.chacha.auth.presentation.navigation.authNavGraph
+import com.dev.chacha.onboarding.presentation.OnBoardViewModel
+import com.dev.chacha.home.presentation.navigation.homeScreenNavGraph
+import com.dev.chacha.home.presentation.navigation.accountScreenNavGraph
+import com.dev.chacha.loans.presentation.navigation.borrowNavGraph
+import com.dev.chacha.more.navigation.moreScreenNavGraph
+import com.dev.chacha.onboarding.navigation.onboardingNavGraph
+import com.dev.chacha.savings.navigation.savingsNavGraph
 import com.dev.chacha.transaction.presentation.buy_airtime.buyAirtimeNavGraph
-import com.dev.chacha.transaction.presentation.pay_with_Equity.buyGoodsNavGraph
-import com.dev.chacha.transaction.presentation.pay_with_Equity.payBillNavGraph
+import com.dev.chacha.transaction.presentation.pay_with_Equity.buy_goods.buyGoodsNavGraph
+import com.dev.chacha.transaction.presentation.pay_with_Equity.pay_bill.payBillNavGraph
 import com.dev.chacha.transaction.presentation.schedule_payment.schedulePaymentNavGraph
-import com.dev.chacha.transaction.presentation.send_money.anotherBankNavGraph
-import com.dev.chacha.transaction.presentation.send_money.anotherEquityAccountNavGraph
-import com.dev.chacha.transaction.presentation.send_money.mobileWalletNavGraph
-import com.dev.chacha.transaction.presentation.send_money.ownEquityAccountNavGraph
-import com.dev.chacha.transaction.presentation.send_money.payToCardNavGraph
-import com.dev.chacha.transaction.presentation.third_party.payPalNavGraph
-import com.dev.chacha.transaction.presentation.third_party.westernUnionNavGraph
-import com.dev.chacha.transaction.presentation.transactionNavGraph
+import com.dev.chacha.transaction.presentation.send_money.another_bank.anotherBankNavGraph
+import com.dev.chacha.transaction.presentation.send_money.another_equity_account.anotherEquityAccountNavGraph
+import com.dev.chacha.transaction.presentation.send_money.mobile_money.mobileWalletNavGraph
+import com.dev.chacha.transaction.presentation.send_money.own_equity_bank.ownEquityAccountNavGraph
+import com.dev.chacha.transaction.presentation.send_money.pay_to_card.payToCardNavGraph
+import com.dev.chacha.transaction.presentation.third_party.pay_pal.payPalNavGraph
+import com.dev.chacha.transaction.presentation.third_party.western_union.westernUnionNavGraph
+import com.dev.chacha.transaction.navigation.transactionNavGraph
 import com.dev.chacha.transaction.presentation.withdraw_cash.withDrawCashAgentNavGraph
 import com.dev.chacha.util.Graph
 
@@ -54,6 +44,7 @@ fun RootNavGraph(
         onboardingNavGraph(navController)
         authNavGraph(navController)
         homeScreenNavGraph(navController)
+        accountScreenNavGraph(navController)
         transactionNavGraph(navController)
         borrowNavGraph(navController)
         savingsNavGraph(navController)

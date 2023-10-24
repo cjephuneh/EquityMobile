@@ -7,6 +7,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
     kotlin("kapt")
     kotlin("plugin.serialization")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -66,6 +67,7 @@ dependencies {
     implementation(libs.android.material)
     api(libs.kotlin.coroutines.datetime)
     implementation(libs.android.hilt)
+    implementation(libs.bundles.lifecycle)
     implementation(libs.timber)
     kapt(libs.android.hilt.compiler)
     implementation(libs.datastore)

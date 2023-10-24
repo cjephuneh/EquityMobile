@@ -35,10 +35,10 @@ fun ConditionRow(
         R.drawable.ic_circle_icon
     }
 
-    Row (
+    Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().padding(8.dp)
-    ){
+        modifier = Modifier.fillMaxWidth().padding(top =5.dp,)
+    ) {
         Icon(
             painter = painterResource(id = icon),
             tint = color,
@@ -48,7 +48,8 @@ fun ConditionRow(
         Text(
             text = condition,
             color = color,
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.labelSmall
         )
     }
+
 }

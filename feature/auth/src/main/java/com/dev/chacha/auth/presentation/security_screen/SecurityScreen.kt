@@ -1,13 +1,11 @@
 package com.dev.chacha.auth.presentation.security_screen
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.chachadeveloper.equitymobile.presentation.common.theme.EquityMobileTheme
+import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 
@@ -75,8 +73,6 @@ fun SecurityScreen() {
 }
 
 @Composable
-@Preview("Light Mode", showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 fun SecurityScreenPreview() {
     EquityMobileTheme {
         SecurityScreen()

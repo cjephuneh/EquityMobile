@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
+    kotlin("plugin.serialization")
+    id("kotlin-parcelize")
 
 }
 
@@ -62,6 +64,8 @@ android {
 dependencies {
     implementation(project(Modules.ui))
     implementation(project(Modules.util))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.data))
 
     implementation(platform(libs.compose.bom))
     implementation(libs.android.coreKtx)

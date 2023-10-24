@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.EquityMobile" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/main</item>
-        <item name="android:windowBackground">@drawable/window_background</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+
     </style>
+    <style name="Theme.EquityMobile.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ModalBottomSheet.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ModalBottomSheet.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

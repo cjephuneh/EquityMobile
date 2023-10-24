@@ -53,7 +53,7 @@ fun SplashScreen(
 
         Image(
             painterResource(
-                id = R.drawable.ic_launcher_foreground
+                id = R.drawable.equitybank_icon
             ),
             contentDescription = "App-logo",
             modifier = Modifier

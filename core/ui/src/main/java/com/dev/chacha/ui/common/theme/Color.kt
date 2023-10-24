@@ -1,5 +1,6 @@
 package com.dev.chacha.ui.common.theme
 
+import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
@@ -13,6 +14,10 @@ val primaryGray = Color(0xFF828588)
 val lightGray = Color(0xFFF7F7F7)
 val Transparent = Color(0x00FFFFFF)
 val TextWhite = Color(0xFFEEEEEE)
+val DefaultBackground = Color(0xEBEBEBEB)
+val HintGray = Color(0xFF8B8B8B)
+
+
 
 val Blue200 = Color(0xFF73e8ff)
 val Blue500 = Color(0xFF29b6f6)
