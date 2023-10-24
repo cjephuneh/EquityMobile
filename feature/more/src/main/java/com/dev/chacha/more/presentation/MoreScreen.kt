@@ -7,18 +7,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.dev.chacha.more.presentation.component.SignOutAlertDialog
+import com.dev.chacha.more.presentation.component.MoreUserAccount
 import com.dev.chacha.ui.R
-import com.dev.chacha.ui.common.components.MoreVerticalItem
 import com.dev.chacha.ui.common.components.MoreVerticalItemWithCard
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.theme.DefaultBackground
@@ -36,7 +32,6 @@ fun MoreScreen(
     val moreViewModel: MoreViewModel = hiltViewModel()
     val moreUiState by moreViewModel.moreUiState.collectAsStateWithLifecycle()
     val uriHandler = LocalUriHandler.current
-
 
     val userName = "Stephen Chacha"
     Scaffold(

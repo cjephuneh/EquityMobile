@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.dev.chacha.loans.presentation.BorrowScreenNavigation
+import com.dev.chacha.loans.presentation.navigation.BorrowScreenNavigation
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.EquityOutlinedCard
 import com.dev.chacha.ui.common.components.StandardToolbar

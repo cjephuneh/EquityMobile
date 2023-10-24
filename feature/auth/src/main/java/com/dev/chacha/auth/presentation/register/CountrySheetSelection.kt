@@ -1,9 +1,7 @@
 package com.dev.chacha.auth.presentation.register
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -11,16 +9,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material3.Divider
-import androidx.compose.material3.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -29,18 +26,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.dev.chacha.ui.R
-import com.dev.chacha.ui.common.base.AppViewModel
-import com.dev.chacha.ui.common.base.PathState
-import com.dev.chacha.ui.common.components.AppTopBar
-import com.dev.chacha.ui.common.components.EquityTextField
+import androidx.compose.ui.unit.sp
+import com.dev.chacha.ui.common.theme.HintGray
 
 
 @Composable
@@ -50,10 +41,11 @@ fun CountrySelectionListItems(
     onCountrySelected: (Country) -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth()
-            .clickable(MutableInteractionSource(),null){
-             onCountrySelected(country)
-        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(MutableInteractionSource(), null) {
+                onCountrySelected(country)
+            },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -62,31 +54,23 @@ fun CountrySelectionListItems(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+
             Box(
                 modifier = Modifier
                     .size(48.dp)
-                    .background(Color.Transparent, CircleShape)
-                    .clip(CircleShape)
+                    .border(1.dp, MaterialTheme.colorScheme.primary, CircleShape),
+                contentAlignment = Alignment.TopCenter
             ){
-                Image(
-                    painter = painterResource(
-                        id = when (country.nameCode) {
-                            "cd" -> R.drawable.cd
-                            "ke" -> R.drawable.ke
-                            "rw" -> R.drawable.rw
-                            "ss" -> R.drawable.ss
-                            "tz" -> R.drawable.tz
-                            "ug" -> R.drawable.ug
-                            else -> R.drawable.paypal_icons // A placeholder image
-                        }
-                    ),
-                    contentDescription = country.fullName,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
+                Text(
+                    text = getFlagEmojiFor(country.nameCode),
+                    fontSize = 48.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxHeight().clipToBounds()
 
                 )
-
             }
+
+
 
             Text(
                 text = country.fullName,

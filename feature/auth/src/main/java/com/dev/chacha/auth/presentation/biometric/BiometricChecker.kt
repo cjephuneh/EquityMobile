@@ -7,13 +7,11 @@ import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.CancellationSignal
-import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import com.dev.chacha.auth.presentation.AuthScreen
-import com.dev.chacha.util.Graph
+import com.dev.chacha.auth.presentation.navigation.AuthScreen
 import timber.log.Timber
 
 @RequiresApi(Build.VERSION_CODES.P)

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.dev.chacha.ui.common.theme.EquityMobileTheme
-import com.dev.chacha.auth.presentation.AuthScreen
+import com.dev.chacha.auth.presentation.navigation.AuthScreen
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.StandardToolbar
 import com.dev.chacha.ui.common.components.TwoButtonsVertical

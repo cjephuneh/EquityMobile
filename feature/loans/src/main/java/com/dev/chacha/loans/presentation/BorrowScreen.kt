@@ -83,9 +83,7 @@ fun BorrowScreen(
                             LoanItemRow(
                                 drawable = R.drawable.pay_loan,
                                 title = R.string.pay_loan,
-                                onItemClick = {
-                                    onNavigateToPayLoan()
-                                }
+                                onItemClick = { onNavigateToPayLoan() }
                             )
                         }
                     }
@@ -96,7 +94,6 @@ fun BorrowScreen(
         }
 
     }
-
 
 }
 

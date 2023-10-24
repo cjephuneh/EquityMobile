@@ -28,7 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.dev.chacha.ui.common.theme.EquityMobileTheme
 import com.dev.chacha.data.BiometricUiEvent
 import com.dev.chacha.data.BiometricViewModel
-import com.dev.chacha.more.presentation.MoreScreenNavigation
+import com.dev.chacha.more.navigation.MoreScreenNavigation
 import com.dev.chacha.ui.R
 import com.dev.chacha.ui.common.components.MoreVerticalItem
 import com.dev.chacha.ui.common.components.StandardToolbar

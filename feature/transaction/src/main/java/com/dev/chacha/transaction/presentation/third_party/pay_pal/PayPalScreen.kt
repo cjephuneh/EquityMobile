@@ -18,8 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.dev.chacha.transaction.presentation.TransactionNavigation
-import com.dev.chacha.transaction.presentation.modalsheet_layout.EquityModalSheetLayout
 import com.dev.chacha.transaction.presentation.modalsheet_layout.TransactionBottomSheetType
 import com.dev.chacha.ui.common.components.AppTextField
 import com.dev.chacha.ui.common.components.EquityButton

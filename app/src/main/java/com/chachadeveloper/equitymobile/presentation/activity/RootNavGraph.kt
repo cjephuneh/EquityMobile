@@ -6,14 +6,14 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.dev.chacha.auth.presentation.authNavGraph
-import com.dev.chacha.onboarding.onboard.OnBoardViewModel
-import com.dev.chacha.home.presentation.homeScreenNavGraph
-import com.dev.chacha.home.presentation.transaction_history.accountScreenNavGraph
-import com.dev.chacha.loans.presentation.borrowNavGraph
-import com.dev.chacha.more.presentation.moreScreenNavGraph
-import com.dev.chacha.onboarding.onboard.onboardingNavGraph
-import com.dev.chacha.savings.presentation.savingsNavGraph
+import com.dev.chacha.auth.presentation.navigation.authNavGraph
+import com.dev.chacha.onboarding.presentation.OnBoardViewModel
+import com.dev.chacha.home.presentation.navigation.homeScreenNavGraph
+import com.dev.chacha.home.presentation.navigation.accountScreenNavGraph
+import com.dev.chacha.loans.presentation.navigation.borrowNavGraph
+import com.dev.chacha.more.navigation.moreScreenNavGraph
+import com.dev.chacha.onboarding.navigation.onboardingNavGraph
+import com.dev.chacha.savings.navigation.savingsNavGraph
 import com.dev.chacha.transaction.presentation.buy_airtime.buyAirtimeNavGraph
 import com.dev.chacha.transaction.presentation.pay_with_Equity.buy_goods.buyGoodsNavGraph
 import com.dev.chacha.transaction.presentation.pay_with_Equity.pay_bill.payBillNavGraph
@@ -25,7 +25,7 @@ import com.dev.chacha.transaction.presentation.send_money.own_equity_bank.ownEqu
 import com.dev.chacha.transaction.presentation.send_money.pay_to_card.payToCardNavGraph
 import com.dev.chacha.transaction.presentation.third_party.pay_pal.payPalNavGraph
 import com.dev.chacha.transaction.presentation.third_party.western_union.westernUnionNavGraph
-import com.dev.chacha.transaction.presentation.transactionNavGraph
+import com.dev.chacha.transaction.navigation.transactionNavGraph
 import com.dev.chacha.transaction.presentation.withdraw_cash.withDrawCashAgentNavGraph
 import com.dev.chacha.util.Graph
 

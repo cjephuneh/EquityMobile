@@ -1,17 +1,8 @@
 package com.dev.chacha.transaction.presentation.third_party.pay_pal
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.dev.chacha.transaction.presentation.TransactionNavigation
-import com.dev.chacha.transaction.presentation.modalsheet_layout.TransactionBottomSheetType
-import com.dev.chacha.ui.common.modal_sheet.EquityModalSheet
 import com.dev.chacha.util.Graph.PAYPAL_ROUTE
 import com.dev.chacha.util.Graph.WITHDRAW_FROM_PAYPAL_ROUTE
 
