@@ -65,13 +65,12 @@ We welcome contributions to EquityMobile! If you want to contribute, please fork
 Still on-progress
 ## Light Theme
 <img src="screenshot/light_1.jpg" width="250"/> <img src="screenshot/light_2.jpg" width="250"/>   <img src="screenshot/light_3.jpg" width="250"/>  
-<img src="screenshot/light_4.jpg" width="250"/> <img src="screenshot/light_5.jpg" width="250"/>    <img src="screenshot/new_2.jpg" width="250"/>  
-<img src="screenshot/new_3.jpg" width="250"/>  <img src="screenshot/new_4.jpg" width="250"/>  <img src="screenshot/new_5.jpg" width="250"/>  
-<img src="screenshot/new_6.jpg" width="250"/> <img src="screenshot/new_7.jpg" width="250"/> <img src="screenshot/new_8.jpg" width="250"/>  
-<img src="screenshot/new_9.jpg" width="250"/> <img src="screenshot/new_10.jpg" width="250"/> <img src="screenshot/new_11.jpg" width="250"/>  
-<img src="screenshot/new_12.jpg" width="250"/>  <img src="screenshot/new_13.jpg" width="250"/> <img src="screenshot/new_14.jpg" width="250"/> 
-<img src="screenshot/new_15.jpg" width="250"/>  <img src="screenshot/new_16.jpg" width="250"/> <img src="screenshot/light_16.jpg" width="250"/>   
-<img src="screenshot/new_17.jpg" width="250"/> 
+<img src="screenshot/light_5.jpg" width="250"/>    <img src="screenshot/new_2.jpg" width="250"/>  <img src="screenshot/new_3.jpg" width="250"/>  
+<img src="screenshot/new_4.jpg" width="250"/>  <img src="screenshot/new_5.jpg" width="250"/>  <img src="screenshot/new_6.jpg" width="250"/> 
+<img src="screenshot/new_7.jpg" width="250"/> <img src="screenshot/new_8.jpg" width="250"/>  <img src="screenshot/new_9.jpg" width="250"/> 
+<img src="screenshot/new_10.jpg" width="250"/> <img src="screenshot/new_11.jpg" width="250"/>  <img src="screenshot/new_12.jpg" width="250"/> 
+<img src="screenshot/new_13.jpg" width="250"/> <img src="screenshot/new_14.jpg" width="250"/> <img src="screenshot/new_15.jpg" width="250"/>  
+<img src="screenshot/new_16.jpg" width="250"/> <img src="screenshot/light_16.jpg" width="250"/>   <img src="screenshot/new_17.jpg" width="250"/> 
 
 
 
